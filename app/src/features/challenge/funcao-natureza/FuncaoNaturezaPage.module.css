@@ -1,0 +1,67 @@
+.page {
+  min-height: 100vh;
+  background: var(--color-bg-app);
+  display: flex;
+  flex-direction: column;
+}
+
+.body {
+  flex: 1;
+  padding: clamp(16px, 4vw, 24px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(16px, 4vw, 22px);
+}
+
+.pergunta {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(18px, 3.6vw, 22px);
+  line-height: 1.3;
+  letter-spacing: -0.3px;
+}
+
+.opcoesList {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.fichaModalInner {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: center;
+}
+
+.fichaCloseRow {
+  align-self: flex-end;
+}
+
+@media (min-width: 900px) {
+  .body {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: clamp(28px, 4vw, 48px);
+    padding: clamp(24px, 4vw, 44px) clamp(24px, 4vw, 40px);
+    max-width: 1280px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .speciesColumn {
+    width: clamp(260px, 28vw, 340px);
+    flex-shrink: 0;
+    position: sticky;
+    top: 24px;
+  }
+
+  .opcoesColumn {
+    flex: 1;
+    min-width: 0;
+    padding-top: 8px;
+  }
+}

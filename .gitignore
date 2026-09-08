@@ -1,0 +1,56 @@
+# Dependências
+node_modules/
+
+# Builds e artefatos de produção
+dist/
+dist-ssr/
+*.tsbuildinfo
+*.local
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Variáveis de ambiente / segredos — nunca versionar
+.env
+.env.*
+!.env.example
+
+# Cobertura de testes
+coverage/
+
+# Editores / IDEs
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Sistema operacional
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# Claude Code — estado local desta máquina, não compartilhar entre colaboradores
+# (.claude/launch.json é config de projeto e continua versionado de propósito)
+.claude/settings.local.json
+.claude/scheduled_tasks.lock
+.claude/  
+
+# Rascunhos antigos do cliente (pré-handoff) — não faz parte do projeto ativo
+# (ver README.md raiz, seção "Estrutura deste repositório")
+rascunho/

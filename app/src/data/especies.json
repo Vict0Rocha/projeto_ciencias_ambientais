@@ -1,0 +1,628 @@
+{
+  "versao": "1.1",
+  "atualizadoEm": "2026-09-06",
+  "observacao": "IDs das cartas são numéricos: 1xx Amazônia, 2xx Cerrado, 3xx Pantanal (a onça-pintada, presente em dois biomas, é 103). Recursos, funções, status e tipos de relação seguem com chave textual — não são cartas. Fonte única de conteúdo do Bio Tríade. As fichas usam 'especies'; a Rede da Vida usa 'redes' (grafo por bioma) — as relações existem só ali, para não haver duas fontes de verdade. Relações e eventos marcados com \"revisar\": true são propostas nossas, ainda não validadas por especialista.",
+  "biomas": [
+    { "id": "amazonia", "nome": "Amazônia", "cor": "#14532D", "foto": "uploads/amazonia.jpg" },
+    { "id": "cerrado", "nome": "Cerrado", "cor": "#B0562C", "foto": "uploads/cerrado.jpg" },
+    { "id": "pantanal", "nome": "Pantanal", "cor": "#1F8F8A", "foto": "uploads/pantanal.jpg" }
+  ],
+  "statusConservacao": [
+    { "id": "lc", "nome": "Pouco Preocupante", "bg": "#DFF0D8", "ink": "#2C5C30" },
+    { "id": "nt", "nome": "Quase Ameaçada", "bg": "#F6E7BD", "ink": "#5C4405" },
+    { "id": "vu", "nome": "Vulnerável", "bg": "#E6A723", "ink": "#3D2A00" },
+    { "id": "en", "nome": "Em Perigo", "bg": "#FDECEB", "ink": "#8C1F16" },
+    { "id": "ne", "nome": "Não Avaliada", "bg": "#EEF3ED", "ink": "#47614A" }
+  ],
+  "funcoes": [
+    { "id": "predador", "nome": "Predador", "descricao": "Regula as populações de outras espécies e mantém a cadeia alimentar equilibrada." },
+    { "id": "dispersor", "nome": "Dispersor de sementes", "descricao": "Carrega e espalha sementes, permitindo a regeneração da vegetação." },
+    { "id": "controlador", "nome": "Controlador biológico", "descricao": "Controla populações de insetos e pequenos animais." },
+    { "id": "produtor", "nome": "Produtor vegetal", "descricao": "Produz o próprio alimento e sustenta os demais níveis da cadeia." },
+    { "id": "polinizador", "nome": "Polinizador", "descricao": "Leva o pólen entre as flores e garante que as plantas dêem frutos e sementes." },
+    { "id": "herbivoro", "nome": "Herbívoro", "descricao": "Consome vegetação e serve de alimento para os predadores." }
+  ],
+  "recursos": [
+    { "id": "peixes", "nome": "Peixes", "descricao": "Base alimentar dos predadores aquáticos." },
+    { "id": "insetos", "nome": "Formigas e cupins", "descricao": "Alimento dos controladores biológicos e agentes da dinâmica do solo." },
+    { "id": "roedores", "nome": "Pequenos roedores", "descricao": "Presas de canídeos e aves de rapina." },
+    { "id": "repteis", "nome": "Pequenos répteis", "descricao": "Presas de aves terrestres." },
+    { "id": "vegetacao_aquatica", "nome": "Vegetação aquática", "descricao": "Gramíneas e plantas das áreas alagadas." },
+    { "id": "flores_nativas", "nome": "Flores nativas", "descricao": "Plantas com flor que dependem de polinizadores para frutificar." },
+    { "id": "solo", "nome": "Solo", "descricao": "Aeração, ciclagem de nutrientes e germinação de sementes." }
+  ],
+  "tiposRelacao": [
+    { "id": "preda", "rotulo": "preda", "descricao": "A primeira espécie se alimenta da segunda." },
+    { "id": "dispersa", "rotulo": "dispersa as sementes de", "descricao": "A primeira espalha as sementes da segunda." },
+    { "id": "poliniza", "rotulo": "poliniza", "descricao": "A primeira leva o pólen entre as flores da segunda, permitindo que ela dê frutos." },
+    { "id": "alimenta", "rotulo": "alimenta", "descricao": "A primeira é fonte de alimento da segunda." },
+    { "id": "abriga", "rotulo": "abriga", "descricao": "A primeira cria abrigo usado pela segunda." },
+    { "id": "depende", "rotulo": "depende de", "descricao": "A primeira precisa da segunda para viver ou se reproduzir." },
+    { "id": "compete", "rotulo": "compete com", "descricao": "As duas disputam o mesmo recurso." },
+    { "id": "melhora", "rotulo": "melhora", "descricao": "A primeira beneficia a segunda sem consumi-la." }
+  ],
+  "especies": [
+    {
+      "id": "101",
+      "nome": "Harpia",
+      "nomeCientifico": "Harpia harpyja",
+      "biomas": ["amazonia"],
+      "funcao": "predador",
+      "alimentacao": "Carnívora; caça preguiças, macacos e aves.",
+      "funcaoEcologica": "Predador de topo que controla populações de animais arborícolas.",
+      "status": "vu",
+      "ameacas": ["Desmatamento", "Caça", "Perda de habitat"],
+      "curiosidade": "Possui uma das garras mais fortes entre as aves do mundo.",
+      "pistas": [
+        "Sou uma das maiores águias do planeta.",
+        "Vivo nas copas das árvores.",
+        "Tenho garras extremamente poderosas."
+      ],
+      "conexoes": [
+        "Preda macacos-aranha.",
+        "Depende de grandes árvores para nidificação.",
+        "Indicadora da saúde da floresta."
+      ],
+      "foto": "img/harpia.jpg"
+    },
+    {
+      "id": "102",
+      "nome": "Boto-cor-de-rosa",
+      "nomeCientifico": "Inia geoffrensis",
+      "biomas": ["amazonia"],
+      "funcao": "predador",
+      "alimentacao": "Peixes, crustáceos e pequenos vertebrados aquáticos.",
+      "funcaoEcologica": "Controla populações de peixes e contribui para o equilíbrio dos rios.",
+      "status": "en",
+      "ameacas": ["Poluição", "Barragens", "Pesca predatória", "Captura acidental"],
+      "curiosidade": "A coloração rosa se torna mais intensa conforme a idade.",
+      "pistas": [
+        "Sou um mamífero aquático.",
+        "Vivo nos rios amazônicos.",
+        "Minha cor me torna muito famoso."
+      ],
+      "conexoes": [
+        "Controla populações de peixes.",
+        "Depende de rios preservados.",
+        "Sofre impactos das atividades humanas."
+      ],
+      "foto": "img/boto-cor-de-rosa.jpg"
+    },
+    {
+      "id": "103",
+      "nome": "Onça-pintada",
+      "nomeCientifico": "Panthera onca",
+      "biomas": ["amazonia", "pantanal"],
+      "funcao": "predador",
+      "alimentacao": "Carnívora; caça capivaras, veados, jacarés e outros vertebrados.",
+      "funcaoEcologica": "Predador de topo responsável pelo controle das cadeias alimentares.",
+      "status": "nt",
+      "ameacas": ["Desmatamento", "Caça", "Conflitos com humanos", "Conflitos com pecuaristas"],
+      "curiosidade": "Possui a mordida mais forte entre os felinos das Américas.",
+      "curiosidadePorBioma": {
+        "pantanal": "O Pantanal abriga uma das maiores concentrações dessa espécie."
+      },
+      "pistas": [
+        "Sou o maior felino das Américas.",
+        "Tenho manchas escuras pelo corpo.",
+        "Consigo caçar jacarés.",
+        "Estou no topo da cadeia alimentar."
+      ],
+      "conexoes": [
+        "Preda capivaras e jacarés.",
+        "Controla populações de herbívoros.",
+        "Necessita de grandes áreas preservadas."
+      ],
+      "foto": "img/onca-pintada.jpg"
+    },
+    {
+      "id": "104",
+      "nome": "Macaco-aranha",
+      "nomeCientifico": "Ateles spp.",
+      "biomas": ["amazonia"],
+      "funcao": "dispersor",
+      "alimentacao": "Frutas, folhas e sementes.",
+      "funcaoEcologica": "Importante dispersor de sementes.",
+      "status": "en",
+      "ameacas": ["Desmatamento", "Caça"],
+      "curiosidade": "Utiliza a cauda como um quinto membro.",
+      "pistas": [
+        "Vivo nas árvores.",
+        "Tenho uma cauda muito forte.",
+        "Ajudo a espalhar sementes pela floresta."
+      ],
+      "conexoes": [
+        "Dispersa sementes da castanheira.",
+        "Serve de presa para a harpia.",
+        "Contribui para a regeneração florestal."
+      ],
+      "foto": "img/macaco-aranha.jpg"
+    },
+    {
+      "id": "105",
+      "nome": "Castanheira-do-pará",
+      "nomeCientifico": "Bertholletia excelsa",
+      "biomas": ["amazonia"],
+      "funcao": "produtor",
+      "alimentacao": "Produz seu próprio alimento por fotossíntese.",
+      "funcaoEcologica": "Fornece alimento e abrigo para diversas espécies.",
+      "status": "vu",
+      "ameacas": ["Desmatamento", "Mudanças climáticas"],
+      "curiosidade": "Pode viver mais de 500 anos.",
+      "pistas": [
+        "Sou uma árvore gigante.",
+        "Produzo castanhas muito conhecidas.",
+        "Vivo por séculos."
+      ],
+      "conexoes": [
+        "Alimenta macacos, aves e roedores.",
+        "Depende de polinizadores específicos.",
+        "Ajuda a manter a floresta em pé."
+      ],
+      "foto": "img/castanheira.jpg"
+    },
+    {
+      "id": "106",
+      "nome": "Mamangava",
+      "nomeCientifico": "Eulaema spp.",
+      "biomas": ["amazonia"],
+      "funcao": "polinizador",
+      "alimentacao": "Néctar e pólen de flores.",
+      "funcaoEcologica": "Poliniza plantas de flores grandes e fechadas, entre elas a castanheira.",
+      "status": "ne",
+      "ameacas": ["Desmatamento", "Agrotóxicos", "Fragmentação da floresta"],
+      "curiosidade": "É uma das poucas abelhas fortes o bastante para abrir a flor da castanheira.",
+      "pistas": [
+        "Sou grande e faço barulho ao voar.",
+        "Visito flores em busca de néctar.",
+        "Sem mim a castanheira não produz castanha."
+      ],
+      "conexoes": [
+        "Poliniza a castanheira.",
+        "Depende de floresta contínua para se reproduzir.",
+        "É sensível a agrotóxicos."
+      ],
+      "foto": "img/mamangava.jpg",
+      "revisar": true
+    },
+    {
+      "id": "201",
+      "nome": "Lobo-guará",
+      "nomeCientifico": "Chrysocyon brachyurus",
+      "biomas": ["cerrado"],
+      "funcao": "dispersor",
+      "alimentacao": "Frutas, pequenos vertebrados e insetos.",
+      "funcaoEcologica": "Dispersor de sementes e controlador de pequenos animais.",
+      "status": "nt",
+      "ameacas": ["Atropelamentos", "Queimadas", "Perda de habitat"],
+      "curiosidade": "Apesar do nome, não forma matilhas como os lobos.",
+      "pistas": [
+        "Tenho pernas longas.",
+        "Sou o maior canídeo da América do Sul.",
+        "Adoro comer fruta-do-lobo."
+      ],
+      "conexoes": [
+        "Dispersa sementes.",
+        "Controla populações de roedores.",
+        "Depende do Cerrado preservado."
+      ],
+      "foto": "img/lobo-guara.jpg"
+    },
+    {
+      "id": "202",
+      "nome": "Tamanduá-bandeira",
+      "nomeCientifico": "Myrmecophaga tridactyla",
+      "biomas": ["cerrado"],
+      "funcao": "controlador",
+      "alimentacao": "Formigas e cupins.",
+      "funcaoEcologica": "Controle natural de insetos.",
+      "status": "vu",
+      "ameacas": ["Queimadas", "Atropelamentos", "Caça"],
+      "curiosidade": "Sua língua pode ultrapassar 60 cm.",
+      "pistas": [
+        "Tenho focinho comprido.",
+        "Minha comida favorita são formigas.",
+        "Minha cauda parece uma bandeira."
+      ],
+      "conexoes": [
+        "Controla cupins e formigas.",
+        "Influencia a dinâmica do solo.",
+        "Serve de indicador ambiental."
+      ],
+      "foto": "img/tamandua-bandeira.jpg"
+    },
+    {
+      "id": "203",
+      "nome": "Tatu-canastra",
+      "nomeCientifico": "Priodontes maximus",
+      "biomas": ["cerrado"],
+      "funcao": "controlador",
+      "alimentacao": "Cupins, formigas e insetos.",
+      "funcaoEcologica": "Engenheiro do ecossistema por escavar grandes tocas.",
+      "status": "vu",
+      "ameacas": ["Caça", "Destruição do habitat"],
+      "curiosidade": "É o maior tatu do mundo.",
+      "pistas": [
+        "Tenho uma armadura natural.",
+        "Escavo enormes tocas.",
+        "Sou o maior da minha família."
+      ],
+      "conexoes": [
+        "Suas tocas abrigam outras espécies.",
+        "Controla insetos.",
+        "Melhora a aeração do solo."
+      ],
+      "foto": "img/tatu-canastra.jpg"
+    },
+    {
+      "id": "204",
+      "nome": "Pequi",
+      "nomeCientifico": "Caryocar brasiliense",
+      "biomas": ["cerrado"],
+      "funcao": "produtor",
+      "alimentacao": "Produz alimento por fotossíntese.",
+      "funcaoEcologica": "Fonte de alimento para animais e humanos.",
+      "status": "lc",
+      "ameacas": ["Desmatamento", "Queimadas frequentes"],
+      "curiosidade": "Seu fruto é símbolo cultural do Cerrado.",
+      "pistas": [
+        "Produzo um fruto muito apreciado.",
+        "Sou uma árvore típica do Cerrado.",
+        "Meu fruto possui espinhos internos."
+      ],
+      "conexoes": [
+        "Alimenta aves e mamíferos.",
+        "Suas sementes são dispersadas por animais.",
+        "Contribui para a biodiversidade local."
+      ],
+      "foto": "img/pequi.jpg"
+    },
+    {
+      "id": "205",
+      "nome": "Seriema",
+      "nomeCientifico": "Cariama cristata",
+      "biomas": ["cerrado"],
+      "funcao": "controlador",
+      "alimentacao": "Insetos, pequenos vertebrados e frutos.",
+      "funcaoEcologica": "Controle de insetos e pequenos animais.",
+      "status": "lc",
+      "ameacas": ["Perda de habitat", "Queimadas"],
+      "curiosidade": "Possui um canto que pode ser ouvido a quilômetros.",
+      "pistas": [
+        "Sou uma ave terrestre.",
+        "Corro mais do que voo.",
+        "Tenho um canto muito forte."
+      ],
+      "conexoes": [
+        "Controla insetos.",
+        "Alimenta-se de pequenos répteis.",
+        "Participa da dispersão de sementes."
+      ],
+      "foto": "img/seriema.jpg"
+    },
+    {
+      "id": "206",
+      "nome": "Morcego-polinizador",
+      "nomeCientifico": "Glossophaga soricina",
+      "biomas": ["cerrado"],
+      "funcao": "polinizador",
+      "alimentacao": "Néctar, pólen, frutos e insetos.",
+      "funcaoEcologica": "Poliniza flores que abrem à noite, como as do pequi, e ainda dispersa sementes.",
+      "status": "lc",
+      "ameacas": ["Perda de habitat", "Queimadas", "Agrotóxicos", "Destruição de abrigos"],
+      "curiosidade": "A flor do pequi abre à noite justamente para ser polinizada por morcegos.",
+      "pistas": [
+        "Voo à noite.",
+        "Bebo néctar de flores que abrem no escuro.",
+        "Sem mim o pequi quase não dá fruto."
+      ],
+      "conexoes": [
+        "Poliniza o pequi.",
+        "Também dispersa sementes pelo Cerrado.",
+        "Depende de ocos e cavernas para se abrigar."
+      ],
+      "foto": "img/morcego-polinizador.jpg",
+      "revisar": true
+    },
+    {
+      "id": "301",
+      "nome": "Tuiuiú",
+      "nomeCientifico": "Jabiru mycteria",
+      "biomas": ["pantanal"],
+      "funcao": "predador",
+      "alimentacao": "Peixes, anfíbios e pequenos animais aquáticos.",
+      "funcaoEcologica": "Controle de populações aquáticas.",
+      "status": "lc",
+      "ameacas": ["Perda de áreas úmidas", "Queimadas"],
+      "curiosidade": "É a ave-símbolo do Pantanal.",
+      "pistas": [
+        "Sou uma ave muito alta.",
+        "Tenho pescoço preto com detalhe vermelho.",
+        "Sou símbolo do Pantanal."
+      ],
+      "conexoes": [
+        "Controla peixes e anfíbios.",
+        "Depende das áreas alagadas.",
+        "Indica a qualidade dos ambientes aquáticos."
+      ],
+      "foto": "img/tuiuiu.jpg"
+    },
+    {
+      "id": "302",
+      "nome": "Ariranha",
+      "nomeCientifico": "Pteronura brasiliensis",
+      "biomas": ["pantanal"],
+      "funcao": "predador",
+      "alimentacao": "Principalmente peixes.",
+      "funcaoEcologica": "Predador que regula populações aquáticas.",
+      "status": "en",
+      "ameacas": ["Poluição", "Pesca predatória", "Perda de habitat"],
+      "curiosidade": "Vive em grupos familiares muito organizados.",
+      "pistas": [
+        "Sou um mamífero aquático.",
+        "Vivo em grupos.",
+        "Sou excelente pescadora."
+      ],
+      "conexoes": [
+        "Controla populações de peixes.",
+        "Depende de rios limpos.",
+        "Compete com outros predadores aquáticos."
+      ],
+      "foto": "img/ariranha.jpg"
+    },
+    {
+      "id": "303",
+      "nome": "Jacaré-do-pantanal",
+      "nomeCientifico": "Caiman yacare",
+      "biomas": ["pantanal"],
+      "funcao": "predador",
+      "alimentacao": "Peixes, aves e pequenos mamíferos.",
+      "funcaoEcologica": "Predador que regula populações de animais aquáticos.",
+      "status": "lc",
+      "ameacas": ["Poluição", "Destruição de áreas úmidas"],
+      "curiosidade": "Pode permanecer muito tempo imóvel esperando a presa.",
+      "pistas": [
+        "Sou um réptil.",
+        "Passo muito tempo na água.",
+        "Tenho dentes visíveis mesmo com a boca fechada."
+      ],
+      "conexoes": [
+        "Serve de presa para onças jovens.",
+        "Controla peixes e aves.",
+        "Mantém o equilíbrio dos rios."
+      ],
+      "foto": "img/jacare-do-pantanal.jpg"
+    },
+    {
+      "id": "304",
+      "nome": "Capivara",
+      "nomeCientifico": "Hydrochoerus hydrochaeris",
+      "biomas": ["pantanal"],
+      "funcao": "herbivoro",
+      "alimentacao": "Gramíneas e plantas aquáticas.",
+      "funcaoEcologica": "Herbívoro que influencia a vegetação e serve de alimento para predadores.",
+      "status": "lc",
+      "ameacas": ["Perda de habitat", "Caça ilegal"],
+      "curiosidade": "É o maior roedor do mundo.",
+      "pistas": [
+        "Sou um roedor gigante.",
+        "Adoro ficar perto da água.",
+        "Sou presa importante para grandes predadores."
+      ],
+      "conexoes": [
+        "Alimenta a onça-pintada.",
+        "Influencia a vegetação aquática.",
+        "Ajuda na dispersão de sementes."
+      ],
+      "foto": "img/capivara.jpg"
+    },
+    {
+      "id": "305",
+      "nome": "Beija-flor-tesoura",
+      "nomeCientifico": "Eupetomena macroura",
+      "biomas": ["pantanal"],
+      "funcao": "polinizador",
+      "alimentacao": "Néctar de flores e pequenos insetos.",
+      "funcaoEcologica": "Poliniza flores nativas enquanto se alimenta de néctar.",
+      "status": "lc",
+      "ameacas": ["Perda de habitat", "Queimadas", "Redução das plantas nativas com flor"],
+      "curiosidade": "Bate as asas dezenas de vezes por segundo e consegue voar parado no ar.",
+      "pistas": [
+        "Consigo voar parado no ar.",
+        "Minha cauda é longa e bifurcada.",
+        "Levo pólen de flor em flor."
+      ],
+      "conexoes": [
+        "Poliniza flores nativas.",
+        "Depende de plantas floridas ao longo do ano.",
+        "Defende seu território com vigor."
+      ],
+      "foto": "img/beija-flor-tesoura.jpg",
+      "revisar": true
+    }
+  ],
+  "redes": [
+    {
+      "bioma": "amazonia",
+      "nos": ["101", "102", "103", "104", "105", "106", "peixes"],
+      "relacoes": [
+        { "de": "101", "tipo": "preda", "para": "104", "fonte": "ficha" },
+        { "de": "101", "tipo": "depende", "para": "105", "nota": "Nidifica em árvores emergentes de grande porte.", "fonte": "ficha" },
+        { "de": "104", "tipo": "dispersa", "para": "105", "fonte": "ficha" },
+        { "de": "105", "tipo": "alimenta", "para": "104", "fonte": "ficha" },
+        { "de": "103", "tipo": "preda", "para": "104", "revisar": true },
+        { "de": "102", "tipo": "preda", "para": "peixes", "fonte": "ficha" },
+        { "de": "106", "tipo": "poliniza", "para": "105", "revisar": true },
+        { "de": "105", "tipo": "alimenta", "para": "106", "nota": "Néctar e pólen das flores.", "revisar": true }
+      ],
+      "eventos": [
+        {
+          "id": "amz_desmatamento",
+          "titulo": "Desmatamento",
+          "cenario": "A área de castanheiras é derrubada para abrir pasto.",
+          "impactoDireto": ["105"],
+          "cascata": [
+            { "alvo": "104", "efeito": "declinio", "porque": "Perde a principal fonte de frutos e sementes." },
+            { "alvo": "101", "efeito": "declinio", "porque": "Some a presa e as árvores altas onde constrói o ninho." },
+            { "alvo": "106", "efeito": "declinio", "porque": "Perde as flores de que se alimenta e a floresta contínua onde nidifica." }
+          ],
+          "explicacao": "A castanheira sustenta quem come seus frutos e serve de ninho para o predador de topo. Sem ela, a perda sobe a cadeia inteira — e sem o macaco-aranha as próprias sementes deixam de ser espalhadas."
+        },
+        {
+          "id": "amz_caca",
+          "titulo": "Caça ilegal",
+          "cenario": "Os macacos-aranha desaparecem da região.",
+          "impactoDireto": ["104"],
+          "cascata": [
+            { "alvo": "101", "efeito": "declinio", "porque": "Perde uma de suas presas principais." },
+            { "alvo": "105", "efeito": "declinio", "porque": "Fica sem dispersor: as sementes germinam sob a árvore-mãe e poucas sobrevivem." }
+          ],
+          "explicacao": "Tirar o dispersor não mata a floresta hoje — ela para de se renovar. É o efeito mais difícil de perceber e o mais grave a longo prazo.",
+          "revisar": true
+        },
+        {
+          "id": "amz_mercurio",
+          "titulo": "Mercúrio no rio",
+          "cenario": "O garimpo contamina os peixes da bacia.",
+          "impactoDireto": ["peixes"],
+          "cascata": [
+            { "alvo": "102", "efeito": "declinio", "porque": "Acumula o mercúrio dos peixes que consome." }
+          ],
+          "explicacao": "O boto está no fim da cadeia aquática: tudo o que entra no rio se concentra nele.",
+          "revisar": true
+        },
+        {
+          "id": "amz_agrotoxico",
+          "titulo": "Agrotóxico na borda da floresta",
+          "cenario": "A pulverização da lavoura vizinha mata as mamangavas da região.",
+          "impactoDireto": ["106"],
+          "cascata": [
+            { "alvo": "105", "efeito": "declinio", "porque": "Sem polinizador, as flores não viram frutos e quase não há castanhas." },
+            { "alvo": "104", "efeito": "declinio", "porque": "Perde alimento com a queda na produção de frutos." },
+            { "alvo": "101", "efeito": "declinio", "porque": "Menos presas na copa das árvores." }
+          ],
+          "explicacao": "A árvore continua de pé, mas para de produzir. É o caso mais claro de que uma espécie pequena pode sustentar toda a floresta.",
+          "revisar": true
+        }
+      ]
+    },
+    {
+      "bioma": "cerrado",
+      "nos": ["201", "202", "203", "204", "205", "206", "insetos", "roedores", "repteis", "solo"],
+      "relacoes": [
+        { "de": "204", "tipo": "alimenta", "para": "201", "fonte": "ficha" },
+        { "de": "201", "tipo": "dispersa", "para": "204", "fonte": "ficha" },
+        { "de": "201", "tipo": "preda", "para": "roedores", "fonte": "ficha" },
+        { "de": "202", "tipo": "preda", "para": "insetos", "fonte": "ficha" },
+        { "de": "203", "tipo": "preda", "para": "insetos", "fonte": "ficha" },
+        { "de": "205", "tipo": "preda", "para": "insetos", "fonte": "ficha" },
+        { "de": "205", "tipo": "preda", "para": "repteis", "fonte": "ficha" },
+        { "de": "205", "tipo": "dispersa", "para": "204", "revisar": true },
+        { "de": "203", "tipo": "abriga", "para": "202", "nota": "Tocas abandonadas servem de abrigo a várias espécies.", "revisar": true },
+        { "de": "203", "tipo": "melhora", "para": "solo", "fonte": "ficha" },
+        { "de": "insetos", "tipo": "melhora", "para": "solo", "revisar": true },
+        { "de": "206", "tipo": "poliniza", "para": "204", "revisar": true },
+        { "de": "204", "tipo": "alimenta", "para": "206", "nota": "Néctar das flores noturnas.", "revisar": true },
+        { "de": "206", "tipo": "preda", "para": "insetos", "revisar": true }
+      ],
+      "eventos": [
+        {
+          "id": "cer_queimada",
+          "titulo": "Queimada",
+          "cenario": "O fogo consome os pequizeiros de uma grande área.",
+          "impactoDireto": ["204"],
+          "cascata": [
+            { "alvo": "201", "efeito": "declinio", "porque": "Perde o fruto que é boa parte de sua dieta." },
+            { "alvo": "205", "efeito": "declinio", "porque": "Perde frutos e abrigo no estrato baixo." },
+            { "alvo": "206", "efeito": "declinio", "porque": "Perde as flores noturnas de que se alimenta." }
+          ],
+          "explicacao": "O pequi é fonte de alimento e ponto de encontro da fauna. Sem os frutos, quem os comia se desloca — e as sementes deixam de ser levadas para longe."
+        },
+        {
+          "id": "cer_rodovia",
+          "titulo": "Rodovia cortando o Cerrado",
+          "cenario": "Atropelamentos reduzem a população de lobos-guarás.",
+          "impactoDireto": ["201"],
+          "cascata": [
+            { "alvo": "roedores", "efeito": "aumento", "porque": "Sem predador, as populações crescem." },
+            { "alvo": "204", "efeito": "declinio", "porque": "Perde seu principal dispersor de sementes." }
+          ],
+          "explicacao": "O lobo-guará é predador e jardineiro ao mesmo tempo. Perdê-lo desequilibra dos dois lados: sobram roedores e faltam pequizeiros novos.",
+          "revisar": true
+        },
+        {
+          "id": "cer_agrotoxico",
+          "titulo": "Agrotóxico na lavoura vizinha",
+          "cenario": "Formigas e cupins praticamente desaparecem da área.",
+          "impactoDireto": ["insetos"],
+          "cascata": [
+            { "alvo": "202", "efeito": "declinio", "porque": "É especialista: come quase só formigas e cupins." },
+            { "alvo": "203", "efeito": "declinio", "porque": "Perde sua base alimentar e escava menos." },
+            { "alvo": "solo", "efeito": "declinio", "porque": "Menos tocas e menos cupins significam solo menos aerado." },
+            { "alvo": "206", "efeito": "declinio", "porque": "Parte de sua dieta são insetos, e o veneno chega até ele." },
+            { "alvo": "204", "efeito": "declinio", "porque": "Com menos morcegos, menos flores são polinizadas." }
+          ],
+          "explicacao": "Espécies especialistas caem primeiro. E quando o tatu-canastra some, somem também as tocas que abrigavam outros animais.",
+          "revisar": true
+        }
+      ]
+    },
+    {
+      "bioma": "pantanal",
+      "nos": ["103", "304", "303", "301", "302", "305", "peixes", "vegetacao_aquatica", "flores_nativas"],
+      "relacoes": [
+        { "de": "103", "tipo": "preda", "para": "304", "fonte": "ficha" },
+        { "de": "103", "tipo": "preda", "para": "303", "fonte": "ficha" },
+        { "de": "304", "tipo": "preda", "para": "vegetacao_aquatica", "nota": "Herbivoria sobre gramíneas e plantas aquáticas.", "fonte": "ficha" },
+        { "de": "303", "tipo": "preda", "para": "peixes", "fonte": "ficha" },
+        { "de": "302", "tipo": "preda", "para": "peixes", "fonte": "ficha" },
+        { "de": "301", "tipo": "preda", "para": "peixes", "fonte": "ficha" },
+        { "de": "302", "tipo": "compete", "para": "303", "fonte": "ficha" },
+        { "de": "304", "tipo": "dispersa", "para": "vegetacao_aquatica", "revisar": true },
+        { "de": "305", "tipo": "poliniza", "para": "flores_nativas", "revisar": true },
+        { "de": "flores_nativas", "tipo": "alimenta", "para": "305", "nota": "Néctar.", "revisar": true }
+      ],
+      "eventos": [
+        {
+          "id": "pan_conflito_onca",
+          "titulo": "Conflito com a pecuária",
+          "cenario": "As onças da região são mortas por atacarem o gado.",
+          "impactoDireto": ["103"],
+          "cascata": [
+            { "alvo": "304", "efeito": "aumento", "porque": "Sem predador de topo, a população cresce rápido." },
+            { "alvo": "vegetacao_aquatica", "efeito": "declinio", "porque": "O excesso de capivaras consome as margens além da capacidade de rebrota." },
+            { "alvo": "303", "efeito": "aumento", "porque": "Os jovens deixam de ser predados." }
+          ],
+          "explicacao": "Retirar o predador de topo não sobra vaga: a cadeia inteira se reorganiza, e o efeito chega até a vegetação da beira do rio."
+        },
+        {
+          "id": "pan_seca",
+          "titulo": "Seca prolongada",
+          "cenario": "As áreas alagadas encolhem e os peixes ficam escassos.",
+          "impactoDireto": ["peixes"],
+          "cascata": [
+            { "alvo": "302", "efeito": "declinio", "porque": "Depende quase exclusivamente de peixes." },
+            { "alvo": "301", "efeito": "declinio", "porque": "Perde alimento e área de forrageio." },
+            { "alvo": "303", "efeito": "declinio", "porque": "Concentra-se em poças e disputa o pouco que resta." },
+            { "alvo": "flores_nativas", "efeito": "declinio", "porque": "Com o solo seco, menos plantas florescem." },
+            { "alvo": "305", "efeito": "declinio", "porque": "Sem flores ao longo do ano, perde sua fonte de néctar." }
+          ],
+          "explicacao": "No Pantanal a água é o que organiza tudo. Um mesmo evento atinge três predadores ao mesmo tempo — a competição entre eles aumenta.",
+          "revisar": true
+        },
+        {
+          "id": "pan_pesca",
+          "titulo": "Pesca predatória",
+          "cenario": "Redes retiram grande parte dos peixes do trecho do rio.",
+          "impactoDireto": ["peixes"],
+          "cascata": [
+            { "alvo": "302", "efeito": "declinio", "porque": "Fica sem alimento e abandona o território." },
+            { "alvo": "301", "efeito": "declinio", "porque": "Reduz o sucesso na criação dos filhotes." }
+          ],
+          "explicacao": "A ariranha come muito peixe por dia: onde a pesca é intensa, ela é a primeira a desaparecer.",
+          "revisar": true
+        }
+      ]
+    }
+  ]
+}

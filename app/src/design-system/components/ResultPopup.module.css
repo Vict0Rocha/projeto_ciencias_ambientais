@@ -1,0 +1,73 @@
+.inner {
+  padding: clamp(20px, 5vw, 32px) clamp(20px, 4vw, 30px) clamp(20px, 4vw, 26px);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-circle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.iconAcerto {
+  background: var(--color-accent-lime);
+  color: var(--color-dark-deep);
+}
+
+.iconErro {
+  background: var(--color-error-ink);
+  color: #fff5f4;
+}
+
+.titulo {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(21px, 4.5vw, 26px);
+  line-height: 1.15;
+  letter-spacing: -0.4px;
+}
+
+.selo {
+  align-self: flex-start;
+}
+
+.corpo {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--color-ink-body);
+}
+
+.acoes {
+  margin-top: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.linkSecundario {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-ink-muted);
+  padding: 8px;
+  min-height: 44px;
+}
+.linkSecundario:hover {
+  color: var(--color-ink);
+}

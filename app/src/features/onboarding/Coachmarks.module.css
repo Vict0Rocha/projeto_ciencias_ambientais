@@ -1,0 +1,104 @@
+.root {
+  position: fixed;
+  inset: 0;
+  z-index: 210;
+}
+
+.banda {
+  position: fixed;
+  background: rgba(18, 41, 15, 0.82);
+  pointer-events: auto;
+}
+
+.contorno {
+  position: fixed;
+  border: 2px solid var(--color-accent-lime);
+  border-radius: var(--radius-22);
+  pointer-events: none;
+  animation: fadeIn 180ms ease;
+}
+
+.card {
+  position: fixed;
+  background: var(--color-bg-app);
+  border-radius: var(--radius-22);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-shadow: var(--shadow-modal);
+  animation: fadeIn 180ms ease;
+}
+.card:focus-visible {
+  outline: none;
+}
+
+.dicaLabel {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 1.2px;
+  color: var(--color-ink-muted);
+}
+
+.dicaTexto {
+  margin: 0;
+  font-size: clamp(14px, 4vw, 16px);
+  line-height: 1.55;
+  color: var(--color-ink);
+  text-wrap: pretty;
+}
+
+.acoes {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.entendi {
+  flex: 1;
+  min-height: 44px;
+  cursor: pointer;
+  border: none;
+  background: var(--color-ink);
+  color: var(--color-bg-app);
+  border-radius: var(--radius-pill);
+  padding: 0 16px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 15px;
+  transition: background-color 150ms ease;
+}
+.entendi:hover {
+  background: var(--color-ink-hover);
+}
+
+.pular {
+  min-height: 44px;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: var(--color-ink-muted);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 0 8px;
+  flex-shrink: 0;
+}
+.pular:hover {
+  color: var(--color-ink);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contorno,
+  .card {
+    animation: none;
+  }
+}

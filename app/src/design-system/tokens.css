@@ -1,0 +1,113 @@
+/*
+  Design tokens do Bio Tríade — transcritos de design_handoff_bio_triade/README.md.
+  Cores de status de conservação e de bioma que já vêm com hex no especies.json
+  NÃO são duplicadas aqui — são lidas dos dados para manter fonte única de verdade.
+*/
+:root {
+  /* Cores base */
+  --color-bg-app: #f4fcf4;
+  --color-surface: #ffffff;
+  --color-surface-sunken: #eef3ed;
+
+  --color-ink: #18341c;
+  --color-ink-body: #2c4630;
+  --color-ink-body-2: #3d5c41;
+  --color-ink-muted: #5c7a60;
+  --color-ink-muted-2: #7b917d;
+  --color-ink-on-dark-muted: #8fb08b;
+  --color-ink-on-dark: #dcecd8;
+  --color-ink-on-dark-2: #e4efe1;
+  --color-ink-on-dark-3: #b6d0b2;
+
+  --color-border: #dde8da;
+  --color-border-soft: #e2ebe0;
+  --color-border-cool: #dbe6d8;
+  --color-border-strong: #cbdccb;
+
+  --color-dark-deep: #12290f;
+  --color-dark-panel: #18341c;
+  --color-dark-panel-2: #21421f;
+
+  --color-accent-lime: #74ac1c;
+  --color-accent-lime-hover: #8cc42a;
+  --color-ink-hover: #20431f;
+  /* Verde mais saturado p/ glifos de texto (estrelas, check) sobre fundo claro — melhor contraste que o lime puro */
+  --color-accent-lime-text: #5f8d15;
+
+  --color-progress-track: #e0eade;
+  --color-attempt-spent: #d5e2d3;
+
+  --color-error-ink: #c8362b;
+  --color-error-bg: #fdeceb;
+  /* "aumento" na cascata da Rede da Vida (README: seta para cima, #e6a723) */
+  --color-increase-ink: #e6a723;
+
+  --color-success-ink: #2c5c30;
+  --color-success-bg: #eaf4e6;
+
+  --color-hint-bg: #e6f4f2;
+  --color-hint-border: #b7dedb;
+  --color-hint-ink: #0f5f5b;
+  --color-hint-accent: #1f8f8a;
+
+  /* Tipografia */
+  --font-heading: 'Outfit', system-ui, sans-serif;
+  --font-body: 'IBM Plex Sans', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  /* Espaçamento (escala efetiva do handoff, em px) */
+  --space-2: 2px;
+  --space-3: 3px;
+  --space-4: 4px;
+  --space-6: 6px;
+  --space-7: 7px;
+  --space-8: 8px;
+  --space-9: 9px;
+  --space-10: 10px;
+  --space-11: 11px;
+  --space-12: 12px;
+  --space-14: 14px;
+  --space-16: 16px;
+  --space-18: 18px;
+  --space-20: 20px;
+  --space-22: 22px;
+  --space-24: 24px;
+  --space-26: 26px;
+  --space-28: 28px;
+  --space-30: 30px;
+  --space-34: 34px;
+  --space-38: 38px;
+  --space-44: 44px;
+  --space-46: 46px;
+  --space-56: 56px;
+
+  /* Raios */
+  --radius-2: 2px;
+  --radius-3: 3px;
+  --radius-12: 12px;
+  --radius-14: 14px;
+  --radius-16: 16px;
+  --radius-18: 18px;
+  --radius-20: 20px;
+  --radius-22: 22px;
+  --radius-24: 24px;
+  --radius-28: 28px;
+  --radius-42: 42px;
+  --radius-circle: 50%;
+  --radius-pill: 100px;
+
+  /* Sombras */
+  --shadow-modal: 0 40px 80px -30px rgba(18, 41, 15, 0.55);
+  --shadow-button-primary: 0 14px 28px -16px rgba(24, 52, 28, 0.65);
+  --shadow-card-hover: 0 16px 32px -24px rgba(18, 41, 15, 0.5);
+
+  /* Foco de teclado */
+  --focus-ring: 2px solid var(--color-accent-lime);
+  --focus-ring-offset: 2px;
+
+  /* Breakpoint mobile/desktop (usar como valor literal em media queries) */
+  --breakpoint-desktop: 900px;
+
+  /* Transição padrão de navegação entre telas */
+  --transition-screen: 220ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}

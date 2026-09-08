@@ -1,0 +1,176 @@
+Design System & Estrutura de Telas: Jogo de Educação Ambiental
+
+1. Princípios de Design (UX/UI)
+
+Para garantir que o jogo seja acessível, minimalista e engajador para alunos do Ensino Médio, devemos seguir estes princípios:
+
+Acessibilidade em Primeiro Lugar: Contraste adequado de cores, fontes legíveis e botões grandes (pensando no mobile). A linguagem deve ser clara e direta.
+
+Minimalismo Focado: Evite poluição visual. Cada tela deve ter um objetivo claro. Use espaços em branco para guiar a atenção do jogador para o conteúdo importante (as cartas, os desafios).
+
+Feedback Constante: O jogador deve sempre saber o que aconteceu após uma ação (acertou, errou, desbloqueou algo) através de animações suaves e sons (opcionais, mas recomendados).
+
+Modularidade (Estilo Cartas): Como você sugeriu no rascunho, usar o conceito de "cartas" é perfeito. Torna o design modular, fácil de entender e lembra jogos de tabuleiro/card games físicos, gerando familiaridade.
+
+Progresso Visual: No Modo Jornada, o mapa de progressão (mostrado no seu rascunho) é crucial para manter o engajamento e a sensação de avanço.
+
+2. Design System
+
+2.1. Paleta de Cores
+
+As paletas que você enviou são ótimas, remetem à natureza. Vamos integrá-las de forma funcional.
+
+Cores Principais (Baseadas na image_d6c7c2.png - Verdes):
+
+Verde Escuro (#003E04): Usado para textos principais, títulos e fundos de seções importantes (dá um contraste forte e profissional).
+
+Verde Médio (#006603 / #009F04): Usado para botões primários de ação (ex: "Jogar", "Confirmar").
+
+Verde Claro (#00DF04): Usado para destaques, barra de progresso ou para indicar acertos/sucesso.
+
+Cores Secundárias (Baseadas na image_d6c7a9.png - Azuis/Aquáticos):
+
+Azul Escuro (#012E40): Pode ser usado para o Modo Livre ou para elementos relacionados ao Pantanal/água, diferenciando do verde padrão.
+
+Azul Turquesa (#03738C / #00BC99): Excelente para botões secundários, ícones ou para elementos interativos como dicas.
+
+Cores Neutras:
+
+Branco (#FFFFFF): Fundo principal das telas e o fundo das cartas (garante a leitura).
+
+Preto (#000000 ou um cinza muito escuro como #1A1A1A): Para textos de leitura longa.
+
+Cinza Claro (#F0F0F0): Fundo alternativo para seções de contraste suave.
+
+Vermelho Suave (Sugestão): Para indicar erros (feedback negativo), ex: #D32F2F.
+
+2.2. Tipografia
+
+Para garantir legibilidade em qualquer dispositivo:
+
+Títulos (Fontes Sans-Serif robustas): Montserrat ou Poppins. Elas passam um ar moderno e amigável.
+
+Corpo de Texto (Leitura fluida): Roboto ou Open Sans. Fáceis de ler em telas pequenas.
+
+2.3. Componentes Principais
+
+Botões: Arredondados (border-radius: 8px ou 12px) para parecerem clicáveis e amigáveis.
+
+Cartas (O Core do Jogo):
+
+Fundo branco, sombra suave (box-shadow) para dar profundidade (efeito de que estão flutuando sobre o fundo).
+
+Devem conter: Imagem (ilustração da espécie), Título (Nome da espécie), Ícones (para bioma, dieta, etc).
+
+Modais/Pop-ups: Para feedback de acerto/erro e para exibir a "Ficha Educativa" (como você anotou no rascunho). Fundo semi-transparente escurecido.
+
+3. Estrutura de Telas (Wireframes Conceituais baseados nos seus rascunhos)
+
+Aqui detalhamos a arquitetura da informação de cada tela principal.
+
+Tela 1: Tela Inicial (Menu Principal)
+
+Baseado no rascunho "Tela inicial Bio Tríade"
+
+Logo/Título do Jogo: Centralizado, grande e atrativo.
+
+Botão Primário: "Modo Jornada" (Destaque principal).
+
+Botão Secundário: "Modo Livre" (Logo abaixo).
+
+Botão Terciário (Pequeno): "Sobre o Jogo / Para Professores" (No canto inferior).
+
+Fundo: Pode ter uma ilustração sutil representando os 3 biomas.
+
+Tela 2: Mapa do Modo Jornada
+
+Baseado no rascunho "Modo guiado terá uma jornada"
+
+Título: "Sua Jornada".
+
+Visual: Uma trilha pontilhada (estilo mapa do tesouro) conectando os níveis (fases).
+
+Nós (Fases):
+
+Níveis concluídos: Verdes com ícone de check.
+
+Nível atual: Animado (pulsando) ou destacado.
+
+Níveis bloqueados: Cinza com ícone de cadeado.
+
+Interação: Clicar no nível atual abre o desafio correspondente.
+
+Tela 3: Menu do Modo Livre
+
+Baseado no rascunho "Modo livre"
+
+Título: "Modo Livre".
+
+Passo 1: Selecione o Bioma: Botões com imagens representativas (Amazônia, Cerrado, Pantanal).
+
+Passo 2: Selecione o Modo: Botões (Quem sou eu?, Função na Natureza, Rede da Vida).
+
+Botão: "Iniciar Desafio".
+
+Tela 4: Jogo - "Quem Sou Eu?"
+
+Baseado no rascunho "Quem sou eu?"
+
+Cabeçalho: Indicador do bioma atual e botão de voltar.
+
+Área Central:
+
+Um balão de texto ou área de "Pista" (Ex: "Sou o maior felino das Américas...").
+
+Botão de "Próxima Pista" (revela mais informações, mas talvez diminua a pontuação).
+
+Área Inferior: 3 ou 4 "Cartas" viradas para cima com opções de animais para o jogador escolher.
+
+Pop-up Pós-Resposta:
+
+Se acertar: Animação positiva -> Mostra a Ficha Completa do animal.
+
+Se errar: Dica extra e permite tentar novamente.
+
+Tela 5: Jogo - "Função na Natureza" (Estilo Baralho)
+
+Baseado no rascunho "Função na Natureza / estilo baralho"
+
+Cabeçalho: Instrução (Ex: "Arraste o animal para sua função").
+
+Área Central: "Slots" vazios representando as funções (Predador, Polinizador, etc).
+
+Área Inferior: Cartas dos animais na "mão" do jogador.
+
+Mecânica: Drag and Drop (arrastar e soltar). O jogador puxa a carta do animal e solta no slot correto.
+
+Tela 6: Jogo - "Rede da Vida"
+
+Baseado no rascunho "Rede da Vida O + D = D"
+
+Cabeçalho: Apresentação do cenário/evento (Ex: "Desmatamento: A castanheira desapareceu").
+
+Área Central: Um diagrama visual (rede). Inicialmente as cartas dos animais estão conectadas por linhas (mostrando quem come quem, quem depende de quem).
+
+Mecânica: O jogador deve identificar qual elemento da rede sofrerá o impacto direto do evento apresentado e selecionar a carta correspondente.
+
+Feedback: O pop-up explica detalhadamente a cascata de eventos (como você anotou "geram um pop-up com explicação da resposta").
+
+4. Dicas de Desenvolvimento e Arquitetura
+
+Stack Tecnológico Sugerido: React (ou Next.js) para o frontend. É perfeito para criar interfaces baseadas em componentes (como as cartas) e gerenciar estados complexos (como o mapa de jornada e as conexões da Rede da Vida).
+
+Modelo de Dados (JSON): Estruture os dados das espécies em um arquivo JSON centralizado. Isso cumpre o seu requisito de modularidade.
+
+{
+  "id": "onca_pintada",
+  "nome": "Onça-pintada",
+  "bioma": ["Amazônia", "Pantanal"],
+  "funcao": "Predador topo de cadeia",
+  "pistas": ["Sou um excelente nadador", "Tenho manchas chamadas rosetas"],
+  "imagem": "/assets/onca.png"
+  // ...
+}
+
+
+Gamificação Leve: Adicione um sistema de "Estrelas" (1 a 3) no Modo Jornada dependendo de quantas tentativas o aluno precisou, para incentivar a repetição e a busca pela perfeição.

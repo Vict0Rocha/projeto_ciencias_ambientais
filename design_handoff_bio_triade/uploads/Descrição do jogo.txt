@@ -1,0 +1,156 @@
+# Um Serious Game para Educação Ambiental
+
+## Visão Geral do Projeto
+
+O projeto consiste no desenvolvimento de um jogo educativo web (serious game) voltado para alunos do Ensino Médio, com o objetivo de promover a conscientização sobre biodiversidade, conservação ambiental e a importância das espécies para o equilíbrio dos ecossistemas. O foco do conteúdo será os biomas brasileiros presentes no estado de Mato Grosso: Amazônia, Cerrado e Pantanal.
+
+Diferentemente de jogos educativos que se limitam à memorização de nomes e características de animais, a proposta busca desenvolver uma compreensão mais ampla sobre as relações ecológicas existentes entre as espécies e os impactos causados pela perda da biodiversidade. O aluno deverá compreender que cada organismo desempenha uma função essencial dentro do ecossistema e que a extinção de uma espécie pode gerar consequências para toda a rede ecológica.
+
+O sistema será desenvolvido como uma ferramenta pedagógica digital que poderá ser utilizada por professores em sala de aula, em atividades complementares, projetos de educação ambiental ou ações de extensão. Além de oferecer uma experiência lúdica e interativa, o jogo funcionará como um recurso de apoio ao processo de ensino e aprendizagem.
+
+## Objetivo Educacional
+
+O principal objetivo do jogo é ensinar conceitos relacionados à conservação ambiental e à biodiversidade por meio da interação e da resolução de desafios. Ao longo da experiência, os alunos deverão aprender:
+
+* Identificação de espécies dos biomas Amazônia, Cerrado e Pantanal;
+* Características gerais de cada espécie;
+* Bioma de ocorrência;
+* Alimentação;
+* Função ecológica;
+* Status de conservação;
+* Principais ameaças;
+* Curiosidades relevantes;
+* Relações ecológicas entre espécies;
+* Consequências da extinção de organismos para o equilíbrio ambiental.
+
+O foco do aprendizado não será apenas reconhecer uma espécie, mas compreender sua importância para a manutenção dos ecossistemas e para a conservação da biodiversidade.
+
+## Estrutura Geral do Jogo
+
+O jogo será disponibilizado em formato web, permitindo acesso por computadores, notebooks, tablets e dispositivos móveis. Sua arquitetura será modular, possibilitando a inclusão, remoção ou atualização de espécies, desafios e conteúdos sem a necessidade de alterar a estrutura principal do sistema.
+
+A experiência será dividida em dois modos principais: Jornada e Modo Livre.
+
+### Modo Jornada
+
+O Modo Jornada será uma experiência guiada, em que o aluno seguirá uma sequência de fases organizadas de forma progressiva. Novos desafios serão desbloqueados conforme o avanço do jogador, aumentando gradualmente o nível de dificuldade.
+
+A jornada será estruturada em etapas que representam diferentes níveis de compreensão dos conteúdos ambientais.
+
+Na primeira fase, o aluno terá contato inicial com as espécies dos biomas por meio de desafios de identificação. Em seguida, passará a explorar os papéis ecológicos desempenhados pelos organismos. Posteriormente, será introduzido ao conceito de interdependência ecológica, aprendendo como as espécies se relacionam dentro dos ecossistemas. Por fim, enfrentará desafios relacionados aos impactos da extinção e às consequências da perda da biodiversidade.
+
+Essa progressão permitirá que o conhecimento seja construído gradualmente, favorecendo uma aprendizagem mais significativa.
+
+### Modo Livre
+
+O Modo Livre permitirá que alunos e professores escolham livremente o conteúdo que desejam explorar.
+
+Nesse modo, será possível selecionar:
+
+* Bioma;
+* Modo de jogo;
+* Nível de dificuldade.
+
+Essa abordagem torna a ferramenta mais flexível para utilização em diferentes contextos educacionais, permitindo que o professor adapte as atividades aos conteúdos trabalhados em sala de aula.
+
+## Espécies Utilizadas
+
+Inicialmente, o jogo contará com espécies representativas dos três biomas estudados.
+
+### Amazônia
+
+* Harpia;
+* Boto-cor-de-rosa;
+* Onça-pintada;
+* Macaco-aranha;
+* Castanheira.
+
+### Cerrado
+
+* Lobo-guará;
+* Tamanduá-bandeira;
+* Tatu-canastra;
+* Pequi;
+* Seriema.
+
+### Pantanal
+
+* Tuiuiú;
+* Ariranha;
+* Jacaré-do-pantanal;
+* Onça-pintada;
+* Capivara.
+
+A estrutura do sistema permitirá que novas espécies sejam adicionadas futuramente, ampliando a abrangência do conteúdo e possibilitando sua evolução ao longo do tempo.
+
+## Modos de Jogo
+
+### Quem Sou Eu?
+
+Neste modo, o jogador recebe uma série de pistas e deve descobrir qual espécie está sendo descrita.
+
+As pistas podem abordar características físicas, hábitos alimentares, bioma de ocorrência ou curiosidades sobre o organismo.
+
+Após acertar a resposta, o jogador recebe uma ficha educativa contendo informações detalhadas sobre a espécie, reforçando o aprendizado.
+
+### Função na Natureza
+
+Neste modo, o objetivo é compreender o papel ecológico das espécies.
+
+Os jogadores deverão relacionar organismos às suas funções dentro do ecossistema, como:
+
+* Predadores;
+* Polinizadores;
+* Dispersores de sementes;
+* Controladores biológicos;
+* Produtores vegetais.
+
+A proposta é demonstrar que cada espécie possui uma função específica que contribui para o equilíbrio ambiental.
+
+### Rede da Vida
+
+Este será o principal diferencial pedagógico do projeto.
+
+A mecânica apresenta relações ecológicas entre diferentes espécies, permitindo que o aluno visualize como os organismos estão conectados dentro dos ecossistemas.
+
+Durante os desafios, eventos ambientais poderão ocorrer, como desmatamento, caça ilegal ou extinção local de determinadas espécies. O jogador deverá analisar as possíveis consequências dessas alterações.
+
+Por exemplo, ao remover uma espécie dispersora de sementes, o aluno poderá observar impactos na regeneração da vegetação e, consequentemente, em outras espécies dependentes daquele recurso.
+
+Essa abordagem busca desenvolver uma visão sistêmica dos ecossistemas, promovendo a compreensão dos efeitos em cascata causados pela perda da biodiversidade.
+
+## Sistema de Recompensas
+
+O jogo contará com mecanismos de progressão e recompensa para aumentar o engajamento dos alunos.
+ 
+
+## Estrutura das Informações
+
+Cada espécie será cadastrada seguindo uma estrutura padronizada, permitindo reutilização em todos os modos de jogo.
+
+Cada registro deverá conter:
+
+* Nome;
+* Bioma;
+* Alimentação;
+* Função ecológica;
+* Status de conservação;
+* Principais ameaças;
+* Curiosidade;
+* Conexões ecológicas.
+
+Essa organização garantirá a modularidade do sistema e facilitará futuras expansões.
+
+## Papel Pedagógico da Ferramenta
+
+O projeto não pretende substituir o professor, mas atuar como um recurso complementar ao processo de ensino-aprendizagem.
+
+O jogo poderá ser utilizado para introduzir conteúdos, revisar conceitos, promover discussões em grupo ou reforçar conhecimentos trabalhados em sala de aula.
+
+Ao combinar gamificação, interação e conteúdo científico, a ferramenta busca tornar o aprendizado mais atrativo e significativo para os estudantes.
+
+## Considerações Finais
+
+O projeto propõe uma abordagem inovadora para a educação ambiental ao utilizar múltiplas mecânicas de jogo para ensinar biodiversidade, conservação e relações ecológicas. Seu diferencial está em ir além da simples identificação de espécies, promovendo a compreensão das funções ecológicas desempenhadas pelos organismos e dos impactos gerados pela perda da biodiversidade.
+
+Por meio de desafios progressivos, exploração de espécies e simulações de redes ecológicas, o jogo pretende contribuir para a formação de uma consciência ambiental mais crítica, incentivando os alunos a compreenderem a importância da conservação dos biomas brasileiros e da proteção das espécies que deles fazem parte.

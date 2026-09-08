@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#e9eee8;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#18341c}
+a{color:#18341c;text-decoration:none}
+a:hover{color:#74ac1c}
+</style>
+</helmet>
+<div style="padding:44px 34px 80px;background:#e9eee8;min-height:100vh">
+
+  <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px;max-width:1360px;margin:0 auto 34px">
+    <div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <svg width="20" height="18" viewBox="0 0 20 18" aria-hidden="true"><polygon points="10,0 20,18 0,18" fill="#18341c"></polygon></svg>
+        <span style="font-family:'Outfit',sans-serif;font-weight:700;font-size:13px;letter-spacing:1.6px">BIO TRÍADE</span>
+      </div>
+      <h1 style="margin:12px 0 0;font-family:'Outfit',sans-serif;font-weight:700;font-size:34px;letter-spacing:-1px;line-height:1.05">Coleção de Espécies</h1>
+    </div>
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5c7a60;text-align:right;line-height:1.7">
+      TELA 07 · COLEÇÃO<br />MOBILE 390×844 · DESKTOP 1280×800
+    </div>
+  </div>
+
+  <div style="max-width:1360px;margin:0 auto;display:flex;flex-direction:column;gap:56px">
+
+    <div>
+      <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:18px">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5c7a60">07</span>
+        <span style="font-family:'Outfit',sans-serif;font-weight:700;font-size:19px">Coleção — Desktop</span>
+        <span style="font-size:12px;color:#5c7a60">1280 × 800 · grade por bioma, rolagem vertical</span>
+      </div>
+
+      <div style="overflow-x:auto;padding-bottom:8px">
+        <div style="width:1280px;background:#ffffff;border:1px solid #dbe6d8;border-radius:20px;overflow:hidden;box-shadow:0 30px 60px -34px rgba(18,41,15,0.45)">
+          <div style="height:42px;background:#eef3ed;border-bottom:1px solid #dbe6d8;display:flex;align-items:center;gap:8px;padding:0 16px">
+            <span style="width:11px;height:11px;border-radius:50%;background:#d3dcd1"></span>
+            <span style="width:11px;height:11px;border-radius:50%;background:#d3dcd1"></span>
+            <span style="width:11px;height:11px;border-radius:50%;background:#d3dcd1"></span>
+            <span style="margin-left:14px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#7b917d">biotriade.app/colecao</span>
+          </div>
+
+          <div style="height:800px;background:#f4fcf4;display:flex;flex-direction:column">
+
+            <div style="flex-shrink:0;border-bottom:1px solid #e2ebe0;padding:26px 40px 22px;display:flex;flex-direction:column;gap:20px">
+              <div style="display:flex;align-items:center;gap:20px">
+                <button type="button" aria-label="Voltar" style="width:42px;height:42px;border-radius:50%;border:1.5px solid #cbdccb;background:#ffffff;color:#18341c;font-size:17px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0" style-hover="border-color:#74ac1c;background:#eaf4e6">←</button>
+                <div style="display:flex;flex-direction:column;gap:4px">
+                  <span style="font-family:'Outfit',sans-serif;font-weight:700;font-size:26px;letter-spacing:-0.6px;line-height:1">Coleção</span>
+                  <span style="font-size:13px;color:#5c7a60">3 biomas · todas as cartas disponíveis</span>
+                </div>
+                <div style="margin-left:auto;display:flex;align-items:center;gap:14px">
+                  <label style="display:flex;align-items:center;gap:10px;background:#ffffff;border:1.5px solid #dde8da;border-radius:100px;padding:11px 18px;width:260px">
+                    <span style="font-size:13px;color:#7b917d">⌕</span>
+                    <span style="font-size:14px;color:#7b917d">Buscar espécie</span>
+                  </label>
+                  <button type="button" aria-label="Som ligado" style="width:40px;height:40px;border-radius:50%;border:1.5px solid #cbdccb;background:#ffffff;color:#18341c;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0" style-hover="border-color:#74ac1c;background:#eaf4e6">♪</button>
+                </div>
+              </div>
+
+              <div style="display:flex;gap:9px">
+                <button type="button" style="cursor:pointer;border:none;background:#18341c;color:#f4fcf4;border-radius:100px;padding:10px 20px;font-size:13px;font-weight:600">Todos os biomas</button>
+                <button type="button" style="cursor:pointer;background:#ffffff;border:1.5px solid #dde8da;color:#18341c;border-radius:100px;padding:9px 20px;font-size:13px;font-weight:600;display:flex;align-items:center;gap:8px" style-hover="border-color:#14532d">
+                  <span style="width:9px;height:9px;border-radius:2px;background:#14532d"></span>Amazônia
+                </button>
+                <button type="button" style="cursor:pointer;background:#ffffff;border:1.5px solid #dde8da;color:#18341c;border-radius:100px;padding:9px 20px;font-size:13px;font-weight:600;display:flex;align-items:center;gap:8px" style-hover="border-color:#b0562c">
+                  <span style="width:9px;height:9px;border-radius:2px;background:#b0562c"></span>Cerrado
+                </button>
+                <button type="button" style="cursor:pointer;background:#ffffff;border:1.5px solid #dde8da;color:#18341c;border-radius:100px;padding:9px 20px;font-size:13px;font-weight:600;display:flex;align-items:center;gap:8px" style-hover="border-color:#1f8f8a">
+                  <span style="width:9px;height:9px;border-radius:2px;background:#1f8f8a"></span>Pantanal
+                </button>
+              </div>
+            </div>
+
+            <div style="flex:1;overflow-y:auto;padding:24px 40px 30px;display:flex;flex-direction:column;gap:26px">
+              <sc-for list="{{ trilhos }}" as="r" hint-placeholder-count="0">
+                <div style="display:flex;flex-direction:column;gap:14px">
+                  <div style="display:flex;align-items:center;gap:11px">
+                    <span style="width:11px;height:11px;border-radius:3px;flex-shrink:0;background:{{ r.cor }}"></span>
+                    <span style="font-family:'Outfit',sans-serif;font-weight:700;font-size:17px">{{ r.nome }}</span>
+                  </div>
+                  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(172px,1fr));gap:20px">
+                    <sc-for list="{{ r.cartas }}" as="e" hint-placeholder-count="0">
+                      <div style="background:#ffffff;border:1px solid #dde8da;border-radius:22px;overflow:hidden;cursor:pointer;display:flex;flex-direction:column" style-hover="border-color:#74ac1c;box-shadow:0 16px 32px -24px rgba(18,41,15,0.5)">
+                        <span style="display:block;height:7px;background:{{ e.cor }}"></span>
+                        <span role="img" aria-label="{{ e.nome }}" style="display:block;margin:11px 11px 0;height:126px;border-radius:14px;background-color:#eef3ed;background:{{ e.bg }}"></span>
+                        <span style="display:flex;flex-direction:column;gap:5px;padding:13px 15px 16px">
+                          <span style="font-family:'Outfit',sans-serif;font-weight:700;font-size:16px;color:#18341c;line-height:1.15">{{ e.nome }}</span>
+                          <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#7b917d;line-height:1.35">{{ e.cientifico }}</span>
+                          <span style="margin-top:3px;align-self:flex-start;padding:5px 11px;border-radius:100px;background:{{ e.statusBg }};color:{{ e.statusInk }};font-size:10px;font-weight:700;letter-spacing:0.6px">{{ e.status }}</span>
+                        </span>
+                      </div>
+                    </sc-for>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:18px">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5c7a60">07</span>
+        <span style="font-family:'Outfit',sans-serif;font-weight:700;font-size:19px">Coleção — Mobile</span>
+        <span style="font-size:12px;color:#5c7a60">390 × 844 · grade de 2 colunas por bioma</span>
+      </div>
+
+      <div style="display:flex;flex-wrap:wrap;gap:34px;align-items:flex-start">
+        <div style="width:414px;background:#12290f;border-radius:54px;padding:12px;box-shadow:0 30px 60px -30px rgba(18,41,15,0.6);flex-shrink:0">
+          <div style="width:390px;height:844px;background:#f4fcf4;border-radius:42px;overflow:hidden;display:flex;flex-direction:column">
+
+            <div style="height:44px;flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding:0 26px;font-size:12px;font-weight:600;color:#18341c">
+              <span>9:41</span>
+              <span style="display:flex;align-items:flex-end;gap:3px;height:11px">
+                <span style="width:3px;height:5px;background:#18341c;border-radius:1px"></span>
+                <span style="width:3px;height:7px;background:#18341c;border-radius:1px"></span>
+                <span style="width:3px;height:9px;background:#18341c;border-radius:1px"></span>
+                <span style="width:3px;height:11px;background:#18341c;border-radius:1px"></span>
+                <span style="width:17px;height:9px;border:1.3px solid #18341c;border-radius:3px;margin-left:5px;padding:1.3px"><span style="display:block;width:75%;height:100%;background:#18341c;border-radius:1px"></span></span>
+              </span>
+            </div>
+
+            <div style="flex-shrink:0;padding:6px 22px 16px;display:flex;flex-direction:column;gap:16px;border-bottom:1px solid #e2ebe0">
+              <div style="display:flex;align-items:center;gap:12px">
+                <button type="button" aria-label="Voltar" style="width:42px;height:42px;border-radius:50%;border:1.5px solid #cbdccb;background:#ffffff;color:#18341c;font-size:17px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0" style-hover="border-color:#74ac1c;background:#eaf4e6">←</button>
+                <div style="flex:1;display:flex;flex-direction:column;gap:2px">
+                  <span style="font-family:'Outfit',sans-serif;font-weight:700;font-size:19px;letter-spacing:-0.4px;line-height:1.1">Coleção</span>
+                  <span style="font-size:11px;color:#5c7a60">3 biomas</span>
+                </div>
+                <button type="button" aria-label="Som ligado" style="width:42px;height:42px;border-radius:50%;border:1.5px solid #cbdccb;background:#ffffff;color:#18341c;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0" style-hover="border-color:#74ac1c;background:#eaf4e6">♪</button>
+              </div>
+
+              <label style="display:flex;align-items:center;gap:10px;background:#ffffff;border:1.5px solid #dde8da;border-radius:100px;padding:12px 16px">
+                <span style="font-size:13px;color:#7b917d">⌕</span>
+                <span style="font-size:14px;color:#7b917d">Buscar espécie</span>
+              </label>
+
+              <div style="display:flex;gap:7px;overflow-x:auto;padding-bottom:2px">
+                <button type="button" style="cursor:pointer;border:none;background:#18341c;color:#f4fcf4;border-radius:100px;padding:9px 16px;font-size:12px;font-weight:600;flex-shrink:0">Todos</button>
+                <button type="button" style="cursor:pointer;background:#ffffff;border:1.5px solid #dde8da;color:#18341c;border-radius:100px;padding:8px 16px;font-size:12px;font-weight:600;flex-shrink:0;display:flex;align-items:center;gap:7px">
+                  <span style="width:8px;height:8px;border-radius:2px;background:#14532d"></span>Amazônia
+                </button>
+                <button type="button" style="cursor:pointer;background:#ffffff;border:1.5px solid #dde8da;color:#18341c;border-radius:100px;padding:8px 16px;font-size:12px;font-weight:600;flex-shrink:0;display:flex;align-items:center;gap:7px">
+                  <span style="width:8px;height:8px;border-radius:2px;background:#b0562c"></span>Cerrado
+                </button>
+                <button type="button" style="cursor:pointer;background:#ffffff;border:1.5px solid #dde8da;color:#18341c;border-radius:100px;padding:8px 16px;font-size:12px;font-weight:600;flex-shrink:0;display:flex;align-items:center;gap:7px">
+                  <span style="width:8px;height:8px;border-radius:2px;background:#1f8f8a"></span>Pantanal
+                </button>
+              </div>
+            </div>
+
+            <div style="flex:1;overflow-y:auto;padding:16px 0 0;display:flex;flex-direction:column;gap:20px">
+              <sc-for list="{{ trilhos }}" as="r" hint-placeholder-count="0">
+                <div style="display:flex;flex-direction:column;gap:11px">
+                  <div style="display:flex;align-items:center;gap:9px;padding:0 22px">
+                    <span style="width:10px;height:10px;border-radius:3px;flex-shrink:0;background:{{ r.cor }}"></span>
+                    <span style="font-family:'Outfit',sans-serif;font-weight:700;font-size:15px">{{ r.nome }}</span>
+                  </div>
+                  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px;padding:0 22px">
+                    <sc-for list="{{ r.cartas }}" as="e" hint-placeholder-count="0">
+                      <div style="background:#ffffff;border:1px solid #dde8da;border-radius:20px;overflow:hidden;cursor:pointer;display:flex;flex-direction:column">
+                        <span style="display:block;height:6px;background:{{ e.cor }}"></span>
+                        <span role="img" aria-label="{{ e.nome }}" style="display:block;margin:10px 10px 0;height:112px;border-radius:13px;background-color:#eef3ed;background:{{ e.bg }}"></span>
+                        <span style="display:flex;flex-direction:column;gap:4px;padding:12px 13px 15px">
+                          <span style="font-family:'Outfit',sans-serif;font-weight:700;font-size:15px;color:#18341c;line-height:1.15">{{ e.nome }}</span>
+                          <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#7b917d;line-height:1.35">{{ e.cientifico }}</span>
+                          <span style="margin-top:2px;align-self:flex-start;padding:4px 9px;border-radius:100px;background:{{ e.statusBg }};color:{{ e.statusInk }};font-size:9px;font-weight:700;letter-spacing:0.5px">{{ e.status }}</span>
+                        </span>
+                      </div>
+                    </sc-for>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+
+        <div style="flex:1;min-width:300px;max-width:420px;display:flex;flex-direction:column;gap:22px">
+          <div>
+            <div style="font-family:'Outfit',sans-serif;font-weight:700;font-size:17px;margin-bottom:8px">Uma carta, um padrão</div>
+            <p style="margin:0;font-size:14px;line-height:1.6;color:#3d5c41;text-wrap:pretty">Todas as cartas usam a mesma estrutura: faixa da cor do bioma, foto da espécie, nome popular, nome científico e selo de conservação. Só a foto e o conteúdo mudam — nenhum estado bloqueado nesta versão.</p>
+          </div>
+          <div>
+            <div style="font-family:'Outfit',sans-serif;font-weight:700;font-size:17px;margin-bottom:8px">Uma seção por bioma</div>
+            <p style="margin:0;font-size:14px;line-height:1.6;color:#3d5c41;text-wrap:pretty">As cartas ficam em grade — 6 colunas no desktop, 2 no mobile — agrupadas por bioma. A tela rola só na vertical, então entram novas espécies sem quebrar o layout.</p>
+          </div>
+          <div>
+            <div style="font-family:'Outfit',sans-serif;font-weight:700;font-size:17px;margin-bottom:8px">Faixa como código de bioma</div>
+            <div style="display:flex;flex-direction:column;gap:9px">
+              <div style="display:flex;align-items:center;gap:10px"><span style="width:30px;height:6px;border-radius:3px;background:#14532d;flex-shrink:0"></span><span style="font-size:12px;color:#3d5c41">Amazônia</span></div>
+              <div style="display:flex;align-items:center;gap:10px"><span style="width:30px;height:6px;border-radius:3px;background:#b0562c;flex-shrink:0"></span><span style="font-size:12px;color:#3d5c41">Cerrado</span></div>
+              <div style="display:flex;align-items:center;gap:10px"><span style="width:30px;height:6px;border-radius:3px;background:#1f8f8a;flex-shrink:0"></span><span style="font-size:12px;color:#3d5c41">Pantanal</span></div>
+            </div>
+          </div>
+          <div>
+            <div style="font-family:'Outfit',sans-serif;font-weight:700;font-size:17px;margin-bottom:8px">Selos de conservação</div>
+            <div style="display:flex;flex-wrap:wrap;gap:7px">
+              <span style="padding:5px 10px;border-radius:100px;background:#dff0d8;color:#2c5c30;font-size:10px;font-weight:700;letter-spacing:0.6px">POUCO PREOCUPANTE</span>
+              <span style="padding:5px 10px;border-radius:100px;background:#f6e7bd;color:#5c4405;font-size:10px;font-weight:700;letter-spacing:0.6px">QUASE AMEAÇADA</span>
+              <span style="padding:5px 10px;border-radius:100px;background:#e6a723;color:#3d2a00;font-size:10px;font-weight:700;letter-spacing:0.6px">VULNERÁVEL</span>
+              <span style="padding:5px 10px;border-radius:100px;background:#fdeceb;color:#8c1f16;font-size:10px;font-weight:700;letter-spacing:0.6px">EM PERIGO</span>
+              <span style="padding:5px 10px;border-radius:100px;background:#eef3ed;color:#47614a;font-size:10px;font-weight:700;letter-spacing:0.6px">NÃO AVALIADA</span>
+            </div>
+          </div>
+          <div>
+            <div style="font-family:'Outfit',sans-serif;font-weight:700;font-size:17px;margin-bottom:8px">Ao tocar na carta</div>
+            <p style="margin:0;font-size:14px;line-height:1.6;color:#3d5c41;text-wrap:pretty">Abre a ficha da tela 02 (frente e verso) — mesmo componente já definido. Os nomes científicos e selos aqui são rascunho para revisão do conteúdo.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const S = {
+  amaz: '#14532d',
+  cerr: '#b0562c',
+  pant: '#1f8f8a'
+};
+const ST = {
+  lc: { status: 'POUCO PREOCUPANTE', statusBg: '#dff0d8', statusInk: '#2c5c30' },
+  nt: { status: 'QUASE AMEAÇADA', statusBg: '#f6e7bd', statusInk: '#5c4405' },
+  vu: { status: 'VULNERÁVEL', statusBg: '#e6a723', statusInk: '#3d2a00' },
+  en: { status: 'EM PERIGO', statusBg: '#fdeceb', statusInk: '#8c1f16' },
+  ne: { status: 'NÃO AVALIADA', statusBg: '#eef3ed', statusInk: '#47614a' }
+};
+
+const LISTA = [
+  ['Harpia', 'Harpia harpyja', 'amaz', 'vu', 'harpia'],
+  ['Boto-cor-de-rosa', 'Inia geoffrensis', 'amaz', 'en', 'boto-cor-de-rosa'],
+  ['Onça-pintada', 'Panthera onca', 'amaz', 'nt', 'onca-pintada'],
+  ['Macaco-aranha', 'Ateles spp.', 'amaz', 'en', 'macaco-aranha'],
+  ['Castanheira-do-pará', 'Bertholletia excelsa', 'amaz', 'vu', 'castanheira'],
+  ['Mamangava', 'Eulaema spp.', 'amaz', 'ne', 'mamangava'],
+  ['Lobo-guará', 'Chrysocyon brachyurus', 'cerr', 'nt', 'lobo-guara'],
+  ['Tamanduá-bandeira', 'Myrmecophaga tridactyla', 'cerr', 'vu', 'tamandua-bandeira'],
+  ['Tatu-canastra', 'Priodontes maximus', 'cerr', 'vu', 'tatu-canastra'],
+  ['Pequi', 'Caryocar brasiliense', 'cerr', 'lc', 'pequi'],
+  ['Seriema', 'Cariama cristata', 'cerr', 'lc', 'seriema'],
+  ['Morcego-polinizador', 'Glossophaga soricina', 'cerr', 'lc', 'morcego-polinizador'],
+  ['Tuiuiú', 'Jabiru mycteria', 'pant', 'lc', 'tuiuiu'],
+  ['Ariranha', 'Pteronura brasiliensis', 'pant', 'en', 'ariranha'],
+  ['Jacaré-do-pantanal', 'Caiman yacare', 'pant', 'lc', 'jacare-do-pantanal'],
+  ['Onça-pintada', 'Panthera onca', 'pant', 'nt', 'onca-pintada'],
+  ['Capivara', 'Hydrochoerus hydrochaeris', 'pant', 'lc', 'capivara'],
+  ['Beija-flor-tesoura', 'Eupetomena macroura', 'pant', 'lc', 'beija-flor-tesoura']
+];
+
+class Component extends DCLogic {
+  renderVals() {
+    const cartas = (b) => LISTA.filter(([, , bioma]) => bioma === b)
+      .map(([nome, cientifico, bioma, st, arq]) => ({
+        nome, cientifico, cor: S[bioma],
+        bg: "url('img/" + arq + ".jpg') center/cover no-repeat",
+        ...ST[st]
+      }));
+
+    return {
+      trilhos: [
+        { nome: 'Amazônia', cor: S.amaz, cartas: cartas('amaz') },
+        { nome: 'Cerrado', cor: S.cerr, cartas: cartas('cerr') },
+        { nome: 'Pantanal', cor: S.pant, cartas: cartas('pant') }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

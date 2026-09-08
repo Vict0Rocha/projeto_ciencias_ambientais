@@ -1,0 +1,223 @@
+.page {
+  min-height: 100vh;
+  background: var(--color-bg-app);
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: clamp(16px, 4vw, 26px) clamp(18px, 5vw, 40px) clamp(14px, 3vw, 20px);
+  border-bottom: 1px solid var(--color-border-soft);
+}
+
+.topRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+}
+
+.titleBlock {
+  flex: 1;
+  min-width: 0;
+}
+
+.titulo {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(20px, 3.6vw, 26px);
+  letter-spacing: -0.4px;
+}
+
+.subtitulo {
+  margin: 2px 0 0;
+  font-size: 13px;
+  color: var(--color-ink-muted);
+}
+
+.busca {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  padding: 10px 16px;
+  flex: 1 1 100%;
+  order: 3;
+}
+
+@media (min-width: 560px) {
+  .busca {
+    flex: 0 1 220px;
+    order: 0;
+  }
+}
+.busca:focus-within {
+  border-color: var(--color-accent-lime);
+}
+
+.buscaIcone {
+  color: var(--color-ink-muted);
+  font-size: 14px;
+}
+
+.buscaInput {
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 14px;
+  font-family: var(--font-body);
+  color: var(--color-ink);
+  width: 100%;
+  min-width: 0;
+}
+
+.filtros {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 2px;
+}
+
+.filtroPill {
+  cursor: pointer;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 16px;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid var(--color-border);
+  background: var(--color-surface);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-ink);
+  min-height: 40px;
+}
+.filtroPill:hover {
+  border-color: var(--color-accent-lime);
+}
+.filtroAtivo {
+  background: var(--color-ink);
+  border-color: var(--color-ink);
+  color: var(--color-bg-app);
+}
+
+.filtroDot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.body {
+  flex: 1;
+  padding: clamp(16px, 4vw, 26px) clamp(18px, 5vw, 40px) 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.secaoHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.secaoDot {
+  width: 11px;
+  height: 11px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(172px, 1fr));
+    gap: 18px;
+  }
+}
+
+.card {
+  cursor: pointer;
+  text-align: left;
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-20);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.card:hover {
+  border-color: var(--color-accent-lime);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.stripe {
+  height: 6px;
+  flex-shrink: 0;
+}
+
+.cardPhoto {
+  margin: 11px;
+  border-radius: var(--radius-14);
+  aspect-ratio: 1;
+  object-fit: cover;
+  background: var(--color-surface-sunken);
+}
+
+.cardBody {
+  padding: 0 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cardNome {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.2;
+  color: var(--color-ink);
+}
+
+.cardCientifico {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-style: italic;
+  color: var(--color-ink-muted-2);
+}
+
+.vazio {
+  text-align: center;
+  padding: 48px 20px;
+  color: var(--color-ink-muted);
+  font-size: 14px;
+}
+
+.fichaModalInner {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: center;
+}
+
+.fichaCloseRow {
+  align-self: flex-end;
+}

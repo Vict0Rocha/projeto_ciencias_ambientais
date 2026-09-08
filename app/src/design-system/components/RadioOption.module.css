@@ -1,0 +1,69 @@
+.option {
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  min-height: 44px;
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-16);
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition:
+    border-color 150ms ease,
+    background-color 150ms ease,
+    box-shadow 150ms ease;
+}
+
+.option:hover:not(:disabled):not(.correct):not(.incorrect) {
+  border-color: var(--color-accent-lime);
+  background: #fbfffa;
+}
+
+.option:disabled {
+  cursor: default;
+}
+
+.marker {
+  width: 20px;
+  height: 20px;
+  border-radius: var(--radius-circle);
+  border: 1.5px solid var(--color-border-strong);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.label {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--color-ink);
+}
+
+.correct {
+  border-color: var(--color-accent-lime);
+  box-shadow: 0 0 0 3px var(--color-success-bg);
+}
+.correct .marker {
+  border-color: var(--color-accent-lime);
+  background: var(--color-accent-lime);
+  color: var(--color-dark-deep);
+}
+.correct .label {
+  font-weight: 700;
+}
+
+.incorrect {
+  background: var(--color-error-bg);
+  border-color: var(--color-error-ink);
+}
+.incorrect .marker {
+  border-color: var(--color-error-ink);
+  background: var(--color-error-ink);
+  color: #fff5f4;
+}

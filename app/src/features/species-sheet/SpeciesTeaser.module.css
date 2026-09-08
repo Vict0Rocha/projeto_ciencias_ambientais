@@ -1,0 +1,44 @@
+.teaser {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--color-surface-sunken);
+  border-radius: var(--radius-12);
+  padding: 8px 10px;
+}
+
+.photo {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-12);
+  object-fit: cover;
+  flex-shrink: 0;
+  background: var(--color-border-soft);
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.name {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.2;
+  color: var(--color-ink);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.metaRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  font-size: 11px;
+  color: var(--color-ink-muted);
+}

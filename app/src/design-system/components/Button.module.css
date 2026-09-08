@@ -1,0 +1,78 @@
+.button {
+  cursor: pointer;
+  border: none;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition:
+    background-color 150ms ease,
+    border-color 150ms ease,
+    transform 80ms ease;
+}
+
+.button:active {
+  transform: translateY(1px);
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+  transform: none;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+/* Variantes de cor */
+.primary {
+  background: var(--color-ink);
+  color: var(--color-bg-app);
+}
+.primary:hover:not(:disabled) {
+  background: var(--color-ink-hover);
+}
+
+.secondary {
+  background: transparent;
+  border: 1.5px solid var(--color-ink);
+  color: var(--color-ink);
+}
+.secondary:hover:not(:disabled) {
+  background: var(--color-success-bg);
+  border-color: var(--color-accent-lime);
+}
+
+.accent {
+  background: var(--color-accent-lime);
+  color: var(--color-dark-deep);
+}
+.accent:hover:not(:disabled) {
+  background: var(--color-accent-lime-hover);
+}
+
+/* Tamanhos — padding vertical enxuto; min-height acima já garante o alvo de toque de 44px */
+.md {
+  padding: 12px 24px;
+  font-size: 16px;
+}
+
+.lg {
+  padding: 15px 28px;
+  font-size: 18px;
+}
+
+@media (min-width: 900px) {
+  .md {
+    padding: 13px 28px;
+  }
+  .lg {
+    padding: 16px 40px;
+    font-size: 18px;
+  }
+}
