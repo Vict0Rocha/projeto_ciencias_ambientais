@@ -102,12 +102,33 @@ export function getCuriosidade(especie: Especie, bioma?: BiomaId): string {
 }
 
 /**
- * Alt-text placeholder (README § Pendências: os textos alternativos das fotos de
- * espécie ainda não foram escritos pelo cliente). Neutro e derivado do nome até
- * haver descrições definitivas.
+ * Alt-text definitivo das fotos em `public/img/` (README § Pendências, resolvida:
+ * escrito olhando cada foto real, não gerado do nome). Chave é o id da carta.
+ * Se uma espécie nova entrar em especies.json sem entrada aqui, cai no fallback
+ * neutro — nunca falha, só fica menos descritivo até alguém escrever a definitiva.
  */
+const FOTO_ALT_TEXT: Record<string, string> = {
+  '101': 'Harpia pousada em um galho, com a crista de penas erguida e garras amarelas firmes na madeira, mata fechada ao fundo.',
+  '102': "Boto-cor-de-rosa nadando debaixo d'água, entre raízes de árvores alagadas, com feixes de luz atravessando o rio.",
+  '103': 'Retrato de onça-pintada de frente, pelagem amarela com rosetas escuras e olhos amendoados fixos na câmera.',
+  '104': 'Macaco-aranha andando sobre um galho na copa da floresta, cauda longa enrolada para trás, outros indivíduos ao fundo.',
+  '105': 'Castanheira-do-pará vista de baixo, tronco largo com raízes tabulares, ouriços caídos no chão da floresta.',
+  '106': 'Mamangava pousada em uma flor roxa, coletando pólen com o corpo preto e amarelo, campo florido do Cerrado ao entardecer.',
+  '201': 'Lobo-guará caminhando pelo campo ao amanhecer, pelagem alaranjada, pernas escuras e orelhas grandes eretas.',
+  '202': 'Tamanduá-bandeira caminhando entre cupinzeiros no campo, focinho longo abaixado e faixa diagonal clara no ombro.',
+  '203': 'Tatu-canastra escavando a terra ao lado de um cupinzeiro, carapaça segmentada e garras longas à mostra.',
+  '204': 'Pequizeiro carregado de frutos amarelados, com pessoas colhendo ao fundo em um campo de Cerrado ao entardecer.',
+  '205': 'Seriema parada no campo seco, com o topete de penas eriçado sobre a testa e o bico avermelhado curvo.',
+  '206': 'Morcego-polinizador em voo, asas abertas, aproximando-se de um cacho de frutos pendurados na entrada de uma gruta.',
+  '301': 'Tuiuiú parado à beira de um brejo, pescoço com faixa vermelha na base, outros indivíduos e um ninho ao fundo.',
+  '302': 'Ariranha no rio com um peixe na boca, filhote descansando na margem atrás dela, entrada da toca visível.',
+  '303': 'Jacaré-do-pantanal deitado na margem lamacenta, boca entreaberta mostrando os dentes, olhando de frente.',
+  '304': 'Capivara deitada na margem de um rio, pelagem marrom-avermelhada, focinho quadrado voltado para a câmera.',
+  '305': 'Beija-flor-tesoura em voo, cabeça azul e corpo verde iridescentes, cauda longa bifurcada, bebendo néctar de uma flor vermelha.',
+};
+
 export function getFotoAltText(especie: Especie): string {
-  return `Foto de ${especie.nome}`;
+  return FOTO_ALT_TEXT[especie.id] ?? `Foto de ${especie.nome}`;
 }
 
 export function buscarEspeciesPorNome(termo: string, biomas: Especie[]): Especie[] {

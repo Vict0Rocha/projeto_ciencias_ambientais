@@ -5,7 +5,9 @@ import { useProgressStore } from '../../../store/progressStore';
 import { getEspecieById, getFuncao } from '../../../domain/especiesRepository';
 import type { FuncaoId } from '../../../domain/types';
 import { MAX_TENTATIVAS } from '../../../domain/scoring';
+import { tocarAcerto, tocarErro } from '../../../domain/sound';
 import { ChallengeHeader } from '../ChallengeHeader';
+import { SessionSummary } from '../SessionSummary';
 import { RadioOption, type RadioOptionStatus } from '../../../design-system/components/RadioOption';
 import { ResultPopup } from '../../../design-system/components/ResultPopup';
 import { Overlay } from '../../../design-system/components/Overlay';
@@ -20,6 +22,7 @@ export function FuncaoNaturezaPage() {
   const session = useSessionStore();
   const progress = useProgressStore();
   const [fichaAberta, setFichaAberta] = useState(false);
+  const [mostrarResumo, setMostrarResumo] = useState(false);
 
   const especieAtualId = session.desafioAtualId();
   const especieAtual = especieAtualId ? getEspecieById(especieAtualId) : undefined;
@@ -42,6 +45,13 @@ export function FuncaoNaturezaPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fichaRevelada, especieAtualId]);
 
+  useEffect(() => {
+    if (!progress.somLigado) return;
+    if (session.status === 'acerto') tocarAcerto();
+    else if (session.status === 'erro') tocarErro();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [session.status]);
+
   if (session.mecanica !== 'funcao' || !especieAtual || !funcaoCorretaId) {
     return (
       <div style={{ padding: 24 }}>
@@ -53,6 +63,33 @@ export function FuncaoNaturezaPage() {
 
   const biomaAtual = especieAtual.biomas[0];
 
+  if (mostrarResumo) {
+    const acertos = session.estrelasPorDesafio.filter((e) => e > 0).length;
+    return (
+      <div className={styles.page}>
+        <ChallengeHeader
+          titulo="Função na Natureza"
+          contadorLabel={`ESPÉCIE ${session.desafios.length} DE ${session.desafios.length}`}
+          progressPercent={100}
+          bioma={biomaAtual}
+          somLigado={progress.somLigado}
+          onToggleSom={progress.alternarSom}
+          onBack={() => navigate(-1)}
+        />
+        <SessionSummary
+          totalDesafios={session.desafios.length}
+          acertos={acertos}
+          estrelas={session.estrelasTotais()}
+          mensagem={`Você identificou a função de ${acertos} de ${session.desafios.length} espécies nesta partida.`}
+          onContinuar={() => {
+            session.encerrarSessao();
+            navigate('/modo-livre');
+          }}
+        />
+      </div>
+    );
+  }
+
   function handleSelect(idEscolhido: string) {
     if (session.status !== 'pendente') return;
     session.responder(idEscolhido);
@@ -60,8 +97,7 @@ export function FuncaoNaturezaPage() {
 
   function handleAvancar() {
     if (session.ehUltimoDesafio()) {
-      session.encerrarSessao();
-      navigate('/modo-livre');
+      setMostrarResumo(true);
     } else {
       session.avancarParaProximoDesafio();
     }

@@ -4,6 +4,7 @@ import { useRedeStore, type LigacaoFeita } from '../../../store/redeStore';
 import { useProgressStore } from '../../../store/progressStore';
 import { getBioma, resolveNoRede } from '../../../domain/especiesRepository';
 import { CARTA_ID_REGEX } from '../../../domain/types';
+import { tocarAcerto, tocarErro } from '../../../domain/sound';
 import { ChallengeHeader } from '../ChallengeHeader';
 import { Button } from '../../../design-system/components/Button';
 import { StarRating } from '../../../design-system/components/StarRating';
@@ -47,6 +48,13 @@ export function RedeDaVidaPage() {
     if (fase === 'concluido' && rede) {
       rede.nos.filter((id) => CARTA_ID_REGEX.test(id)).forEach((id) => progress.descobrirEspecie(id));
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [fase]);
+
+  useEffect(() => {
+    if (!progress.somLigado || fase !== 'confirmado') return;
+    if ((estrelas ?? 0) > 0) tocarAcerto();
+    else tocarErro();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fase]);
 

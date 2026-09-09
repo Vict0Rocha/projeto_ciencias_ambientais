@@ -4,7 +4,9 @@ import { useSessionStore } from '../../../store/sessionStore';
 import { useProgressStore } from '../../../store/progressStore';
 import { getEspecieById, getCuriosidade } from '../../../domain/especiesRepository';
 import { MAX_TENTATIVAS } from '../../../domain/scoring';
+import { tocarAcerto, tocarErro } from '../../../domain/sound';
 import { ChallengeHeader } from '../ChallengeHeader';
+import { SessionSummary } from '../SessionSummary';
 import { RadioOption, type RadioOptionStatus } from '../../../design-system/components/RadioOption';
 import { HintBanner } from '../../../design-system/components/HintBanner';
 import { ResultPopup } from '../../../design-system/components/ResultPopup';
@@ -20,6 +22,7 @@ export function QuemSouEuPage() {
   const session = useSessionStore();
   const progress = useProgressStore();
   const [fichaAberta, setFichaAberta] = useState(false);
+  const [mostrarResumo, setMostrarResumo] = useState(false);
   // Capturado uma vez: o tour não deve sumir no meio só porque concluirTutorial()
   // (chamado pelo próprio onFinish dos coachmarks) muda tutorialConcluido no meio do passo.
   const [coachmarksAtivos, setCoachmarksAtivos] = useState(() => !progress.tutorialConcluido);
@@ -45,6 +48,13 @@ export function QuemSouEuPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fichaRevelada, especieAtualId]);
 
+  useEffect(() => {
+    if (!progress.somLigado) return;
+    if (session.status === 'acerto') tocarAcerto();
+    else if (session.status === 'erro') tocarErro();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [session.status]);
+
   if (session.mecanica !== 'quem_sou_eu' || !especieAtual) {
     return (
       <div style={{ padding: 24 }}>
@@ -55,6 +65,34 @@ export function QuemSouEuPage() {
   }
 
   const biomaAtual = especieAtual.biomas[0];
+
+  if (mostrarResumo) {
+    const acertos = session.estrelasPorDesafio.filter((e) => e > 0).length;
+    return (
+      <div className={styles.page}>
+        <ChallengeHeader
+          titulo="Quem sou eu?"
+          contadorLabel={`DESAFIO ${session.desafios.length} DE ${session.desafios.length}`}
+          progressPercent={100}
+          bioma={biomaAtual}
+          somLigado={progress.somLigado}
+          onToggleSom={progress.alternarSom}
+          onBack={() => navigate(-1)}
+        />
+        <SessionSummary
+          totalDesafios={session.desafios.length}
+          acertos={acertos}
+          estrelas={session.estrelasTotais()}
+          mensagem={`Você reconheceu ${acertos} de ${session.desafios.length} espécies nesta partida.`}
+          onContinuar={() => {
+            session.encerrarSessao();
+            navigate('/modo-livre');
+          }}
+        />
+      </div>
+    );
+  }
+
   const pistaAtual = especieAtual.pistas[session.pistasReveladas - 1] ?? especieAtual.pistas[0];
 
   function handleSelect(idEscolhido: string) {
@@ -64,8 +102,7 @@ export function QuemSouEuPage() {
 
   function handleAvancar() {
     if (session.ehUltimoDesafio()) {
-      session.encerrarSessao();
-      navigate('/modo-livre');
+      setMostrarResumo(true);
     } else {
       session.avancarParaProximoDesafio();
     }

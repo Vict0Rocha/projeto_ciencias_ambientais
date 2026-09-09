@@ -37,6 +37,15 @@ Decisão de arquitetura chave: **cada tela é um componente único responsivo** 
 - Onboarding em 3 passos (tela cheia no mobile, modal no desktop) + coachmarks com spotlight na
   primeira fase de Quem Sou Eu; botão "Rever tutorial" na tela Sobre — ver
   [`src/features/onboarding/README.md`](src/features/onboarding/README.md)
+- Efeitos sonoros de acerto/erro nas 3 mecânicas, sintetizados via Web Audio API (sem arquivo de
+  áudio, ver `src/domain/sound.ts`) — o toggle de som agora liga/desliga áudio de verdade
+- Alt-text definitivo das 17 fotos de espécie (escrito olhando cada foto real, ver
+  `FOTO_ALT_TEXT` em `src/domain/especiesRepository.ts`)
+- Tela de fim de partida ("Partida concluída" — acertos, estrelas, botão pro Modo Livre) em
+  Quem Sou Eu e Função na Natureza, mesmo padrão que a Rede da Vida já tinha — antes disso o
+  botão do último desafio ("Ver resultado") não mostrava nada, só voltava em silêncio. Ver
+  `src/features/challenge/SessionSummary.tsx` e a seção "Fim de partida" em
+  [`src/features/challenge/README.md`](src/features/challenge/README.md)
 
 ### 🔜 Falta
 - (nada pendente no momento — próximo item a definir com o usuário)
@@ -51,8 +60,6 @@ Decisão de arquitetura chave: **cada tela é um componente único responsivo** 
 ### 📋 Pendências que não são código
 - Itens `"revisar": true` em `especies.json` (relações/eventos sem validação de especialista)
 - Créditos/licença das fotos em `public/img/` e `public/uploads/`
-- Alt-text definitivo das fotos de espécie (hoje é um placeholder gerado do nome, ver `getFotoAltText` em `src/domain/especiesRepository.ts`)
-- Toggle de som na UI não tem áudio real ligado ainda
 - Sem deploy/hospedagem configurado — só roda local
 
 ## Convenções
