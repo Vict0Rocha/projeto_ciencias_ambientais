@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { getAllBiomas } from '../../domain/especiesRepository';
 import { useProgressStore } from '../../store/progressStore';
+import { TUTORIAL_ATIVO } from '../../config';
 import { CircleIconButton } from '../../design-system/components/CircleIconButton';
 import { Button } from '../../design-system/components/Button';
 import styles from './AboutPage.module.css';
@@ -106,9 +107,11 @@ export function AboutPage() {
               </Button>
             </div>
 
-            <Button variant="secondary" fullWidth onClick={handleReverTutorial}>
-              Rever tutorial
-            </Button>
+            {TUTORIAL_ATIVO && (
+              <Button variant="secondary" fullWidth onClick={handleReverTutorial}>
+                Rever tutorial
+              </Button>
+            )}
           </div>
         </div>
       </div>

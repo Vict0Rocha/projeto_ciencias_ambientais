@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useProgressStore } from '../../store/progressStore';
 import { getAllBiomas } from '../../domain/especiesRepository';
+import { TUTORIAL_ATIVO } from '../../config';
 import { Button } from '../../design-system/components/Button';
 import { CircleIconButton } from '../../design-system/components/CircleIconButton';
 import { OnboardingWelcome } from '../onboarding/OnboardingWelcome';
@@ -16,7 +17,7 @@ export function HomePage() {
   // Capturado uma vez: se o onboarding fechar antes do fim (coachmarks pendentes),
   // tutorialConcluido continua false, mas não queremos reabrir a tela de boas-vindas
   // por cima do Modo Livre/challenge que o fechamento já deveria ter aberto.
-  const [mostrarBoasVindas, setMostrarBoasVindas] = useState(() => !tutorialConcluido);
+  const [mostrarBoasVindas, setMostrarBoasVindas] = useState(() => TUTORIAL_ATIVO && !tutorialConcluido);
 
   return (
     <div className={styles.page}>

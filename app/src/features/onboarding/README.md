@@ -25,3 +25,12 @@ Dois componentes independentes, ambos overlays via `createPortal` (fora do fluxo
 ## Pendências
 
 - Nenhuma — testado ao vivo (mobile e desktop) cobrindo: os 3 passos, voltar, pular, Esc, as 3 dicas, pular dicas, Esc, e o botão "Rever tutorial".
+
+## Desligado temporariamente
+
+`TUTORIAL_ATIVO` em `src/config.ts` está `false` a pedido do usuário, que vai ajustar o conteúdo
+do tutorial antes de reativar. Isso só bloqueia o **gatilho automático**: `HomePage` não mostra
+`OnboardingWelcome`, `QuemSouEuPage` não mostra `Coachmarks`, e o botão "Rever tutorial" em
+`about/AboutPage.tsx` fica escondido (senão navegaria pra Home sem nada acontecer). Nenhum dos
+dois componentes foi alterado — voltar `TUTORIAL_ATIVO` para `true` restaura o comportamento
+descrito acima sem nenhuma outra mudança.

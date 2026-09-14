@@ -15,6 +15,7 @@ import { CircleIconButton } from '../../../design-system/components/CircleIconBu
 import { SpeciesTeaser } from '../../species-sheet/SpeciesTeaser';
 import { SpeciesFlipCard } from '../../species-sheet/SpeciesFlipCard';
 import { Coachmarks } from '../../onboarding/Coachmarks';
+import { TUTORIAL_ATIVO } from '../../../config';
 import styles from './QuemSouEuPage.module.css';
 
 export function QuemSouEuPage() {
@@ -25,7 +26,7 @@ export function QuemSouEuPage() {
   const [mostrarResumo, setMostrarResumo] = useState(false);
   // Capturado uma vez: o tour não deve sumir no meio só porque concluirTutorial()
   // (chamado pelo próprio onFinish dos coachmarks) muda tutorialConcluido no meio do passo.
-  const [coachmarksAtivos, setCoachmarksAtivos] = useState(() => !progress.tutorialConcluido);
+  const [coachmarksAtivos, setCoachmarksAtivos] = useState(() => TUTORIAL_ATIVO && !progress.tutorialConcluido);
 
   const especieAtualId = session.desafioAtualId();
   const especieAtual = especieAtualId ? getEspecieById(especieAtualId) : undefined;

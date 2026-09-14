@@ -36,7 +36,9 @@ Decisão de arquitetura chave: **cada tela é um componente único responsivo** 
 - Ficha educativa (carta com flip), persistência de progresso (coleção descoberta, som)
 - Onboarding em 3 passos (tela cheia no mobile, modal no desktop) + coachmarks com spotlight na
   primeira fase de Quem Sou Eu; botão "Rever tutorial" na tela Sobre — ver
-  [`src/features/onboarding/README.md`](src/features/onboarding/README.md)
+  [`src/features/onboarding/README.md`](src/features/onboarding/README.md). **Desligado por
+  enquanto** via `TUTORIAL_ATIVO = false` em `src/config.ts`, a pedido do usuário, que vai ajustar
+  o conteúdo do tutorial — nada foi removido, só o gatilho automático
 - Efeitos sonoros de acerto/erro nas 3 mecânicas, sintetizados via Web Audio API (sem arquivo de
   áudio, ver `src/domain/sound.ts`) — o toggle de som agora liga/desliga áudio de verdade
 - Alt-text definitivo das 17 fotos de espécie (escrito olhando cada foto real, ver
