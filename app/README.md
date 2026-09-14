@@ -60,7 +60,13 @@ Decisão de arquitetura chave: **cada tela é um componente único responsivo** 
 ### 📋 Pendências que não são código
 - Itens `"revisar": true` em `especies.json` (relações/eventos sem validação de especialista)
 - Créditos/licença das fotos em `public/img/` e `public/uploads/`
-- Sem deploy/hospedagem configurado — só roda local
+
+## Deploy
+
+Configurado para Vercel via [`vercel.json`](../vercel.json) na raiz do repositório (build/output
+apontando pra dentro de `app/`, já que o projeto Vite não fica na raiz do repo; inclui rewrite de
+SPA pra `index.html`, necessário porque as rotas são client-side via `react-router-dom`). Sem
+variáveis de ambiente — o app é 100% estático, sem chamada de rede.
 
 ## Convenções
 
