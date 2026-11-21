@@ -186,3 +186,11 @@
     color: #fff;
   }
 }
+
+/* Telas grandes: cards de bioma um pouco mais largos (abaixo disso, fica exatamente como no breakpoint de 900px). */
+@media (min-width: 1200px) {
+  .photosCol {
+    width: 46%;
+    max-width: 560px;
+  }
+}

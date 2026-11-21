@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import { Overlay } from './Overlay';
 import { Pill } from './Pill';
 import { Button } from './Button';
+import { CircleIconButton } from './CircleIconButton';
 import styles from './ResultPopup.module.css';
 
 export interface ResultPopupProps {
@@ -15,13 +16,14 @@ export interface ResultPopupProps {
   onPrimary: () => void;
   secondaryLabel?: string;
   onSecondary?: () => void;
+  /** "X" pra fechar (+ Esc/backdrop, via Overlay) — mesmo efeito do botão principal. */
+  onClose?: () => void;
 }
 
 /**
  * Popup de resultado compartilhado pelas 3 mecânicas (README: "Um popup para os
  * três jogos... Mesma estrutura... Só muda o conteúdo"). Bottom-sheet no mobile,
- * modal centralizado no desktop — via Overlay. Sem dismiss por backdrop/Esc: o
- * fluxo exige a ação explícita do botão principal.
+ * modal centralizado no desktop — via Overlay.
  */
 export function ResultPopup({
   open,
@@ -34,10 +36,18 @@ export function ResultPopup({
   onPrimary,
   secondaryLabel,
   onSecondary,
+  onClose,
 }: ResultPopupProps) {
   return (
-    <Overlay open={open} ariaLabel={titulo} maxWidthDesktop={620}>
+    <Overlay open={open} onClose={onClose} ariaLabel={titulo} maxWidthDesktop={620}>
       <div className={styles.inner}>
+        {onClose && (
+          <div className={styles.closeRow}>
+            <CircleIconButton aria-label="Fechar" onClick={onClose}>
+              ✕
+            </CircleIconButton>
+          </div>
+        )}
         <span className={`${styles.icon} ${kind === 'acerto' ? styles.iconAcerto : styles.iconErro}`} aria-hidden="true">
           {kind === 'acerto' ? '✓' : '✕'}
         </span>

@@ -192,6 +192,7 @@ export function QuemSouEuPage() {
         corpo={getCuriosidade(especieAtual, biomaAtual)}
         primaryLabel={session.ehUltimoDesafio() ? 'Ver resultado' : 'Próximo desafio'}
         onPrimary={handleAvancar}
+        onClose={handleAvancar}
         secondaryLabel="Ver a ficha completa"
         onSecondary={() => setFichaAberta(true)}
       >
@@ -206,6 +207,7 @@ export function QuemSouEuPage() {
         corpo={`PISTA ${session.pistasReveladas} DE 3: "${especieAtual.pistas[session.pistasReveladas - 1]}"`}
         primaryLabel="Tentar novamente"
         onPrimary={session.tentarNovamente}
+        onClose={session.tentarNovamente}
         secondaryLabel="Revelar a resposta"
         onSecondary={session.revelarResposta}
       >
@@ -220,6 +222,9 @@ export function QuemSouEuPage() {
         corpo={getCuriosidade(especieAtual, biomaAtual)}
         primaryLabel={session.ehUltimoDesafio() ? 'Ver resultado' : 'Próximo desafio'}
         onPrimary={handleAvancar}
+        onClose={handleAvancar}
+        secondaryLabel="Ver a ficha completa"
+        onSecondary={() => setFichaAberta(true)}
       >
         <SpeciesTeaser especie={especieAtual} />
       </ResultPopup>

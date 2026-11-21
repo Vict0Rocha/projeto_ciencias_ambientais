@@ -5,6 +5,12 @@
   gap: 12px;
 }
 
+.closeRow {
+  display: flex;
+  justify-content: flex-end;
+  margin: -8px -8px -4px 0;
+}
+
 .icon {
   width: 44px;
   height: 44px;

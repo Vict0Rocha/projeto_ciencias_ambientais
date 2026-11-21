@@ -165,6 +165,7 @@ export function FuncaoNaturezaPage() {
         corpo={funcaoCorreta.descricao}
         primaryLabel={session.ehUltimoDesafio() ? 'Ver resultado' : 'Próxima espécie'}
         onPrimary={handleAvancar}
+        onClose={handleAvancar}
         secondaryLabel="Ver a ficha completa"
         onSecondary={() => setFichaAberta(true)}
       >
@@ -179,6 +180,7 @@ export function FuncaoNaturezaPage() {
         corpo={`PISTA: ${especieAtual.alimentacao}`}
         primaryLabel="Tentar novamente"
         onPrimary={session.tentarNovamente}
+        onClose={session.tentarNovamente}
         secondaryLabel="Revelar a resposta"
         onSecondary={session.revelarResposta}
       >
@@ -193,6 +195,9 @@ export function FuncaoNaturezaPage() {
         corpo={funcaoCorreta.descricao}
         primaryLabel={session.ehUltimoDesafio() ? 'Ver resultado' : 'Próxima espécie'}
         onPrimary={handleAvancar}
+        onClose={handleAvancar}
+        secondaryLabel="Ver a ficha completa"
+        onSecondary={() => setFichaAberta(true)}
       >
         <SpeciesTeaser especie={especieAtual} />
       </ResultPopup>
