@@ -113,6 +113,10 @@ export function QuemSouEuPage() {
     if (session.status === 'pendente') {
       return especieId === session.respostaErradaAnterior ? 'incorrect' : 'idle';
     }
+    if (session.status === 'erro' && session.tentativasRestantes > 0) {
+      // 1º erro, ainda resta tentativa: destaca só a escolhida, sem entregar a certa.
+      return especieId === session.respostaEscolhida ? 'incorrect' : 'idle';
+    }
     if (especieId === session.respostaCorretaAtual()) return 'correct';
     if (especieId === session.respostaEscolhida) return 'incorrect';
     return 'idle';
@@ -199,7 +203,7 @@ export function QuemSouEuPage() {
         kind="erro"
         titulo="Não é essa"
         seloTexto={`VOCÊ ESCOLHEU: ${escolhidaErrada?.nome.toUpperCase() ?? ''}`}
-        corpo={escolhidaErrada ? `${escolhidaErrada.nome}: ${getCuriosidade(escolhidaErrada, escolhidaErrada.biomas[0])}` : ''}
+        corpo={`PISTA ${session.pistasReveladas} DE 3: "${especieAtual.pistas[session.pistasReveladas - 1]}"`}
         primaryLabel="Tentar novamente"
         onPrimary={session.tentarNovamente}
         secondaryLabel="Revelar a resposta"

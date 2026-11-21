@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useSessionStore } from '../../store/sessionStore';
 import { useRedeStore } from '../../store/redeStore';
-import { getAllEspecies, getAllFuncoes, getEspecieById } from '../../domain/especiesRepository';
+import { getAllEspecies, getAllFuncoes, getEspecieById, getEspeciesParaFuncaoNaNatureza } from '../../domain/especiesRepository';
 import { shuffle } from '../../domain/random';
 import { CircleIconButton } from '../../design-system/components/CircleIconButton';
 import { Pill } from '../../design-system/components/Pill';
@@ -48,7 +48,7 @@ export function FreeModePage() {
       navigate('/desafio/quem-sou-eu');
     }
     if (modo.id === 'funcao') {
-      const especieIds = getAllEspecies().map((especie) => especie.id);
+      const especieIds = getEspeciesParaFuncaoNaNatureza().map((especie) => especie.id);
       const funcaoIds = getAllFuncoes().map((funcao) => funcao.id);
       iniciarPartida('funcao', shuffle(especieIds), (id) => getEspecieById(id)!.funcao, funcaoIds, 4);
       navigate('/desafio/funcao-na-natureza');

@@ -95,6 +95,18 @@ export function getAllEspecies(): Especie[] {
   return data.especies;
 }
 
+/**
+ * IDs excluídos de "Qual é a função desta espécie?" (Função na Natureza): o nome
+ * da própria carta já entrega a resposta. Ex.: "Morcego-polinizador" → polinizador.
+ * A espécie continua disponível normalmente em Quem Sou Eu, Rede da Vida e na Coleção.
+ */
+const NOME_ENTREGA_FUNCAO = new Set(['206']);
+
+/** Espécies aptas a serem o sujeito de uma pergunta de Função na Natureza (ver `NOME_ENTREGA_FUNCAO`). */
+export function getEspeciesParaFuncaoNaNatureza(): Especie[] {
+  return data.especies.filter((especie) => !NOME_ENTREGA_FUNCAO.has(especie.id));
+}
+
 /** Curiosidade a exibir: usa a variante por bioma quando existir, senão a curiosidade geral. */
 export function getCuriosidade(especie: Especie, bioma?: BiomaId): string {
   const porBioma = bioma ? especie.curiosidadePorBioma?.[bioma] : undefined;

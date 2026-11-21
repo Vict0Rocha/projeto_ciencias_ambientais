@@ -111,8 +111,6 @@ export function CollectionPage() {
                       alt={getFotoAltText(especie)}
                       loading="lazy"
                       decoding="async"
-                      width={1000}
-                      height={560}
                     />
                     <span className={styles.cardBody}>
                       <span className={styles.cardNome}>{especie.nome}</span>

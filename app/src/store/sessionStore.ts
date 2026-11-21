@@ -143,7 +143,17 @@ export const useSessionStore = create<SessionState>()((set, get) => ({
           estrelasPorDesafio: [...state.estrelasPorDesafio, calcularEstrelas(false, 2, state.pistasReveladas)],
         };
       }
-      return { respostaEscolhida: idEscolhido, respostaErradaAnterior: idEscolhido, status: 'erro', tentativasRestantes };
+      // No 1º erro (ainda resta 1 tentativa), libera uma pista a mais de graça — ajuda na
+      // 2ª chance em vez de só repetir "errou". Nunca baixa a pontuação: ao errar uma vez,
+      // o acerto seguinte já é na 2ª tentativa, que vale a mesma estrela única independente
+      // de pistasReveladas (ver calcularEstrelas).
+      return {
+        respostaEscolhida: idEscolhido,
+        respostaErradaAnterior: idEscolhido,
+        status: 'erro',
+        tentativasRestantes,
+        pistasReveladas: Math.min(state.pistasReveladas + 1, MAX_PISTAS),
+      };
     }),
 
   /** Usado após o 1º erro (ainda resta 1 tentativa): fecha o popup e libera a lista de novo, mas mantém o palpite errado marcado. */

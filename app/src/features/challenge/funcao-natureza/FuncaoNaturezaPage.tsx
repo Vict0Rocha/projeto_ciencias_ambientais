@@ -9,6 +9,7 @@ import { tocarAcerto, tocarErro } from '../../../domain/sound';
 import { ChallengeHeader } from '../ChallengeHeader';
 import { SessionSummary } from '../SessionSummary';
 import { RadioOption, type RadioOptionStatus } from '../../../design-system/components/RadioOption';
+import { HintBanner } from '../../../design-system/components/HintBanner';
 import { ResultPopup } from '../../../design-system/components/ResultPopup';
 import { Overlay } from '../../../design-system/components/Overlay';
 import { CircleIconButton } from '../../../design-system/components/CircleIconButton';
@@ -107,6 +108,10 @@ export function FuncaoNaturezaPage() {
     if (session.status === 'pendente') {
       return funcaoId === session.respostaErradaAnterior ? 'incorrect' : 'idle';
     }
+    if (session.status === 'erro' && session.tentativasRestantes > 0) {
+      // 1º erro, ainda resta tentativa: destaca só a escolhida, sem entregar a certa.
+      return funcaoId === session.respostaEscolhida ? 'incorrect' : 'idle';
+    }
     if (funcaoId === session.respostaCorretaAtual()) return 'correct';
     if (funcaoId === session.respostaEscolhida) return 'incorrect';
     return 'idle';
@@ -171,12 +176,14 @@ export function FuncaoNaturezaPage() {
         kind="erro"
         titulo="Não é essa"
         seloTexto={`VOCÊ ESCOLHEU: ${funcaoEscolhidaErrada?.nome.toUpperCase() ?? ''}`}
-        corpo={funcaoEscolhidaErrada ? `${funcaoEscolhidaErrada.nome}: ${funcaoEscolhidaErrada.descricao}` : ''}
+        corpo={`PISTA: ${especieAtual.alimentacao}`}
         primaryLabel="Tentar novamente"
         onPrimary={session.tentarNovamente}
         secondaryLabel="Revelar a resposta"
         onSecondary={session.revelarResposta}
-      />
+      >
+        <HintBanner fullWidth>Resta 1 tentativa neste desafio</HintBanner>
+      </ResultPopup>
 
       <ResultPopup
         open={session.status === 'erro' && session.tentativasRestantes === 0}

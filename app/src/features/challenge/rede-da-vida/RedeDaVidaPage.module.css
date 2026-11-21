@@ -113,6 +113,58 @@
   color: var(--color-ink-body-2);
 }
 
+.metricas {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px;
+  background: var(--color-surface-sunken);
+  border-radius: var(--radius-14);
+}
+
+.metricaItem {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--color-ink-body);
+}
+
+.metricaValor {
+  font-weight: 700;
+  color: var(--color-ink);
+  flex-shrink: 0;
+}
+
+.linkFaltantes {
+  background: none;
+  border: none;
+  padding: 0;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-accent-lime-text);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.faltantesList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.faltanteItem {
+  padding: 8px 10px;
+  background: var(--color-surface-sunken);
+  border-radius: var(--radius-12);
+  font-size: 13px;
+  color: var(--color-ink-body-2);
+}
+
 @media (min-width: 900px) {
   .body {
     flex-direction: row;

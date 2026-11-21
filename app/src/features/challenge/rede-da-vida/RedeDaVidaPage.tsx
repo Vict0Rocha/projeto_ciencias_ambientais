@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useRedeStore, type LigacaoFeita } from '../../../store/redeStore';
+import { useRedeStore, type LigacaoFeita, type LigacaoResultado } from '../../../store/redeStore';
 import { useProgressStore } from '../../../store/progressStore';
-import { getBioma, resolveNoRede } from '../../../domain/especiesRepository';
-import { CARTA_ID_REGEX } from '../../../domain/types';
+import { getBioma, getTipoRelacao, resolveNoRede } from '../../../domain/especiesRepository';
+import { CARTA_ID_REGEX, type RelacaoRede } from '../../../domain/types';
 import { tocarAcerto, tocarErro } from '../../../domain/sound';
 import { ChallengeHeader } from '../ChallengeHeader';
 import { Button } from '../../../design-system/components/Button';
@@ -13,6 +13,13 @@ import styles from './RedeDaVidaPage.module.css';
 
 function nomeDoNo(id: string): string {
   return resolveNoRede(id)?.data.nome ?? id;
+}
+
+/** Uma relação real "bateu" com alguma ligação certa do jogador, em qualquer sentido. */
+function relacaoFoiEncontrada(relacao: RelacaoRede, feitas: LigacaoResultado[]): boolean {
+  return feitas.some(
+    (l) => l.correta && ((l.de === relacao.de && l.para === relacao.para) || (l.de === relacao.para && l.para === relacao.de)),
+  );
 }
 
 export function RedeDaVidaPage() {
@@ -39,6 +46,7 @@ export function RedeDaVidaPage() {
   } = useRedeStore();
 
   const [alvosRevelados, setAlvosRevelados] = useState(0);
+  const [mostrarFaltantes, setMostrarFaltantes] = useState(false);
 
   useEffect(() => {
     setAlvosRevelados(0);
@@ -114,6 +122,8 @@ export function RedeDaVidaPage() {
       : Math.min(100, (ligacoesFeitas.length / rede.relacoes.length) * 100);
 
   const corretas = resultadoLigacoes.filter((r) => r.correta).length;
+  const totalReais = redeAtual.relacoes.length;
+  const relacoesNaoEncontradas = redeAtual.relacoes.filter((r) => !relacaoFoiEncontrada(r, resultadoLigacoes));
 
   return (
     <div className={styles.page}>
@@ -191,14 +201,45 @@ export function RedeDaVidaPage() {
               <h2 className={styles.painelTitulo}>{(estrelas ?? 0) > 0 ? 'Boa!' : 'Quase lá'}</h2>
               <div className={styles.placar}>
                 <StarRating estrelas={estrelas ?? 0} />
-                <span>
-                  {corretas} de {resultadoLigacoes.length} ligações certas
-                </span>
+              </div>
+              <div className={styles.metricas}>
+                <div className={styles.metricaItem}>
+                  <span>Ligações corretas (do que você fez)</span>
+                  <span className={styles.metricaValor}>
+                    {corretas} de {resultadoLigacoes.length}
+                  </span>
+                </div>
+                <div className={styles.metricaItem}>
+                  <span>Ligações da rede encontradas</span>
+                  <span className={styles.metricaValor}>
+                    {corretas} de {totalReais}
+                  </span>
+                </div>
               </div>
               <p className={styles.painelTexto}>
-                As linhas verdes bateram com a rede real; as vermelhas, não. Agora vamos ver o que acontece quando um
-                evento atinge essa rede.
+                As linhas verdes bateram com a rede real; as vermelhas, não. A estrela conta quanto da rede inteira
+                você encontrou, não só se o que você ligou estava certo.
               </p>
+              {relacoesNaoEncontradas.length > 0 && (
+                <>
+                  <button
+                    type="button"
+                    className={styles.linkFaltantes}
+                    onClick={() => setMostrarFaltantes((atual) => !atual)}
+                  >
+                    {mostrarFaltantes ? 'Esconder' : 'Ver'} relações que ficaram de fora ({relacoesNaoEncontradas.length})
+                  </button>
+                  {mostrarFaltantes && (
+                    <ul className={styles.faltantesList}>
+                      {relacoesNaoEncontradas.map((r) => (
+                        <li key={`${r.de}-${r.tipo}-${r.para}`} className={styles.faltanteItem}>
+                          <strong>{nomeDoNo(r.de)}</strong> {getTipoRelacao(r.tipo).rotulo} <strong>{nomeDoNo(r.para)}</strong>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </>
+              )}
               <Button variant="primary" fullWidth onClick={avancarParaEventos}>
                 Continuar
               </Button>
