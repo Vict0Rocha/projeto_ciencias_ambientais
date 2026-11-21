@@ -56,15 +56,8 @@
   border: 1.5px solid var(--color-border);
   border-radius: var(--radius-pill);
   padding: 10px 16px;
-  flex: 1 1 100%;
-  order: 3;
-}
-
-@media (min-width: 560px) {
-  .busca {
-    flex: 0 1 220px;
-    order: 0;
-  }
+  flex: 0 0 260px;
+  margin-left: 8px;
 }
 .busca:focus-within {
   border-color: var(--color-accent-lime);

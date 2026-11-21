@@ -47,19 +47,6 @@ export function CollectionPage() {
             <h1 className={styles.titulo}>Coleção</h1>
             <p className={styles.subtitulo}>{biomas.length} biomas · todas as cartas disponíveis</p>
           </div>
-          <label className={styles.busca}>
-            <span className={styles.buscaIcone} aria-hidden="true">
-              ⌕
-            </span>
-            <input
-              type="search"
-              className={styles.buscaInput}
-              placeholder="Buscar espécie"
-              value={busca}
-              onChange={(event) => setBusca(event.target.value)}
-              aria-label="Buscar espécie pelo nome"
-            />
-          </label>
         </div>
 
         <div className={styles.filtros} role="group" aria-label="Filtrar por bioma">
@@ -83,6 +70,19 @@ export function CollectionPage() {
               {bioma.nome}
             </button>
           ))}
+          <label className={styles.busca}>
+            <span className={styles.buscaIcone} aria-hidden="true">
+              ⌕
+            </span>
+            <input
+              type="search"
+              className={styles.buscaInput}
+              placeholder="Buscar espécie"
+              value={busca}
+              onChange={(event) => setBusca(event.target.value)}
+              aria-label="Buscar espécie pelo nome"
+            />
+          </label>
         </div>
       </header>
 
