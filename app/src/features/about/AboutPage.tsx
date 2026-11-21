@@ -17,7 +17,7 @@ const MECANICAS = [
   },
   {
     titulo: 'Rede da Vida',
-    descricao: 'Um evento ambiental atinge a rede e o aluno prevê o efeito em cascata.',
+    descricao: 'Um evento ambiental atinge a rede e o aluno tenta adivinhar o efeito em cascata.',
   },
 ];
 
@@ -53,7 +53,7 @@ export function AboutPage() {
               BIO TRÍADE
             </div>
 
-            <h2 className={styles.h2}>Entender a floresta é entender quem vive nela</h2>
+            <h2 className={styles.h2}>Entender os biomas é entender as relações entre as espécies</h2>
 
             <p className={styles.paragrafo}>
               Bio Tríade é um jogo educativo web (serious game) voltado para alunos e curiosos, com o objetivo de

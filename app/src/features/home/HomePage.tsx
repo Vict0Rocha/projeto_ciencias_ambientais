@@ -59,7 +59,7 @@ export function HomePage() {
 
           <div className={styles.acoes}>
             <Button variant="primary" size="lg" onClick={() => navigate('/modo-livre')}>
-              Modo Livre
+              Escolher um desafio
             </Button>
             <span className={styles.jornadaNota}>Modo Jornada — em breve</span>
           </div>

@@ -30,7 +30,7 @@ const MODOS: ModoDisponivel[] = [
   {
     id: 'rede',
     titulo: 'Rede da Vida',
-    descricao: 'Um evento ambiental atinge a rede e o aluno prevê o efeito em cascata.',
+    descricao: 'Um evento ambiental atinge a rede e o aluno tenta adivinhar o efeito em cascata.',
     disponivel: true,
   },
 ];

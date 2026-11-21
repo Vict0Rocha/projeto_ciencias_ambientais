@@ -146,7 +146,11 @@ export function getFotoAltText(especie: Especie): string {
 export function buscarEspeciesPorNome(termo: string, biomas: Especie[]): Especie[] {
   const normalizado = normalizarTexto(termo);
   if (!normalizado) return biomas;
-  return biomas.filter((especie) => normalizarTexto(especie.nome).includes(normalizado));
+  return biomas.filter(
+    (especie) =>
+      normalizarTexto(especie.nome).includes(normalizado) ||
+      normalizarTexto(especie.nomeCientifico).includes(normalizado),
+  );
 }
 
 // eslint-disable-next-line no-misleading-character-class -- intervalo de marcas diacríticas combinantes (NFD)
