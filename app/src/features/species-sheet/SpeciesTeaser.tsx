@@ -7,7 +7,15 @@ import styles from './SpeciesTeaser.module.css';
 export function SpeciesTeaser({ especie }: { especie: Especie }) {
   return (
     <div className={styles.teaser}>
-      <img src={`/${especie.foto}`} alt={getFotoAltText(especie)} className={styles.photo} />
+      <img
+        src={`/${especie.foto}`}
+        alt={getFotoAltText(especie)}
+        className={styles.photo}
+        loading="lazy"
+        decoding="async"
+        width={40}
+        height={40}
+      />
       <div className={styles.info}>
         <span className={styles.name}>{especie.nome}</span>
         <span className={styles.metaRow}>

@@ -82,20 +82,27 @@ export function OnboardingWelcome({ onFinish }: OnboardingWelcomeProps) {
     >
       <div className={styles.backdrop} aria-hidden="true">
         <div className={styles.backdropCol}>
-          <img src={`/${getBioma('amazonia').foto}`} alt="" />
+          <img src={`/${getBioma('amazonia').foto}`} alt="" loading="lazy" decoding="async" width={900} height={1000} />
         </div>
         <div className={styles.backdropCol}>
-          <img src={`/${getBioma('cerrado').foto}`} alt="" />
+          <img src={`/${getBioma('cerrado').foto}`} alt="" loading="lazy" decoding="async" width={900} height={1000} />
         </div>
         <div className={styles.backdropCol}>
-          <img src={`/${getBioma('pantanal').foto}`} alt="" />
+          <img src={`/${getBioma('pantanal').foto}`} alt="" loading="lazy" decoding="async" width={900} height={1000} />
         </div>
         <span className={styles.backdropScrim} />
       </div>
 
       <div className={styles.card}>
         <div className={styles.imageArea}>
-          <img src={`/${bioma.foto}`} alt={dadosPasso.alt} className={styles.image} />
+          <img
+            src={`/${bioma.foto}`}
+            alt={dadosPasso.alt}
+            className={styles.image}
+            decoding="async"
+            width={900}
+            height={1000}
+          />
           <span className={styles.imageGradient} aria-hidden="true" />
           <div className={styles.imageOverlayRow}>
             {passo === 0 ? (

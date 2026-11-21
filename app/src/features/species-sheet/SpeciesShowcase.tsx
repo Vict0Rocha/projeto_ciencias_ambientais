@@ -23,6 +23,10 @@ export function SpeciesShowcase({ especie }: { especie: Especie }) {
           alt={getFotoAltText(especie)}
           className={`${styles.photo} ${fotoCarregada ? styles.photoLoaded : ''}`}
           onLoad={() => setFotoCarregada(true)}
+          loading="lazy"
+          decoding="async"
+          width={1000}
+          height={560}
         />
       </div>
       <span className={styles.name}>{especie.nome}</span>

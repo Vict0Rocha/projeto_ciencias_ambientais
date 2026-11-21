@@ -105,7 +105,15 @@ export function CollectionPage() {
                     onClick={() => setEspecieAberta(especie)}
                   >
                     <span className={styles.stripe} style={{ background: bioma.cor }} aria-hidden="true" />
-                    <img className={styles.cardPhoto} src={`/${especie.foto}`} alt={getFotoAltText(especie)} />
+                    <img
+                      className={styles.cardPhoto}
+                      src={`/${especie.foto}`}
+                      alt={getFotoAltText(especie)}
+                      loading="lazy"
+                      decoding="async"
+                      width={1000}
+                      height={560}
+                    />
                     <span className={styles.cardBody}>
                       <span className={styles.cardNome}>{especie.nome}</span>
                       <span className={styles.cardCientifico}>{especie.nomeCientifico}</span>

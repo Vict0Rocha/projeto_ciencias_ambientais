@@ -89,7 +89,7 @@ export function AboutPage() {
               <div className={styles.biomasList}>
                 {biomas.map((bioma) => (
                   <div key={bioma.id} className={styles.biomaCard}>
-                    <img src={`/${bioma.foto}`} alt="" />
+                    <img src={`/${bioma.foto}`} alt="" loading="lazy" decoding="async" width={900} height={1000} />
                     <span
                       className={styles.biomaGradient}
                       style={{ background: `linear-gradient(to bottom, transparent, ${bioma.cor})` }}

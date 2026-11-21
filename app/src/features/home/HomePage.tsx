@@ -77,7 +77,7 @@ export function HomePage() {
         <div className={styles.photosCol}>
           {biomas.map((bioma) => (
             <div key={bioma.id} className={styles.photoCard}>
-              <img src={`/${bioma.foto}`} alt="" />
+              <img src={`/${bioma.foto}`} alt="" loading="lazy" decoding="async" width={900} height={1000} />
               <span
                 className={styles.photoGradient}
                 style={{ background: `linear-gradient(to bottom, transparent, ${bioma.cor})` }}
