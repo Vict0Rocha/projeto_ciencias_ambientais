@@ -25,10 +25,9 @@ export function HomePage() {
 
       <header className={styles.header}>
         <div className={styles.wordmark}>
-          <svg width="18" height="16" viewBox="0 0 20 18" aria-hidden="true">
+          <svg width="18" height="16" viewBox="0 0 20 18" role="img" aria-label="Bio Tríade">
             <polygon points="10,0 20,18 0,18" fill="var(--color-ink)" />
           </svg>
-          <span className={styles.wordmarkText}>BIO TRÍADE</span>
         </div>
         <nav className={styles.nav} aria-label="Navegação principal">
           <Link className={styles.navLink} to="/colecao">
