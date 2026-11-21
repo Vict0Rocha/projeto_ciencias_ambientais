@@ -21,15 +21,9 @@
   z-index: 1;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   gap: 16px;
   padding: clamp(16px, 4vw, 24px) clamp(18px, 5vw, 40px);
-}
-
-.wordmark {
-  display: flex;
-  align-items: center;
-  gap: 10px;
 }
 
 .nav {
