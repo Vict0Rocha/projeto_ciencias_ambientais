@@ -94,7 +94,7 @@ export function QuemSouEuPage() {
     );
   }
 
-  const pistaAtual = especieAtual.pistas[session.pistasReveladas - 1] ?? especieAtual.pistas[0];
+  const pistasVisiveis = especieAtual.pistas.slice(0, session.pistasReveladas);
 
   function handleSelect(idEscolhido: string) {
     if (session.status !== 'pendente' || !especieAtual) return;
@@ -142,7 +142,13 @@ export function QuemSouEuPage() {
         <div className={styles.pistaColumn} data-coachmark="pistas">
           <div className={styles.pistaCard}>
             <div className={styles.pistaLabel}>PISTA {session.pistasReveladas} DE 3</div>
-            <p className={styles.pistaTexto}>&ldquo;{pistaAtual}&rdquo;</p>
+            <div className={styles.pistasLista}>
+              {pistasVisiveis.map((pista, indice) => (
+                <p key={indice} className={styles.pistaTexto}>
+                  &ldquo;{pista}&rdquo;
+                </p>
+              ))}
+            </div>
             <div className={styles.pistaProgresso} aria-hidden="true">
               {[1, 2, 3].map((n) => (
                 <span

@@ -1,7 +1,7 @@
 {
-  "versao": "1.1",
-  "atualizadoEm": "2026-09-06",
-  "observacao": "IDs das cartas são numéricos: 1xx Amazônia, 2xx Cerrado, 3xx Pantanal (a onça-pintada, presente em dois biomas, é 103). Recursos, funções, status e tipos de relação seguem com chave textual — não são cartas. Fonte única de conteúdo do Bio Tríade. As fichas usam 'especies'; a Rede da Vida usa 'redes' (grafo por bioma) — as relações existem só ali, para não haver duas fontes de verdade. Relações e eventos marcados com \"revisar\": true são propostas nossas, ainda não validadas por especialista.",
+  "versao": "2.0",
+  "atualizadoEm": "2026-11-22",
+  "observacao": "IDs das cartas são numéricos: 1xx Amazônia, 2xx Cerrado, 3xx Pantanal (a onça-pintada, presente em dois biomas, é 103). Recursos, funções, status e tipos de relação seguem com chave textual — não são cartas. Fonte única de conteúdo do Bio Tríade. As fichas usam 'especies'; a Rede da Vida usa 'redes' (grafo por bioma) — as relações existem só ali, para não haver duas fontes de verdade. Relações e eventos marcados com \"revisar\": true são propostas nossas, ainda não validadas por especialista. Conteúdo das perguntas (pistas, acaoFuncao, funcaoContextoDificil) revisado a partir do documento-fonte 'Bio Tríade — banco de 330 desafios' (2026-11-22); grupo/dominio dos recursos conservação (status) de espécies novas usam referência geral (IUCN) por não constar no documento — conferir antes de publicar como definitivo.",
   "biomas": [
     { "id": "amazonia", "nome": "Amazônia", "cor": "#14532D", "foto": "uploads/amazonia.jpg" },
     { "id": "cerrado", "nome": "Cerrado", "cor": "#B0562C", "foto": "uploads/cerrado.jpg" },
@@ -15,12 +15,15 @@
     { "id": "ne", "nome": "Não Avaliada", "bg": "#EEF3ED", "ink": "#47614A" }
   ],
   "funcoes": [
-    { "id": "predador", "nome": "Predador", "descricao": "Regula as populações de outras espécies e mantém a cadeia alimentar equilibrada." },
+    { "id": "predador", "nome": "Predador", "descricao": "Captura e consome outro animal, regulando populações de presas." },
     { "id": "dispersor", "nome": "Dispersor de sementes", "descricao": "Carrega e espalha sementes, permitindo a regeneração da vegetação." },
-    { "id": "controlador", "nome": "Controlador biológico", "descricao": "Controla populações de insetos e pequenos animais." },
     { "id": "produtor", "nome": "Produtor vegetal", "descricao": "Produz o próprio alimento e sustenta os demais níveis da cadeia." },
     { "id": "polinizador", "nome": "Polinizador", "descricao": "Leva o pólen entre as flores e garante que as plantas dêem frutos e sementes." },
-    { "id": "herbivoro", "nome": "Herbívoro", "descricao": "Consome vegetação e serve de alimento para os predadores." }
+    { "id": "herbivoro", "nome": "Herbívoro", "descricao": "Consome vegetação e serve de alimento para os predadores." },
+    { "id": "nidificador", "nome": "Nidificação", "descricao": "Usa uma cavidade, ninho ou substrato para abrigar ovos ou filhotes durante a reprodução." },
+    { "id": "engenheiro", "nome": "Engenharia do ecossistema", "descricao": "Modifica o ambiente físico de um jeito que cria ou amplia recursos para outras espécies, como tocas e abrigos." },
+    { "id": "consumidor_animal", "nome": "Consumo de recurso animal", "descricao": "Obtém alimento de origem animal, como presas pequenas ou partes de artrópodes, sem caracterizar uma predação clássica." },
+    { "id": "reprodutor", "nome": "Reprodução", "descricao": "Realiza um comportamento ligado diretamente à reprodução, como depositar ovos em um local específico." }
   ],
   "recursos": [
     { "id": "peixes", "nome": "Peixes", "descricao": "Base alimentar dos predadores aquáticos." },
@@ -29,7 +32,9 @@
     { "id": "repteis", "nome": "Pequenos répteis", "descricao": "Presas de aves terrestres." },
     { "id": "vegetacao_aquatica", "nome": "Vegetação aquática", "descricao": "Gramíneas e plantas das áreas alagadas." },
     { "id": "flores_nativas", "nome": "Flores nativas", "descricao": "Plantas com flor que dependem de polinizadores para frutificar." },
-    { "id": "solo", "nome": "Solo", "descricao": "Aeração, ciclagem de nutrientes e germinação de sementes." }
+    { "id": "solo", "nome": "Solo", "descricao": "Aeração, ciclagem de nutrientes e germinação de sementes." },
+    { "id": "artropodes", "nome": "Pequenos artrópodes", "descricao": "Presas de formigas caçadoras e outros invertebrados predadores." },
+    { "id": "cavidades_arvore", "nome": "Cavidades em árvores grandes", "descricao": "Ocos usados por aves e outros animais para nidificar." }
   ],
   "tiposRelacao": [
     { "id": "preda", "rotulo": "preda", "descricao": "A primeira espécie se alimenta da segunda." },
@@ -47,17 +52,16 @@
       "nome": "Harpia",
       "nomeCientifico": "Harpia harpyja",
       "biomas": ["amazonia"],
+      "grupo": "ave_rapina",
       "funcao": "predador",
       "alimentacao": "Carnívora; caça preguiças, macacos e aves.",
       "funcaoEcologica": "Predador de topo que controla populações de animais arborícolas.",
       "status": "vu",
       "ameacas": ["Desmatamento", "Caça", "Perda de habitat"],
       "curiosidade": "Possui uma das garras mais fortes entre as aves do mundo.",
-      "pistas": [
-        "Sou uma das maiores águias do planeta.",
-        "Vivo nas copas das árvores.",
-        "Tenho garras extremamente poderosas."
-      ],
+      "pistas": ["Sou uma ave de rapina.", "Caço nas copas.", "Tenho crista e garras robustas."],
+      "acaoFuncao": "captura um mamífero arborícola",
+      "funcaoContextoDificil": "Duas áreas têm a mesma oferta de presas, mas só uma conserva árvores com grandes ninhos. Qual etapa do ciclo da harpia pode explicar a diferença na ocupação?",
       "conexoes": [
         "Preda macacos-aranha.",
         "Depende de grandes árvores para nidificação.",
@@ -70,17 +74,16 @@
       "nome": "Boto-cor-de-rosa",
       "nomeCientifico": "Inia geoffrensis",
       "biomas": ["amazonia"],
+      "grupo": "mamifero_aquatico",
       "funcao": "predador",
       "alimentacao": "Peixes, crustáceos e pequenos vertebrados aquáticos.",
       "funcaoEcologica": "Controla populações de peixes e contribui para o equilíbrio dos rios.",
       "status": "en",
       "ameacas": ["Poluição", "Barragens", "Pesca predatória", "Captura acidental"],
       "curiosidade": "A coloração rosa se torna mais intensa conforme a idade.",
-      "pistas": [
-        "Sou um mamífero aquático.",
-        "Vivo nos rios amazônicos.",
-        "Minha cor me torna muito famoso."
-      ],
+      "pistas": ["Sou um mamífero.", "Respiro na superfície.", "Caço peixes nos rios amazônicos."],
+      "acaoFuncao": "persegue e captura peixes",
+      "funcaoContextoDificil": "Na cheia, observadores veem menos botos no canal principal. Que explicação deve ser testada antes de concluir que a população diminuiu?",
       "conexoes": [
         "Controla populações de peixes.",
         "Depende de rios preservados.",
@@ -93,6 +96,7 @@
       "nome": "Onça-pintada",
       "nomeCientifico": "Panthera onca",
       "biomas": ["amazonia", "pantanal"],
+      "grupo": "felino",
       "funcao": "predador",
       "alimentacao": "Carnívora; caça capivaras, veados, jacarés e outros vertebrados.",
       "funcaoEcologica": "Predador de topo responsável pelo controle das cadeias alimentares.",
@@ -102,12 +106,9 @@
       "curiosidadePorBioma": {
         "pantanal": "O Pantanal abriga uma das maiores concentrações dessa espécie."
       },
-      "pistas": [
-        "Sou o maior felino das Américas.",
-        "Tenho manchas escuras pelo corpo.",
-        "Consigo caçar jacarés.",
-        "Estou no topo da cadeia alimentar."
-      ],
+      "pistas": ["Sou um mamífero.", "Tenho manchas em rosetas.", "Sou o maior felino das Américas."],
+      "acaoFuncao": "captura uma capivara",
+      "funcaoContextoDificil": "Duas câmeras registram onças em noites diferentes. Como evitar contar o mesmo indivíduo duas vezes?",
       "conexoes": [
         "Preda capivaras e jacarés.",
         "Controla populações de herbívoros.",
@@ -118,19 +119,18 @@
     {
       "id": "104",
       "nome": "Macaco-aranha",
-      "nomeCientifico": "Ateles spp.",
+      "nomeCientifico": "Ateles marginatus",
       "biomas": ["amazonia"],
+      "grupo": "primata",
       "funcao": "dispersor",
       "alimentacao": "Frutas, folhas e sementes.",
       "funcaoEcologica": "Importante dispersor de sementes.",
       "status": "en",
       "ameacas": ["Desmatamento", "Caça"],
       "curiosidade": "Utiliza a cauda como um quinto membro.",
-      "pistas": [
-        "Vivo nas árvores.",
-        "Tenho uma cauda muito forte.",
-        "Ajudo a espalhar sementes pela floresta."
-      ],
+      "pistas": ["Sou um primata.", "Uso a cauda para me segurar.", "Tenho uma marca branca na testa."],
+      "acaoFuncao": "transporta sementes de frutos que come",
+      "funcaoContextoDificil": "Que observação distingue um primata que apenas come polpa de um que também dispersa sementes?",
       "conexoes": [
         "Dispersa sementes da castanheira.",
         "Serve de presa para a harpia.",
@@ -143,17 +143,16 @@
       "nome": "Castanheira-do-pará",
       "nomeCientifico": "Bertholletia excelsa",
       "biomas": ["amazonia"],
+      "grupo": "arvore",
       "funcao": "produtor",
       "alimentacao": "Produz seu próprio alimento por fotossíntese.",
       "funcaoEcologica": "Fornece alimento e abrigo para diversas espécies.",
       "status": "vu",
       "ameacas": ["Desmatamento", "Mudanças climáticas"],
       "curiosidade": "Pode viver mais de 500 anos.",
-      "pistas": [
-        "Sou uma árvore gigante.",
-        "Produzo castanhas muito conhecidas.",
-        "Vivo por séculos."
-      ],
+      "pistas": ["Sou uma árvore alta.", "Meu fruto tem uma casca dura.", "Dentro do ouriço ficam as castanhas."],
+      "acaoFuncao": "forma açúcares usando luz",
+      "funcaoContextoDificil": "Como testar se visitantes florais contribuem para formar castanhas?",
       "conexoes": [
         "Alimenta macacos, aves e roedores.",
         "Depende de polinizadores específicos.",
@@ -164,19 +163,18 @@
     {
       "id": "106",
       "nome": "Mamangava",
-      "nomeCientifico": "Eulaema spp.",
+      "nomeCientifico": "Eulaema mocsaryi",
       "biomas": ["amazonia"],
+      "grupo": "inseto",
       "funcao": "polinizador",
       "alimentacao": "Néctar e pólen de flores.",
       "funcaoEcologica": "Poliniza plantas de flores grandes e fechadas, entre elas a castanheira.",
       "status": "ne",
       "ameacas": ["Desmatamento", "Agrotóxicos", "Fragmentação da floresta"],
       "curiosidade": "É uma das poucas abelhas fortes o bastante para abrir a flor da castanheira.",
-      "pistas": [
-        "Sou grande e faço barulho ao voar.",
-        "Visito flores em busca de néctar.",
-        "Sem mim a castanheira não produz castanha."
-      ],
+      "pistas": ["Sou um inseto.", "Recolho alimento em flores.", "Posso levar pólen entre castanheiras."],
+      "acaoFuncao": "deposita pólen na estrutura receptiva de outra flor",
+      "funcaoContextoDificil": "Uma abelha retira néctar sem tocar a região receptiva da flor. O registro comprova polinização?",
       "conexoes": [
         "Poliniza a castanheira.",
         "Depende de floresta contínua para se reproduzir.",
@@ -186,21 +184,125 @@
       "revisar": true
     },
     {
+      "id": "107",
+      "nome": "Seringueira",
+      "nomeCientifico": "Hevea brasiliensis",
+      "biomas": ["amazonia"],
+      "grupo": "arvore",
+      "funcao": "produtor",
+      "alimentacao": "Produz seu próprio alimento por fotossíntese; o tronco libera látex quando cortado.",
+      "funcaoEcologica": "Produz borracha natural (látex) de importância histórica e econômica na Amazônia.",
+      "status": "lc",
+      "ameacas": ["Desmatamento", "Expansão agropecuária"],
+      "curiosidade": "Seu látex abasteceu o ciclo histórico da borracha na Amazônia.",
+      "pistas": ["Sou uma árvore amazônica.", "Meu tronco fornece um líquido branco.", "Meu látex é usado para produzir borracha."],
+      "acaoFuncao": "incorpora carbono ao crescer",
+      "funcaoContextoDificil": "Uma área produziu mais látex que outra. Como comparar o rendimento sem confundir tamanho da população e produção individual?",
+      "conexoes": [
+        "Sua extração de látex não exige corte da árvore.",
+        "Contribui para a cobertura e a saúde do solo da floresta."
+      ],
+      "foto": "img/seringueira.jpg"
+    },
+    {
+      "id": "108",
+      "nome": "Pirarucu",
+      "nomeCientifico": "Arapaima gigas",
+      "biomas": ["amazonia"],
+      "grupo": "peixe",
+      "funcao": "predador",
+      "alimentacao": "Carnívoro; captura peixes menores.",
+      "funcaoEcologica": "Um dos maiores peixes de água doce do mundo; precisa subir à superfície para respirar ar atmosférico.",
+      "status": "ne",
+      "ameacas": ["Pesca excessiva", "Perda de habitat"],
+      "curiosidade": "Pode superar 2 metros de comprimento e precisa respirar ar na superfície.",
+      "pistas": ["Sou um peixe de água doce.", "Tenho escamas grandes.", "Subo à superfície para respirar ar."],
+      "acaoFuncao": "captura um peixe menor",
+      "funcaoContextoDificil": "Dois observadores somam todas as respirações vistas. Por que o total pode superar o número de peixes?",
+      "conexoes": [
+        "Preda peixes menores nos lagos e rios amazônicos.",
+        "Precisa subir à superfície para respirar."
+      ],
+      "foto": "img/pirarucu.jpg"
+    },
+    {
+      "id": "109",
+      "nome": "Peixe-boi-da-amazônia",
+      "nomeCientifico": "Trichechus inunguis",
+      "biomas": ["amazonia"],
+      "grupo": "mamifero_aquatico",
+      "funcao": "herbivoro",
+      "alimentacao": "Vegetação aquática; único sirênio totalmente de água doce do mundo.",
+      "funcaoEcologica": "Herbívoro essencial para o equilíbrio da vegetação aquática dos rios e lagos amazônicos.",
+      "status": "vu",
+      "ameacas": ["Caça", "Captura acidental", "Poluição"],
+      "curiosidade": "É o único sirênio que vive inteiramente em água doce.",
+      "pistas": ["Sou um mamífero aquático.", "Alimento-me de plantas.", "Tenho nadadeiras anteriores e cauda arredondada."],
+      "acaoFuncao": "consome vegetação aquática",
+      "funcaoContextoDificil": "Uma contagem no lago caiu quando o rio subiu. Qual processo distinguir da mortalidade?",
+      "conexoes": [
+        "Consome grandes quantidades de vegetação aquática.",
+        "Ajuda a manter o equilíbrio das plantas dos rios e lagos."
+      ],
+      "foto": "img/peixe-boi.jpg"
+    },
+    {
+      "id": "110",
+      "nome": "Tucandeira",
+      "nomeCientifico": "Paraponera clavata",
+      "biomas": ["amazonia"],
+      "grupo": "inseto",
+      "funcao": "consumidor_animal",
+      "alimentacao": "Pequenos artrópodes e néctar; forrageia no chão e na vegetação.",
+      "funcaoEcologica": "Formiga de picada considerada uma das mais dolorosas entre os insetos.",
+      "status": "ne",
+      "ameacas": ["Desmatamento"],
+      "curiosidade": "Sua picada está entre as mais doloridas do mundo dos insetos.",
+      "pistas": ["Sou um inseto social.", "Pertenço ao grupo das formigas.", "Meu nome científico começa com Paraponera."],
+      "acaoFuncao": "recolhe um artrópode para alimentação da colônia",
+      "funcaoContextoDificil": "Há tucandeiras forrageando em um tronco. Isso basta para localizar o ninho?",
+      "conexoes": [
+        "Preda pequenos artrópodes no solo e na vegetação.",
+        "Contribui para a aeração do solo da floresta."
+      ],
+      "foto": "img/tucandeira.jpg"
+    },
+    {
+      "id": "111",
+      "nome": "Rã-kambô",
+      "nomeCientifico": "Phyllomedusa bicolor",
+      "biomas": ["amazonia"],
+      "grupo": "anfibio",
+      "funcao": "reprodutor",
+      "alimentacao": "Insetos; adultos caçam à noite na vegetação.",
+      "funcaoEcologica": "Usada tradicionalmente por povos indígenas; a secreção de pele é estudada pela ciência.",
+      "status": "lc",
+      "ameacas": ["Desmatamento", "Coleta para rituais"],
+      "curiosidade": "Sua secreção de pele é usada tradicionalmente em rituais indígenas da Amazônia.",
+      "pistas": ["Sou um anfíbio.", "Vivo na vegetação.", "Deposito ovos em folhas sobre a água."],
+      "acaoFuncao": "usa folhas acima da água para a postura",
+      "funcaoContextoDificil": "O lago continua cheio, mas foram retiradas folhas sobre a margem. Qual fase pode perder suporte primeiro?",
+      "conexoes": [
+        "Depende de vegetação próxima à água para se reproduzir.",
+        "Os girinos se desenvolvem na água após a eclosão."
+      ],
+      "foto": "img/ra-kambo.jpg"
+    },
+    {
       "id": "201",
       "nome": "Lobo-guará",
       "nomeCientifico": "Chrysocyon brachyurus",
       "biomas": ["cerrado"],
+      "grupo": "canideo",
       "funcao": "dispersor",
       "alimentacao": "Frutas, pequenos vertebrados e insetos.",
       "funcaoEcologica": "Dispersor de sementes e controlador de pequenos animais.",
       "status": "nt",
       "ameacas": ["Atropelamentos", "Queimadas", "Perda de habitat"],
       "curiosidade": "Apesar do nome, não forma matilhas como os lobos.",
-      "pistas": [
-        "Tenho pernas longas.",
-        "Sou o maior canídeo da América do Sul.",
-        "Adoro comer fruta-do-lobo."
-      ],
+      "pistas": ["Sou um mamífero de pernas longas.", "Como frutos e pequenos animais.", "Meu nome lembra um lobo."],
+      "acaoFuncao": "transporta sementes de lobeira no trato digestivo",
+      "funcaoContextoDificil": "Sementes de lobeira aparecem nas fezes. O que falta medir para avaliar sua contribuição à regeneração?",
       "conexoes": [
         "Dispersa sementes.",
         "Controla populações de roedores.",
@@ -213,17 +315,16 @@
       "nome": "Tamanduá-bandeira",
       "nomeCientifico": "Myrmecophaga tridactyla",
       "biomas": ["cerrado"],
-      "funcao": "controlador",
+      "grupo": "mirmecofago",
+      "funcao": "predador",
       "alimentacao": "Formigas e cupins.",
       "funcaoEcologica": "Controle natural de insetos.",
       "status": "vu",
       "ameacas": ["Queimadas", "Atropelamentos", "Caça"],
       "curiosidade": "Sua língua pode ultrapassar 60 cm.",
-      "pistas": [
-        "Tenho focinho comprido.",
-        "Minha comida favorita são formigas.",
-        "Minha cauda parece uma bandeira."
-      ],
+      "pistas": ["Sou um mamífero.", "Tenho focinho alongado.", "Minha cauda peluda lembra uma bandeira."],
+      "acaoFuncao": "captura formigas com a língua",
+      "funcaoContextoDificil": "Um tamanduá é visto consumindo cupins. Isso demonstra redução populacional dos cupins em toda a área?",
       "conexoes": [
         "Controla cupins e formigas.",
         "Influencia a dinâmica do solo.",
@@ -236,17 +337,16 @@
       "nome": "Tatu-canastra",
       "nomeCientifico": "Priodontes maximus",
       "biomas": ["cerrado"],
-      "funcao": "controlador",
+      "grupo": "mirmecofago",
+      "funcao": "engenheiro",
       "alimentacao": "Cupins, formigas e insetos.",
       "funcaoEcologica": "Engenheiro do ecossistema por escavar grandes tocas.",
       "status": "vu",
       "ameacas": ["Caça", "Destruição do habitat"],
       "curiosidade": "É o maior tatu do mundo.",
-      "pistas": [
-        "Tenho uma armadura natural.",
-        "Escavo enormes tocas.",
-        "Sou o maior da minha família."
-      ],
+      "pistas": ["Sou um mamífero com carapaça.", "Escavo o solo com garras.", "Faço grandes tocas usadas por outros animais."],
+      "acaoFuncao": "escava uma toca que outro animal usa como abrigo",
+      "funcaoContextoDificil": "Como distinguir abrigo compartilhado de encontro casual perto de uma toca?",
       "conexoes": [
         "Suas tocas abrigam outras espécies.",
         "Controla insetos.",
@@ -259,17 +359,16 @@
       "nome": "Pequi",
       "nomeCientifico": "Caryocar brasiliense",
       "biomas": ["cerrado"],
+      "grupo": "arvore",
       "funcao": "produtor",
       "alimentacao": "Produz alimento por fotossíntese.",
       "funcaoEcologica": "Fonte de alimento para animais e humanos.",
       "status": "lc",
       "ameacas": ["Desmatamento", "Queimadas frequentes"],
       "curiosidade": "Seu fruto é símbolo cultural do Cerrado.",
-      "pistas": [
-        "Produzo um fruto muito apreciado.",
-        "Sou uma árvore típica do Cerrado.",
-        "Meu fruto possui espinhos internos."
-      ],
+      "pistas": ["Sou uma árvore.", "Produzo fruto de polpa amarela.", "Há espinhos na parte interna do meu fruto."],
+      "acaoFuncao": "produz matéria orgânica por fotossíntese",
+      "funcaoContextoDificil": "Há muitas flores visitadas e poucos frutos. Qual variável distingue visita de fecundação bem-sucedida?",
       "conexoes": [
         "Alimenta aves e mamíferos.",
         "Suas sementes são dispersadas por animais.",
@@ -282,17 +381,16 @@
       "nome": "Seriema",
       "nomeCientifico": "Cariama cristata",
       "biomas": ["cerrado"],
-      "funcao": "controlador",
+      "grupo": "ave_terrestre",
+      "funcao": "predador",
       "alimentacao": "Insetos, pequenos vertebrados e frutos.",
       "funcaoEcologica": "Controle de insetos e pequenos animais.",
       "status": "lc",
       "ameacas": ["Perda de habitat", "Queimadas"],
       "curiosidade": "Possui um canto que pode ser ouvido a quilômetros.",
-      "pistas": [
-        "Sou uma ave terrestre.",
-        "Corro mais do que voo.",
-        "Tenho um canto muito forte."
-      ],
+      "pistas": ["Sou uma ave terrestre.", "Tenho pernas compridas e canto forte.", "Exibo um topete junto ao bico."],
+      "acaoFuncao": "captura um inseto no chão",
+      "funcaoContextoDificil": "Duas áreas têm igual número de seriemas, mas uma tem mais insetos. A abundância das aves mede o consumo de insetos?",
       "conexoes": [
         "Controla insetos.",
         "Alimenta-se de pequenos répteis.",
@@ -305,17 +403,16 @@
       "nome": "Morcego-polinizador",
       "nomeCientifico": "Glossophaga soricina",
       "biomas": ["cerrado"],
+      "grupo": "morcego",
       "funcao": "polinizador",
       "alimentacao": "Néctar, pólen, frutos e insetos.",
       "funcaoEcologica": "Poliniza flores que abrem à noite, como as do pequi, e ainda dispersa sementes.",
       "status": "lc",
       "ameacas": ["Perda de habitat", "Queimadas", "Agrotóxicos", "Destruição de abrigos"],
       "curiosidade": "A flor do pequi abre à noite justamente para ser polinizada por morcegos.",
-      "pistas": [
-        "Voo à noite.",
-        "Bebo néctar de flores que abrem no escuro.",
-        "Sem mim o pequi quase não dá fruto."
-      ],
+      "pistas": ["Sou um mamífero.", "Voo à noite.", "Uso a língua comprida para alcançar néctar."],
+      "acaoFuncao": "leva pólen entre flores ao buscar néctar",
+      "funcaoContextoDificil": "Que registro distingue alimentação com néctar de prestação de serviço de polinização?",
       "conexoes": [
         "Poliniza o pequi.",
         "Também dispersa sementes pelo Cerrado.",
@@ -325,21 +422,125 @@
       "revisar": true
     },
     {
+      "id": "207",
+      "nome": "Buriti",
+      "nomeCientifico": "Mauritia flexuosa",
+      "biomas": ["cerrado"],
+      "grupo": "palmeira",
+      "funcao": "dispersor",
+      "alimentacao": "Produz seu próprio alimento por fotossíntese; frutos comestíveis para diversos animais.",
+      "funcaoEcologica": "Fonte de alimento e água para a fauna; marca as veredas do Cerrado.",
+      "status": "lc",
+      "ameacas": ["Queimadas", "Drenagem de veredas"],
+      "curiosidade": "Suas folhas em leque são um dos sinais mais fáceis de reconhecer uma vereda.",
+      "pistas": ["Sou uma palmeira.", "Tenho folhas em leque.", "Sou marcante em veredas."],
+      "acaoFuncao": "oferece frutos cujas sementes podem ser levadas por animais",
+      "funcaoContextoDificil": "Um animal come a polpa e abandona a semente sob a palmeira. Qual dado permite medir o deslocamento?",
+      "conexoes": [
+        "Seus frutos alimentam antas, tracajás e diversos outros animais.",
+        "É marcante nas veredas do Cerrado."
+      ],
+      "foto": "img/buriti.jpg"
+    },
+    {
+      "id": "208",
+      "nome": "Raposa-do-campo",
+      "nomeCientifico": "Lycalopex vetulus",
+      "biomas": ["cerrado"],
+      "grupo": "canideo",
+      "funcao": "predador",
+      "alimentacao": "Cupins, insetos, pequenos vertebrados e frutos.",
+      "funcaoEcologica": "Pequeno canídeo especializado, com cupins como base da dieta em campos abertos.",
+      "status": "nt",
+      "ameacas": ["Atropelamentos", "Perda de habitat", "Conflito com cães domésticos"],
+      "curiosidade": "Apesar do nome, cupins são a base principal de sua dieta.",
+      "pistas": ["Sou um mamífero de campo aberto.", "Sou um pequeno canídeo.", "Cupins têm destaque na minha dieta."],
+      "acaoFuncao": "captura cupins",
+      "funcaoContextoDificil": "Uma raposa foi registrada em campo seco junto ao Pantanal. Por que guardar também o tipo de habitat?",
+      "conexoes": [
+        "Controla populações de cupins em áreas abertas.",
+        "Depende da conservação de campos e cerrados abertos."
+      ],
+      "foto": "img/raposa-do-campo.jpg"
+    },
+    {
+      "id": "209",
+      "nome": "Anta-brasileira",
+      "nomeCientifico": "Tapirus terrestris",
+      "biomas": ["cerrado"],
+      "grupo": "anta",
+      "funcao": "dispersor",
+      "alimentacao": "Frutas, folhas e brotos; é o maior mamífero terrestre nativo da América do Sul.",
+      "funcaoEcologica": "Importante dispersora de sementes de grandes frutos pela vegetação.",
+      "status": "vu",
+      "ameacas": ["Atropelamentos", "Caça", "Perda de habitat"],
+      "curiosidade": "É o maior mamífero terrestre nativo da América do Sul.",
+      "pistas": ["Sou um mamífero.", "Como frutos.", "Meu focinho forma uma pequena tromba."],
+      "acaoFuncao": "deposita longe da planta uma semente ingerida",
+      "funcaoContextoDificil": "Encontraram sementes intactas nas fezes da anta. Que etapa separa transporte de recrutamento vegetal?",
+      "conexoes": [
+        "Dispersa sementes de frutos grandes, como o buriti.",
+        "Ajuda a renovar a vegetação por onde se desloca."
+      ],
+      "foto": "img/anta.jpg"
+    },
+    {
+      "id": "210",
+      "nome": "Cobra-cipó",
+      "nomeCientifico": "Philodryas olfersii",
+      "biomas": ["cerrado"],
+      "grupo": "serpente",
+      "funcao": "predador",
+      "alimentacao": "Pequenos vertebrados, como lagartos, aves e roedores jovens.",
+      "funcaoEcologica": "Serpente ágil que caça entre os ramos da vegetação.",
+      "status": "lc",
+      "ameacas": ["Perda de habitat"],
+      "curiosidade": "O nome popular \"cobra-cipó\" pode ser usado para mais de uma espécie diferente.",
+      "pistas": ["Sou um réptil.", "Posso me deslocar sobre ramos.", "Tenho corpo alongado e frequentemente verde."],
+      "acaoFuncao": "captura um pequeno vertebrado",
+      "funcaoContextoDificil": "Um aluno identifica uma serpente verde como cobra-cipó pela cor. Como testar a identificação?",
+      "conexoes": [
+        "Preda pequenos vertebrados entre os ramos.",
+        "O nome popular pode designar mais de uma espécie."
+      ],
+      "foto": "img/cobra-cipo.jpg"
+    },
+    {
+      "id": "211",
+      "nome": "Tracajá",
+      "nomeCientifico": "Podocnemis unifilis",
+      "biomas": ["cerrado"],
+      "grupo": "quelonio",
+      "funcao": "nidificador",
+      "alimentacao": "Herbívoro; come folhas, frutos e flores que caem na água.",
+      "funcaoEcologica": "Usa as praias dos rios para reprodução.",
+      "status": "vu",
+      "ameacas": ["Caça de ovos e indivíduos", "Alteração do regime dos rios"],
+      "curiosidade": "Usa a mesma praia, ano após ano, para depositar os ovos na areia.",
+      "pistas": ["Sou um réptil.", "Tenho casco.", "Uso margens expostas para depositar ovos."],
+      "acaoFuncao": "usa substrato exposto para colocar ovos",
+      "funcaoContextoDificil": "Dois anos têm a mesma altura máxima de cheia, mas diferentes perdas de ovos. Qual dado temporal é decisivo?",
+      "conexoes": [
+        "Ajuda a dispersar sementes de frutos que caem na água.",
+        "Usa praias de areia para depositar os ovos."
+      ],
+      "foto": "img/tracaja.jpg"
+    },
+    {
       "id": "301",
       "nome": "Tuiuiú",
       "nomeCientifico": "Jabiru mycteria",
       "biomas": ["pantanal"],
+      "grupo": "ave_pernalta",
       "funcao": "predador",
       "alimentacao": "Peixes, anfíbios e pequenos animais aquáticos.",
       "funcaoEcologica": "Controle de populações aquáticas.",
       "status": "lc",
       "ameacas": ["Perda de áreas úmidas", "Queimadas"],
       "curiosidade": "É a ave-símbolo do Pantanal.",
-      "pistas": [
-        "Sou uma ave muito alta.",
-        "Tenho pescoço preto com detalhe vermelho.",
-        "Sou símbolo do Pantanal."
-      ],
+      "pistas": ["Sou uma ave de pernas longas.", "Procuro presas na água.", "Meu pescoço preto tem uma faixa vermelha."],
+      "acaoFuncao": "captura um peixe em água rasa",
+      "funcaoContextoDificil": "Na vazante aumentam os peixes capturados por minuto. Isso demonstra aumento da população de peixes?",
       "conexoes": [
         "Controla peixes e anfíbios.",
         "Depende das áreas alagadas.",
@@ -352,17 +553,16 @@
       "nome": "Ariranha",
       "nomeCientifico": "Pteronura brasiliensis",
       "biomas": ["pantanal"],
+      "grupo": "mamifero_aquatico",
       "funcao": "predador",
       "alimentacao": "Principalmente peixes.",
       "funcaoEcologica": "Predador que regula populações aquáticas.",
       "status": "en",
       "ameacas": ["Poluição", "Pesca predatória", "Perda de habitat"],
       "curiosidade": "Vive em grupos familiares muito organizados.",
-      "pistas": [
-        "Sou um mamífero aquático.",
-        "Vivo em grupos.",
-        "Sou excelente pescadora."
-      ],
+      "pistas": ["Sou um mamífero semiaquático.", "Vivo em grupos.", "Tenho uma mancha clara na garganta."],
+      "acaoFuncao": "captura peixes no rio",
+      "funcaoContextoDificil": "Como distinguir cinco encontros com um grupo de cinco grupos diferentes?",
       "conexoes": [
         "Controla populações de peixes.",
         "Depende de rios limpos.",
@@ -375,17 +575,16 @@
       "nome": "Jacaré-do-pantanal",
       "nomeCientifico": "Caiman yacare",
       "biomas": ["pantanal"],
+      "grupo": "crocodiliano",
       "funcao": "predador",
       "alimentacao": "Peixes, aves e pequenos mamíferos.",
       "funcaoEcologica": "Predador que regula populações de animais aquáticos.",
       "status": "lc",
       "ameacas": ["Poluição", "Destruição de áreas úmidas"],
       "curiosidade": "Pode permanecer muito tempo imóvel esperando a presa.",
-      "pistas": [
-        "Sou um réptil.",
-        "Passo muito tempo na água.",
-        "Tenho dentes visíveis mesmo com a boca fechada."
-      ],
+      "pistas": ["Sou um réptil semiaquático.", "Tenho corpo coberto por escamas.", "Uso as mandíbulas para capturar presas."],
+      "acaoFuncao": "captura um peixe",
+      "funcaoContextoDificil": "Há mais jacarés visíveis por metro de margem na seca. Que mudança física pode explicar o resultado?",
       "conexoes": [
         "Serve de presa para onças jovens.",
         "Controla peixes e aves.",
@@ -398,17 +597,16 @@
       "nome": "Capivara",
       "nomeCientifico": "Hydrochoerus hydrochaeris",
       "biomas": ["pantanal"],
+      "grupo": "roedor",
       "funcao": "herbivoro",
       "alimentacao": "Gramíneas e plantas aquáticas.",
       "funcaoEcologica": "Herbívoro que influencia a vegetação e serve de alimento para predadores.",
       "status": "lc",
       "ameacas": ["Perda de habitat", "Caça ilegal"],
       "curiosidade": "É o maior roedor do mundo.",
-      "pistas": [
-        "Sou um roedor gigante.",
-        "Adoro ficar perto da água.",
-        "Sou presa importante para grandes predadores."
-      ],
+      "pistas": ["Sou um mamífero.", "Costumo ficar perto da água.", "Sou um grande roedor que pasta."],
+      "acaoFuncao": "come gramíneas na margem",
+      "funcaoContextoDificil": "Uma margem tem alimento, mas fica distante de um corpo d'água. Qual variável acrescentar ao estudo do uso da área?",
       "conexoes": [
         "Alimenta a onça-pintada.",
         "Influencia a vegetação aquática.",
@@ -421,17 +619,16 @@
       "nome": "Beija-flor-tesoura",
       "nomeCientifico": "Eupetomena macroura",
       "biomas": ["pantanal"],
+      "grupo": "beija_flor",
       "funcao": "polinizador",
       "alimentacao": "Néctar de flores e pequenos insetos.",
       "funcaoEcologica": "Poliniza flores nativas enquanto se alimenta de néctar.",
       "status": "lc",
       "ameacas": ["Perda de habitat", "Queimadas", "Redução das plantas nativas com flor"],
       "curiosidade": "Bate as asas dezenas de vezes por segundo e consegue voar parado no ar.",
-      "pistas": [
-        "Consigo voar parado no ar.",
-        "Minha cauda é longa e bifurcada.",
-        "Levo pólen de flor em flor."
-      ],
+      "pistas": ["Sou uma ave pequena.", "Consigo pairar diante de flores.", "Minha cauda longa é bifurcada."],
+      "acaoFuncao": "transfere pólen entre flores",
+      "funcaoContextoDificil": "Duas flores receberam o mesmo número de visitas. Isso garante a mesma quantidade de pólen transferido?",
       "conexoes": [
         "Poliniza flores nativas.",
         "Depende de plantas floridas ao longo do ano.",
@@ -439,12 +636,117 @@
       ],
       "foto": "img/beija-flor-tesoura.jpg",
       "revisar": true
+    },
+    {
+      "id": "306",
+      "nome": "Sucuri-amarela",
+      "nomeCientifico": "Eunectes notaeus",
+      "biomas": ["pantanal"],
+      "grupo": "serpente",
+      "funcao": "predador",
+      "alimentacao": "Serpente constritora; captura peixes, aves e pequenos mamíferos em áreas alagadas.",
+      "funcaoEcologica": "Predadora que regula populações de presas em ambientes alagados.",
+      "status": "lc",
+      "ameacas": ["Perda de áreas alagadas", "Caça"],
+      "curiosidade": "Mata as presas por constrição, enrolando o corpo até imobilizá-las.",
+      "pistas": ["Sou uma serpente.", "Frequento áreas alagadas.", "Tenho fundo amarelado com manchas escuras."],
+      "acaoFuncao": "captura e imobiliza uma presa por constrição",
+      "funcaoContextoDificil": "Uma presa foi encontrada junto de uma sucuri. Que registro confirma a relação trófica?",
+      "conexoes": [
+        "Preda capivaras e outros animais em áreas alagadas.",
+        "Depende de ambientes alagados para se deslocar e caçar."
+      ],
+      "foto": "img/sucuri-amarela.jpg"
+    },
+    {
+      "id": "307",
+      "nome": "Cambará",
+      "nomeCientifico": "Vochysia divergens",
+      "biomas": ["pantanal"],
+      "grupo": "arvore",
+      "funcao": "produtor",
+      "alimentacao": "Produz seu próprio alimento por fotossíntese.",
+      "funcaoEcologica": "Forma os cambarazais, florestas inundáveis típicas do Pantanal.",
+      "status": "ne",
+      "ameacas": ["Desmatamento", "Alterações no regime de cheias"],
+      "curiosidade": "Pode formar florestas quase só de sua espécie, os cambarazais.",
+      "pistas": ["Sou uma árvore.", "Ocorro em áreas inundáveis.", "Posso predominar em formações chamadas cambarazais."],
+      "acaoFuncao": "incorpora carbono por fotossíntese",
+      "funcaoContextoDificil": "Duas parcelas têm cambarás. O que distingue aquela que constitui um cambarazal?",
+      "conexoes": [
+        "Forma os cambarazais, florestas inundáveis do Pantanal.",
+        "Pode servir de alimento complementar para o cervo-do-pantanal."
+      ],
+      "foto": "img/cambara.jpg"
+    },
+    {
+      "id": "308",
+      "nome": "Cervo-do-pantanal",
+      "nomeCientifico": "Blastocerus dichotomus",
+      "biomas": ["pantanal"],
+      "grupo": "cervideo",
+      "funcao": "herbivoro",
+      "alimentacao": "Plantas de ambientes alagados, como gramíneas e folhas aquáticas.",
+      "funcaoEcologica": "Maior cervídeo da América do Sul; indicador da saúde das áreas úmidas.",
+      "status": "vu",
+      "ameacas": ["Perda de áreas úmidas", "Caça"],
+      "curiosidade": "Suas galhadas ramificadas só aparecem nos machos adultos.",
+      "pistas": ["Sou um mamífero.", "Uso áreas úmidas.", "Os machos adultos têm galhadas ramificadas."],
+      "acaoFuncao": "come plantas de ambientes alagados",
+      "funcaoContextoDificil": "A drenagem de um brejo afeta os cervos. Que medida ajuda a testar uma explicação alimentar?",
+      "conexoes": [
+        "Consome vegetação de áreas alagadas e cambarazais.",
+        "Depende da conservação de brejos e áreas úmidas."
+      ],
+      "foto": "img/cervo-do-pantanal.jpg"
+    },
+    {
+      "id": "309",
+      "nome": "Colhereiro",
+      "nomeCientifico": "Platalea ajaja",
+      "biomas": ["pantanal"],
+      "grupo": "ave_pernalta",
+      "funcao": "predador",
+      "alimentacao": "Pequenos peixes, crustáceos e insetos aquáticos capturados com o bico em forma de colher.",
+      "funcaoEcologica": "Ave emblemática das áreas úmidas, visível à distância pela plumagem rosada.",
+      "status": "lc",
+      "ameacas": ["Perda de áreas úmidas", "Poluição da água"],
+      "curiosidade": "Sua plumagem rosada vem dos crustáceos que consome, como nos flamingos.",
+      "pistas": ["Sou uma ave de áreas úmidas.", "Tenho plumagem rosada.", "A ponta do meu bico é achatada como uma colher."],
+      "acaoFuncao": "varre a água com o bico e captura pequenos animais",
+      "funcaoContextoDificil": "A água ficou turva. Por que seria insuficiente prever que a ave deixará de encontrar alimento?",
+      "conexoes": [
+        "Preda pequenos peixes em águas rasas.",
+        "Sua plumagem rosada vem da dieta rica em crustáceos."
+      ],
+      "foto": "img/colhereiro.jpg"
+    },
+    {
+      "id": "310",
+      "nome": "Arara-azul-grande",
+      "nomeCientifico": "Anodorhynchus hyacinthinus",
+      "biomas": ["pantanal"],
+      "grupo": "psitacideo",
+      "funcao": "nidificador",
+      "alimentacao": "Principalmente cocos de palmeiras, como o de acuri e bocaiuva.",
+      "funcaoEcologica": "Maior papagaio voador do mundo; depende de árvores grandes com ocos para nidificar.",
+      "status": "vu",
+      "ameacas": ["Tráfico de animais", "Perda de árvores com ocos para nidificação"],
+      "curiosidade": "É a maior arara do mundo e depende de árvores antigas para nidificar.",
+      "pistas": ["Sou uma ave de plumagem azul.", "Tenho bico forte.", "No Pantanal uso cavidades de manduvi para criar filhotes."],
+      "acaoFuncao": "ocupa uma cavidade de árvore para criar filhotes",
+      "funcaoContextoDificil": "Dois trechos têm palmeiras com frutos, mas só um tem árvores com ocos. Qual recurso pode limitar a reprodução?",
+      "conexoes": [
+        "Depende de árvores grandes com ocos para nidificar.",
+        "Alimenta-se principalmente de cocos de palmeiras."
+      ],
+      "foto": "img/arara-azul-grande.jpg"
     }
   ],
   "redes": [
     {
       "bioma": "amazonia",
-      "nos": ["101", "102", "103", "104", "105", "106", "peixes"],
+      "nos": ["101", "102", "103", "104", "105", "106", "107", "108", "109", "110", "111", "peixes", "vegetacao_aquatica", "solo", "artropodes"],
       "relacoes": [
         { "de": "101", "tipo": "preda", "para": "104", "fonte": "ficha" },
         { "de": "101", "tipo": "depende", "para": "105", "nota": "Nidifica em árvores emergentes de grande porte.", "fonte": "ficha" },
@@ -453,7 +755,13 @@
         { "de": "103", "tipo": "preda", "para": "104", "revisar": true },
         { "de": "102", "tipo": "preda", "para": "peixes", "fonte": "ficha" },
         { "de": "106", "tipo": "poliniza", "para": "105", "revisar": true },
-        { "de": "105", "tipo": "alimenta", "para": "106", "nota": "Néctar e pólen das flores.", "revisar": true }
+        { "de": "105", "tipo": "alimenta", "para": "106", "nota": "Néctar e pólen das flores.", "revisar": true },
+        { "de": "108", "tipo": "preda", "para": "peixes", "fonte": "ficha" },
+        { "de": "109", "tipo": "preda", "para": "vegetacao_aquatica", "nota": "Herbivoria sobre plantas aquáticas.", "fonte": "ficha" },
+        { "de": "110", "tipo": "preda", "para": "artropodes", "fonte": "ficha" },
+        { "de": "110", "tipo": "melhora", "para": "solo", "revisar": true },
+        { "de": "107", "tipo": "melhora", "para": "solo", "revisar": true },
+        { "de": "111", "tipo": "depende", "para": "vegetacao_aquatica", "nota": "Usa folhas de plantas próximas à água para depositar os ovos.", "revisar": true }
       ],
       "eventos": [
         {
@@ -486,9 +794,10 @@
           "cenario": "O garimpo contamina os peixes da bacia.",
           "impactoDireto": ["peixes"],
           "cascata": [
-            { "alvo": "102", "efeito": "declinio", "porque": "Acumula o mercúrio dos peixes que consome." }
+            { "alvo": "102", "efeito": "declinio", "porque": "Acumula o mercúrio dos peixes que consome." },
+            { "alvo": "108", "efeito": "declinio", "porque": "Também acumula mercúrio ao longo da cadeia alimentar aquática." }
           ],
-          "explicacao": "O boto está no fim da cadeia aquática: tudo o que entra no rio se concentra nele.",
+          "explicacao": "O boto e o pirarucu estão no topo da cadeia aquática: tudo o que entra no rio se concentra neles.",
           "revisar": true
         },
         {
@@ -508,7 +817,7 @@
     },
     {
       "bioma": "cerrado",
-      "nos": ["201", "202", "203", "204", "205", "206", "insetos", "roedores", "repteis", "solo"],
+      "nos": ["201", "202", "203", "204", "205", "206", "207", "208", "209", "210", "211", "insetos", "roedores", "repteis", "solo"],
       "relacoes": [
         { "de": "204", "tipo": "alimenta", "para": "201", "fonte": "ficha" },
         { "de": "201", "tipo": "dispersa", "para": "204", "fonte": "ficha" },
@@ -523,7 +832,11 @@
         { "de": "insetos", "tipo": "melhora", "para": "solo", "revisar": true },
         { "de": "206", "tipo": "poliniza", "para": "204", "revisar": true },
         { "de": "204", "tipo": "alimenta", "para": "206", "nota": "Néctar das flores noturnas.", "revisar": true },
-        { "de": "206", "tipo": "preda", "para": "insetos", "revisar": true }
+        { "de": "206", "tipo": "preda", "para": "insetos", "revisar": true },
+        { "de": "209", "tipo": "dispersa", "para": "207", "fonte": "ficha" },
+        { "de": "211", "tipo": "dispersa", "para": "207", "revisar": true },
+        { "de": "208", "tipo": "preda", "para": "insetos", "fonte": "ficha" },
+        { "de": "210", "tipo": "preda", "para": "roedores", "revisar": true }
       ],
       "eventos": [
         {
@@ -534,7 +847,8 @@
           "cascata": [
             { "alvo": "201", "efeito": "declinio", "porque": "Perde o fruto que é boa parte de sua dieta." },
             { "alvo": "205", "efeito": "declinio", "porque": "Perde frutos e abrigo no estrato baixo." },
-            { "alvo": "206", "efeito": "declinio", "porque": "Perde as flores noturnas de que se alimenta." }
+            { "alvo": "206", "efeito": "declinio", "porque": "Perde as flores noturnas de que se alimenta." },
+            { "alvo": "209", "efeito": "declinio", "porque": "Perde parte das árvores que oferecem frutos ao longo do ano." }
           ],
           "explicacao": "O pequi é fonte de alimento e ponto de encontro da fauna. Sem os frutos, quem os comia se desloca — e as sementes deixam de ser levadas para longe."
         },
@@ -560,7 +874,8 @@
             { "alvo": "203", "efeito": "declinio", "porque": "Perde sua base alimentar e escava menos." },
             { "alvo": "solo", "efeito": "declinio", "porque": "Menos tocas e menos cupins significam solo menos aerado." },
             { "alvo": "206", "efeito": "declinio", "porque": "Parte de sua dieta são insetos, e o veneno chega até ele." },
-            { "alvo": "204", "efeito": "declinio", "porque": "Com menos morcegos, menos flores são polinizadas." }
+            { "alvo": "204", "efeito": "declinio", "porque": "Com menos morcegos, menos flores são polinizadas." },
+            { "alvo": "208", "efeito": "declinio", "porque": "Cupins são a base da dieta dessa raposa." }
           ],
           "explicacao": "Espécies especialistas caem primeiro. E quando o tatu-canastra some, somem também as tocas que abrigavam outros animais.",
           "revisar": true
@@ -569,7 +884,7 @@
     },
     {
       "bioma": "pantanal",
-      "nos": ["103", "304", "303", "301", "302", "305", "peixes", "vegetacao_aquatica", "flores_nativas"],
+      "nos": ["103", "304", "303", "301", "302", "305", "306", "307", "308", "309", "310", "peixes", "vegetacao_aquatica", "flores_nativas", "cavidades_arvore"],
       "relacoes": [
         { "de": "103", "tipo": "preda", "para": "304", "fonte": "ficha" },
         { "de": "103", "tipo": "preda", "para": "303", "fonte": "ficha" },
@@ -580,7 +895,12 @@
         { "de": "302", "tipo": "compete", "para": "303", "fonte": "ficha" },
         { "de": "304", "tipo": "dispersa", "para": "vegetacao_aquatica", "revisar": true },
         { "de": "305", "tipo": "poliniza", "para": "flores_nativas", "revisar": true },
-        { "de": "flores_nativas", "tipo": "alimenta", "para": "305", "nota": "Néctar.", "revisar": true }
+        { "de": "flores_nativas", "tipo": "alimenta", "para": "305", "nota": "Néctar.", "revisar": true },
+        { "de": "306", "tipo": "preda", "para": "304", "fonte": "ficha" },
+        { "de": "308", "tipo": "preda", "para": "vegetacao_aquatica", "fonte": "ficha" },
+        { "de": "308", "tipo": "preda", "para": "307", "nota": "Pode se alimentar da vegetação de áreas de cambarazal quando acessível.", "revisar": true },
+        { "de": "309", "tipo": "preda", "para": "peixes", "fonte": "ficha" },
+        { "de": "310", "tipo": "depende", "para": "cavidades_arvore", "nota": "Usa ocos de árvores grandes, como o manduvi, para nidificar.", "revisar": true }
       ],
       "eventos": [
         {
@@ -605,9 +925,10 @@
             { "alvo": "301", "efeito": "declinio", "porque": "Perde alimento e área de forrageio." },
             { "alvo": "303", "efeito": "declinio", "porque": "Concentra-se em poças e disputa o pouco que resta." },
             { "alvo": "flores_nativas", "efeito": "declinio", "porque": "Com o solo seco, menos plantas florescem." },
-            { "alvo": "305", "efeito": "declinio", "porque": "Sem flores ao longo do ano, perde sua fonte de néctar." }
+            { "alvo": "305", "efeito": "declinio", "porque": "Sem flores ao longo do ano, perde sua fonte de néctar." },
+            { "alvo": "309", "efeito": "declinio", "porque": "Também depende de peixes e água rasa para se alimentar." }
           ],
-          "explicacao": "No Pantanal a água é o que organiza tudo. Um mesmo evento atinge três predadores ao mesmo tempo — a competição entre eles aumenta.",
+          "explicacao": "No Pantanal a água é o que organiza tudo. Um mesmo evento atinge vários predadores ao mesmo tempo — a competição entre eles aumenta.",
           "revisar": true
         },
         {

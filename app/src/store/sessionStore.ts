@@ -38,6 +38,8 @@ interface SessionState {
   opcoesAtuais: string[];
 
   pistasReveladas: number;
+  /** quantas pistas já nascem reveladas no início de cada desafio (nível difícil pede todas de uma vez) */
+  pistasIniciais: number;
   tentativasRestantes: number;
   respostaEscolhida: string | null;
   /** guarda o 1º palpite errado durante a 2ª tentativa, para continuar marcado na lista */
@@ -46,10 +48,15 @@ interface SessionState {
 
   estrelasPorDesafio: Estrelas[];
 
+  /** como sortear as opções de um desafio; por padrão sorteia direto do pool (ver `gerarOpcoes`) */
+  gerarOpcoesParaSujeito: (sujeitoId: string, correta: string, pool: string[], quantidade: number) => string[];
+
   /**
    * Inicia uma partida do Modo Livre. `sujeitos` já deve vir embaralhado e sem
    * repetição; `resolverCorreta` traduz cada sujeito na resposta certa (use
    * `(id) => id` quando sujeito e resposta forem a mesma coisa, como em Quem Sou Eu).
+   * `gerarOpcoesParaSujeito` é opcional: use para sortear distratores de um jeito
+   * específico (ex.: espécies do mesmo grupo em Quem Sou Eu) em vez do pool plano.
    */
   iniciarPartida: (
     mecanica: MecanicaId,
@@ -57,6 +64,8 @@ interface SessionState {
     resolverCorreta: (sujeitoId: string) => string,
     opcoesPool: string[],
     opcoesQtd?: number,
+    pistasIniciais?: number,
+    gerarOpcoesParaSujeito?: (sujeitoId: string, correta: string, pool: string[], quantidade: number) => string[],
   ) => void;
   revelarProximaPista: () => void;
   responder: (idEscolhido: string) => void;
@@ -75,7 +84,6 @@ interface SessionState {
 }
 
 const ESTADO_INICIAL_DESAFIO = {
-  pistasReveladas: 1,
   tentativasRestantes: MAX_TENTATIVAS,
   respostaEscolhida: null,
   respostaErradaAnterior: null,
@@ -87,6 +95,9 @@ function gerarOpcoes(pool: string[], correta: string, quantidade: number): strin
   return shuffle([correta, ...outras]);
 }
 
+const gerarOpcoesPadrao = (_sujeitoId: string, correta: string, pool: string[], quantidade: number) =>
+  gerarOpcoes(pool, correta, quantidade);
+
 export const useSessionStore = create<SessionState>()((set, get) => ({
   mecanica: null,
   faseId: null,
@@ -97,9 +108,20 @@ export const useSessionStore = create<SessionState>()((set, get) => ({
   opcoesQtd: 4,
   opcoesAtuais: [],
   estrelasPorDesafio: [],
+  pistasReveladas: 1,
+  pistasIniciais: 1,
+  gerarOpcoesParaSujeito: gerarOpcoesPadrao,
   ...ESTADO_INICIAL_DESAFIO,
 
-  iniciarPartida: (mecanica, sujeitos, resolverCorreta, opcoesPool, opcoesQtd = 4) => {
+  iniciarPartida: (
+    mecanica,
+    sujeitos,
+    resolverCorreta,
+    opcoesPool,
+    opcoesQtd = 4,
+    pistasIniciais = 1,
+    gerarOpcoesParaSujeito = gerarOpcoesPadrao,
+  ) => {
     const respostasCorretas = sujeitos.map(resolverCorreta);
     set({
       mecanica,
@@ -109,9 +131,12 @@ export const useSessionStore = create<SessionState>()((set, get) => ({
       desafioAtualIndex: 0,
       opcoesPool,
       opcoesQtd,
-      opcoesAtuais: gerarOpcoes(opcoesPool, respostasCorretas[0], opcoesQtd),
+      pistasIniciais,
+      gerarOpcoesParaSujeito,
+      opcoesAtuais: gerarOpcoesParaSujeito(sujeitos[0], respostasCorretas[0], opcoesPool, opcoesQtd),
       estrelasPorDesafio: [],
       ...ESTADO_INICIAL_DESAFIO,
+      pistasReveladas: pistasIniciais,
     });
   },
 
@@ -169,11 +194,15 @@ export const useSessionStore = create<SessionState>()((set, get) => ({
   avancarParaProximoDesafio: () =>
     set((state) => {
       const novoIndex = state.desafioAtualIndex + 1;
+      const novoSujeito = state.desafios[novoIndex];
       const novaCorreta = state.respostasCorretas[novoIndex];
       return {
         desafioAtualIndex: novoIndex,
-        opcoesAtuais: novaCorreta ? gerarOpcoes(state.opcoesPool, novaCorreta, state.opcoesQtd) : state.opcoesAtuais,
+        opcoesAtuais: novaCorreta
+          ? state.gerarOpcoesParaSujeito(novoSujeito, novaCorreta, state.opcoesPool, state.opcoesQtd)
+          : state.opcoesAtuais,
         ...ESTADO_INICIAL_DESAFIO,
+        pistasReveladas: state.pistasIniciais,
       };
     }),
 
@@ -187,7 +216,10 @@ export const useSessionStore = create<SessionState>()((set, get) => ({
       opcoesPool: [],
       opcoesAtuais: [],
       estrelasPorDesafio: [],
+      pistasIniciais: 1,
+      gerarOpcoesParaSujeito: gerarOpcoesPadrao,
       ...ESTADO_INICIAL_DESAFIO,
+      pistasReveladas: 1,
     }),
 
   desafioAtualId: () => get().desafios[get().desafioAtualIndex],

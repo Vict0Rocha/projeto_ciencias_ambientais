@@ -1,4 +1,5 @@
 import rawData from '../data/especies.json';
+import { shuffle } from './random';
 import {
   CARTA_ID_REGEX,
   type Bioma,
@@ -96,6 +97,67 @@ export function getAllEspecies(): Especie[] {
 }
 
 /**
+ * Domínio amplo de cada `grupo` fino (ver `Especie.grupo`). Usado como 2º nível de
+ * fallback em `gerarOpcoesQuemSouEu`: quando o grupo específico da carta não tem
+ * gente o bastante para preencher as alternativas, busca no domínio antes de cair
+ * no pool inteiro. Mantido aqui (e não no JSON) para não duplicar essa informação
+ * por carta — é derivada do grupo, não um dado por espécie.
+ */
+const DOMINIO_POR_GRUPO: Record<string, string> = {
+  ave_rapina: 'ave',
+  ave_terrestre: 'ave',
+  ave_pernalta: 'ave',
+  psitacideo: 'ave',
+  beija_flor: 'ave',
+  mamifero_aquatico: 'mamifero',
+  felino: 'mamifero',
+  primata: 'mamifero',
+  canideo: 'mamifero',
+  mirmecofago: 'mamifero',
+  roedor: 'mamifero',
+  cervideo: 'mamifero',
+  anta: 'mamifero',
+  morcego: 'mamifero',
+  crocodiliano: 'reptil',
+  serpente: 'reptil',
+  quelonio: 'reptil',
+  anfibio: 'anfibio',
+  peixe: 'peixe',
+  inseto: 'inseto',
+  arvore: 'planta',
+  palmeira: 'planta',
+};
+
+/**
+ * Opções para "Quem Sou Eu?": em vez de sortear 100% aleatório, prioriza espécies
+ * do mesmo grupo (cobra com cobra, árvore com árvore), depois do mesmo domínio
+ * (ave com ave), e só por último completa com o resto do jogo. Isso deixa as
+ * alternativas mais parecidas entre si — e portanto mais difíceis de descartar
+ * só pela "cara" do nome, sem olhar as pistas.
+ */
+export function gerarOpcoesQuemSouEu(_sujeitoId: string, correta: string, _pool: string[], quantidade: number): string[] {
+  const especieCorreta = especiesPorId.get(correta);
+  const todas = data.especies.filter((especie) => especie.id !== correta);
+  if (!especieCorreta) return shuffle([correta, ...todas.map((e) => e.id)]).slice(0, quantidade);
+
+  const dominioCorreto = DOMINIO_POR_GRUPO[especieCorreta.grupo];
+  const mesmoGrupo = shuffle(todas.filter((especie) => especie.grupo === especieCorreta.grupo));
+  const mesmoDominio = shuffle(
+    todas.filter((especie) => especie.grupo !== especieCorreta.grupo && DOMINIO_POR_GRUPO[especie.grupo] === dominioCorreto),
+  );
+  const resto = shuffle(
+    todas.filter((especie) => especie.grupo !== especieCorreta.grupo && DOMINIO_POR_GRUPO[especie.grupo] !== dominioCorreto),
+  );
+
+  const escolhidas: string[] = [];
+  for (const candidata of [...mesmoGrupo, ...mesmoDominio, ...resto]) {
+    if (escolhidas.length >= quantidade - 1) break;
+    escolhidas.push(candidata.id);
+  }
+  return shuffle([correta, ...escolhidas]);
+}
+
+/**
  * IDs excluídos de "Qual é a função desta espécie?" (Função na Natureza): o nome
  * da própria carta já entrega a resposta. Ex.: "Morcego-polinizador" → polinizador.
  * A espécie continua disponível normalmente em Quem Sou Eu, Rede da Vida e na Coleção.
@@ -137,6 +199,21 @@ const FOTO_ALT_TEXT: Record<string, string> = {
   '303': 'Jacaré-do-pantanal deitado na margem lamacenta, boca entreaberta mostrando os dentes, olhando de frente.',
   '304': 'Capivara deitada na margem de um rio, pelagem marrom-avermelhada, focinho quadrado voltado para a câmera.',
   '305': 'Beija-flor-tesoura em voo, cabeça azul e corpo verde iridescentes, cauda longa bifurcada, bebendo néctar de uma flor vermelha.',
+  '107': "Tronco de seringueira com um corte diagonal na casca, de onde escorre látex branco até uma tigela presa ao tronco, floresta ao fundo.",
+  '108': "Pirarucu nadando debaixo d'água, corpo prateado com a cauda avermelhada, vegetação aquática ao fundo.",
+  '109': "Peixe-boi-da-amazônia nadando perto do fundo arenoso, corpo robusto e nadadeiras anteriores arredondadas, água esverdeada.",
+  '110': 'Tucandeira em close sobre um galho molhado na mata, mandíbulas à mostra e longas antenas estendidas.',
+  '111': 'Rã-kambô verde e amarela pousada sobre um galho coberto de musgo, olhos grandes e escuros, folhagem ao fundo.',
+  '207': 'Buriti isolado à beira de uma lagoa, copa em leque com cachos de frutos marrons pendurados, outras palmeiras ao fundo.',
+  '208': 'Raposa-do-campo parada entre arbustos, pelagem alaranjada e orelhas grandes eretas, olhando para a câmera.',
+  '209': 'Anta-brasileira caminhando na mata, corpo marrom-escuro e focinho alongado em forma de pequena tromba.',
+  '210': 'Cobra-cipó verde enrolada em um galho fino na mata, cabeça erguida e olhos atentos.',
+  '211': 'Tracajá sobre um tronco caído na água, casco escuro e marcas amarelas na cabeça, vegetação aquática ao redor.',
+  '306': 'Sucuri-amarela enrolada na margem de uma lagoa, corpo amarelado com manchas escuras, cabeça próxima à água.',
+  '307': 'Cambará isolado em campo alagado, copa florida de amarelo, lagoa e vegetação ao fundo.',
+  '308': 'Cervo-do-pantanal parado perto de uma área alagada, galhada ramificada e pelagem alaranjada.',
+  '309': 'Colhereiro em uma lagoa rasa, plumagem rosada e bico longo achatado como uma colher.',
+  '310': 'Duas araras-azuis-grandes na entrada de um oco de árvore, plumagem azul-cobalto e bico curvo preto.',
 };
 
 export function getFotoAltText(especie: Especie): string {

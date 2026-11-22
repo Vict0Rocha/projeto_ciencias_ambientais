@@ -2,7 +2,19 @@ export type BiomaId = 'amazonia' | 'cerrado' | 'pantanal';
 
 export type StatusConservacaoId = 'lc' | 'nt' | 'vu' | 'en' | 'ne';
 
-export type FuncaoId = 'predador' | 'dispersor' | 'controlador' | 'produtor' | 'polinizador' | 'herbivoro';
+export type FuncaoId =
+  | 'predador'
+  | 'dispersor'
+  | 'produtor'
+  | 'polinizador'
+  | 'herbivoro'
+  | 'nidificador'
+  | 'engenheiro'
+  | 'consumidor_animal'
+  | 'reprodutor';
+
+/** Nível de dificuldade: controla quais perguntas são sorteadas e como as mecânicas se comportam. */
+export type NivelId = 'facil' | 'dificil';
 
 export type TipoRelacaoId =
   | 'preda'
@@ -51,6 +63,8 @@ export interface Especie {
   nome: string;
   nomeCientifico: string;
   biomas: BiomaId[];
+  /** Grupo fino usado para sortear distratores parecidos em "Quem Sou Eu?" (ex.: cobra com cobra). */
+  grupo: string;
   funcao: FuncaoId;
   alimentacao: string;
   funcaoEcologica: string;
@@ -59,6 +73,10 @@ export interface Especie {
   curiosidade: string;
   curiosidadePorBioma?: Partial<Record<BiomaId, string>>;
   pistas: string[];
+  /** Ação específica da cena de "Função na Natureza", ex.: "captura um mamífero arborícola". */
+  acaoFuncao: string;
+  /** Pergunta de contexto extra exibida só no nível difícil de "Função na Natureza" (não é escolha múltipla, é só reflexão). */
+  funcaoContextoDificil: string;
   conexoes: string[];
   foto: string;
   revisar?: boolean;

@@ -22,6 +22,14 @@
   letter-spacing: -0.3px;
 }
 
+.contextoDificil {
+  margin: 10px 0 0;
+  font-size: 13px;
+  font-style: italic;
+  color: var(--color-ink-muted);
+  line-height: 1.5;
+}
+
 .opcoesList {
   margin-top: 12px;
   display: flex;
