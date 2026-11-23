@@ -28,6 +28,8 @@ export interface Bioma {
   nome: string;
   cor: string;
   foto: string;
+  /** Texto informativo exibido no popup do bioma na Home. */
+  descricao: string;
 }
 
 export interface StatusConservacao {

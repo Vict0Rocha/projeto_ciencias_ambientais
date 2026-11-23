@@ -3,9 +3,27 @@
   "atualizadoEm": "2026-11-22",
   "observacao": "IDs das cartas são numéricos: 1xx Amazônia, 2xx Cerrado, 3xx Pantanal (a onça-pintada, presente em dois biomas, é 103; a anta-brasileira também, é 209). Recursos, funções, status e tipos de relação seguem com chave textual — não são cartas. Fonte única de conteúdo do Bio Tríade. As fichas usam 'especies'; a Rede da Vida usa 'redes' (grafo por bioma) — as relações existem só ali, para não haver duas fontes de verdade. Relações e eventos marcados com \"revisar\": true são propostas nossas, ainda não validadas por especialista. Conteúdo das fichas e das perguntas (pistas, acaoFuncao) revisado a partir do documento-fonte 'Bio Tríade — Perguntas, respostas e fichas das espécies' (2026-11-22), que também traz a fonte oficial (MMA) do status de conservação de cada espécie. Não há mais níveis de dificuldade — uma única versão das perguntas.",
   "biomas": [
-    { "id": "amazonia", "nome": "Amazônia", "cor": "#14532D", "foto": "uploads/amazonia.jpg" },
-    { "id": "cerrado", "nome": "Cerrado", "cor": "#B0562C", "foto": "uploads/cerrado.jpg" },
-    { "id": "pantanal", "nome": "Pantanal", "cor": "#1F8F8A", "foto": "uploads/pantanal.jpg" }
+    {
+      "id": "amazonia",
+      "nome": "Amazônia",
+      "cor": "#14532D",
+      "foto": "uploads/amazonia.jpg",
+      "descricao": "Na Amazônia, até as árvores participam da formação da chuva. Suas raízes absorvem água do solo, e as folhas devolvem parte dela ao ar em forma de vapor. Os ventos transportam essa umidade, que ajuda a alimentar chuvas em outras regiões da América do Sul. Entre as copas, macacos-aranha espalham sementes. Nos rios, o pirarucu sobe à superfície para respirar. Para quem vive às margens desses rios, eles também são caminho para a escola, fonte de alimento e ligação entre comunidades."
+    },
+    {
+      "id": "cerrado",
+      "nome": "Cerrado",
+      "cor": "#B0562C",
+      "foto": "uploads/cerrado.jpg",
+      "descricao": "A água que chega à sua cidade pode ter começado a viagem no Cerrado. Ali nascem rios que abastecem comunidades e lavouras e seguem para outras regiões do Brasil. Entre campos e árvores de troncos retorcidos, há veredas, áreas de solo úmido onde crescem os buritis. O lobo-guará também ajuda a formar essa paisagem: ao comer frutos e levar suas sementes para longe, dá a novas plantas a chance de crescer. Cuidar das nascentes do Cerrado faz diferença até para quem mora longe delas."
+    },
+    {
+      "id": "pantanal",
+      "nome": "Pantanal",
+      "cor": "#1F8F8A",
+      "foto": "uploads/pantanal.jpg",
+      "descricao": "No Pantanal, um campo pode virar caminho para peixes. Na cheia, os rios transbordam e a água se espalha pela planície. Quando ela recua, peixes se concentram em lagoas rasas, onde aves como o tuiuiú encontram alimento. Quem vive da pesca ou se desloca de barco também acompanha esse ritmo. E parte dessa história começa longe dali: os rios que chegam ao Pantanal nascem em áreas mais altas. Cuidar de suas nascentes ajuda a proteger a vida na planície."
+    }
   ],
   "statusConservacao": [
     { "id": "lc", "nome": "Pouco Preocupante", "bg": "#DFF0D8", "ink": "#2C5C30" },
