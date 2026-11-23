@@ -1,7 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useSessionStore } from '../../store/sessionStore';
 import { useRedeStore } from '../../store/redeStore';
-import { useProgressStore } from '../../store/progressStore';
 import {
   getAllEspecies,
   getAllFuncoes,
@@ -12,7 +11,6 @@ import {
 import { shuffle } from '../../domain/random';
 import { CircleIconButton } from '../../design-system/components/CircleIconButton';
 import { Pill } from '../../design-system/components/Pill';
-import { NivelToggle } from '../../design-system/components/NivelToggle';
 import styles from './FreeModePage.module.css';
 
 interface ModoDisponivel {
@@ -47,18 +45,14 @@ export function FreeModePage() {
   const navigate = useNavigate();
   const iniciarPartida = useSessionStore((state) => state.iniciarPartida);
   const iniciarPartidaRede = useRedeStore((state) => state.iniciarPartida);
-  const nivel = useProgressStore((state) => state.nivel);
-  const definirNivel = useProgressStore((state) => state.definirNivel);
 
   function jogar(modo: ModoDisponivel) {
     if (!modo.disponivel) return;
     if (modo.id === 'quem_sou_eu') {
       const ids = getAllEspecies().map((especie) => especie.id);
-      // Difícil entrega as 3 pistas de uma vez (como no documento-fonte: "Identifique a
-      // carta e contraste-a com uma das alternativas"), o que também reduz o teto de
-      // estrelas possível — é mais difícil tirar nota máxima sem pistas progressivas.
-      const pistasIniciais = nivel === 'dificil' ? 3 : 1;
-      iniciarPartida('quem_sou_eu', shuffle(ids), (id) => id, ids, 4, pistasIniciais, gerarOpcoesQuemSouEu);
+      // gerarOpcoesQuemSouEu prioriza distratores do mesmo grupo (cobra com cobra, árvore
+      // com árvore) em vez de sortear 100% aleatório entre as 32 cartas.
+      iniciarPartida('quem_sou_eu', shuffle(ids), (id) => id, ids, 4, gerarOpcoesQuemSouEu);
       navigate('/desafio/quem-sou-eu');
     }
     if (modo.id === 'funcao') {
@@ -83,7 +77,6 @@ export function FreeModePage() {
           <h1 className={styles.title}>Modo Livre</h1>
           <p className={styles.subtitle}>Escolha um modo de jogo — as perguntas são sorteadas, sem repetir na partida.</p>
         </div>
-        <NivelToggle nivel={nivel} onAlterar={definirNivel} />
       </header>
 
       <div className={styles.body}>

@@ -8,13 +8,8 @@ export type FuncaoId =
   | 'produtor'
   | 'polinizador'
   | 'herbivoro'
-  | 'nidificador'
   | 'engenheiro'
-  | 'consumidor_animal'
-  | 'reprodutor';
-
-/** Nível de dificuldade: controla quais perguntas são sorteadas e como as mecânicas se comportam. */
-export type NivelId = 'facil' | 'dificil';
+  | 'consumidor_animal';
 
 export type TipoRelacaoId =
   | 'preda'
@@ -72,11 +67,10 @@ export interface Especie {
   ameacas: string[];
   curiosidade: string;
   curiosidadePorBioma?: Partial<Record<BiomaId, string>>;
+  /** 5 perguntas de "Quem Sou Eu?" cuja resposta é esta espécie; uma é sorteada por desafio. */
   pistas: string[];
-  /** Ação específica da cena de "Função na Natureza", ex.: "captura um mamífero arborícola". */
+  /** Ação específica da cena de "Função na Natureza", ex.: "captura mamíferos nas copas". */
   acaoFuncao: string;
-  /** Pergunta de contexto extra exibida só no nível difícil de "Função na Natureza" (não é escolha múltipla, é só reflexão). */
-  funcaoContextoDificil: string;
   conexoes: string[];
   foto: string;
   revisar?: boolean;

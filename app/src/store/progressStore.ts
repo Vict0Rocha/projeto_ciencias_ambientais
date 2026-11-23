@@ -1,6 +1,5 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import type { NivelId } from '../domain/types';
 
 interface ProgressState {
   tutorialConcluido: boolean;
@@ -8,8 +7,6 @@ interface ProgressState {
   estrelasPorFase: Record<string, number>;
   especiesDescobertas: string[];
   somLigado: boolean;
-  /** Nível de dificuldade do Modo Livre: controla quais perguntas são sorteadas. */
-  nivel: NivelId;
 
   concluirTutorial: () => void;
   /** Reabre o onboarding — acionado pelo botão "Rever tutorial" na tela Sobre. */
@@ -17,7 +14,6 @@ interface ProgressState {
   marcarFaseConcluida: (faseId: string, estrelas: number) => void;
   descobrirEspecie: (especieId: string) => void;
   alternarSom: () => void;
-  definirNivel: (nivel: NivelId) => void;
 }
 
 export const useProgressStore = create<ProgressState>()(
@@ -28,11 +24,9 @@ export const useProgressStore = create<ProgressState>()(
       estrelasPorFase: {},
       especiesDescobertas: [],
       somLigado: true,
-      nivel: 'facil',
 
       concluirTutorial: () => set({ tutorialConcluido: true }),
       reverTutorial: () => set({ tutorialConcluido: false }),
-      definirNivel: (nivel) => set({ nivel }),
 
       marcarFaseConcluida: (faseId, estrelas) =>
         set((state) => ({

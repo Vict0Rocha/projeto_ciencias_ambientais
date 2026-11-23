@@ -22,7 +22,6 @@ export function FuncaoNaturezaPage() {
   const navigate = useNavigate();
   const session = useSessionStore();
   const progress = useProgressStore();
-  const nivelDificil = progress.nivel === 'dificil';
   const [fichaAberta, setFichaAberta] = useState(false);
   const [mostrarResumo, setMostrarResumo] = useState(false);
 
@@ -142,11 +141,8 @@ export function FuncaoNaturezaPage() {
 
         <div className={styles.opcoesColumn}>
           <h2 className={styles.pergunta} id="opcoes-label">
-            Nesta cena, {especieAtual.nome} {especieAtual.acaoFuncao}. Qual processo aparece?
+            Quando {especieAtual.nome} {especieAtual.acaoFuncao}, qual papel está mais diretamente envolvido?
           </h2>
-          {nivelDificil && (
-            <p className={styles.contextoDificil}>Para pensar: {especieAtual.funcaoContextoDificil}</p>
-          )}
           <div className={styles.opcoesList} role="group" aria-labelledby="opcoes-label">
             {opcoes.map((funcao) => (
               <RadioOption
@@ -181,7 +177,7 @@ export function FuncaoNaturezaPage() {
         kind="erro"
         titulo="Não é essa"
         seloTexto={`VOCÊ ESCOLHEU: ${funcaoEscolhidaErrada?.nome.toUpperCase() ?? ''}`}
-        corpo={nivelDificil ? 'Pense de novo sobre o processo descrito na cena.' : `PISTA: ${especieAtual.alimentacao}`}
+        corpo={`PISTA: ${especieAtual.alimentacao}`}
         primaryLabel="Tentar novamente"
         onPrimary={session.tentarNovamente}
         onClose={session.tentarNovamente}

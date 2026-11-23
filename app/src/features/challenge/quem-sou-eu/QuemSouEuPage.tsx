@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useSessionStore } from '../../../store/sessionStore';
 import { useProgressStore } from '../../../store/progressStore';
 import { getEspecieById, getCuriosidade } from '../../../domain/especiesRepository';
-import { MAX_TENTATIVAS } from '../../../domain/scoring';
+import { MAX_PISTAS, MAX_TENTATIVAS } from '../../../domain/scoring';
 import { tocarAcerto, tocarErro } from '../../../domain/sound';
 import { ChallengeHeader } from '../ChallengeHeader';
 import { SessionSummary } from '../SessionSummary';
@@ -141,7 +141,7 @@ export function QuemSouEuPage() {
       <div className={styles.body}>
         <div className={styles.pistaColumn} data-coachmark="pistas">
           <div className={styles.pistaCard}>
-            <div className={styles.pistaLabel}>PISTA {session.pistasReveladas} DE 3</div>
+            <div className={styles.pistaLabel}>PISTA {session.pistasReveladas} DE {MAX_PISTAS}</div>
             <div className={styles.pistasLista}>
               {pistasVisiveis.map((pista, indice) => (
                 <p key={indice} className={styles.pistaTexto}>
@@ -150,7 +150,7 @@ export function QuemSouEuPage() {
               ))}
             </div>
             <div className={styles.pistaProgresso} aria-hidden="true">
-              {[1, 2, 3].map((n) => (
+              {Array.from({ length: MAX_PISTAS }, (_, indice) => indice + 1).map((n) => (
                 <span
                   key={n}
                   className={`${styles.pistaTraco} ${n <= session.pistasReveladas ? styles.pistaTracoAtivo : ''}`}
@@ -161,7 +161,7 @@ export function QuemSouEuPage() {
           <div className={styles.hintBannerWrap}>
             <HintBanner
               onClick={session.revelarProximaPista}
-              disabled={session.pistasReveladas >= 3 || session.status !== 'pendente'}
+              disabled={session.pistasReveladas >= MAX_PISTAS || session.status !== 'pendente'}
             >
               Próxima pista
             </HintBanner>
@@ -210,7 +210,7 @@ export function QuemSouEuPage() {
         kind="erro"
         titulo="Não é essa"
         seloTexto={`VOCÊ ESCOLHEU: ${escolhidaErrada?.nome.toUpperCase() ?? ''}`}
-        corpo={`PISTA ${session.pistasReveladas} DE 3: "${especieAtual.pistas[session.pistasReveladas - 1]}"`}
+        corpo={`PISTA ${session.pistasReveladas} DE ${MAX_PISTAS}: "${especieAtual.pistas[session.pistasReveladas - 1]}"`}
         primaryLabel="Tentar novamente"
         onPrimary={session.tentarNovamente}
         onClose={session.tentarNovamente}

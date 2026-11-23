@@ -1,7 +1,7 @@
 {
-  "versao": "2.0",
+  "versao": "3.0",
   "atualizadoEm": "2026-11-22",
-  "observacao": "IDs das cartas são numéricos: 1xx Amazônia, 2xx Cerrado, 3xx Pantanal (a onça-pintada, presente em dois biomas, é 103). Recursos, funções, status e tipos de relação seguem com chave textual — não são cartas. Fonte única de conteúdo do Bio Tríade. As fichas usam 'especies'; a Rede da Vida usa 'redes' (grafo por bioma) — as relações existem só ali, para não haver duas fontes de verdade. Relações e eventos marcados com \"revisar\": true são propostas nossas, ainda não validadas por especialista. Conteúdo das perguntas (pistas, acaoFuncao, funcaoContextoDificil) revisado a partir do documento-fonte 'Bio Tríade — banco de 330 desafios' (2026-11-22); grupo/dominio dos recursos conservação (status) de espécies novas usam referência geral (IUCN) por não constar no documento — conferir antes de publicar como definitivo.",
+  "observacao": "IDs das cartas são numéricos: 1xx Amazônia, 2xx Cerrado, 3xx Pantanal (a onça-pintada, presente em dois biomas, é 103; a anta-brasileira também, é 209). Recursos, funções, status e tipos de relação seguem com chave textual — não são cartas. Fonte única de conteúdo do Bio Tríade. As fichas usam 'especies'; a Rede da Vida usa 'redes' (grafo por bioma) — as relações existem só ali, para não haver duas fontes de verdade. Relações e eventos marcados com \"revisar\": true são propostas nossas, ainda não validadas por especialista. Conteúdo das fichas e das perguntas (pistas, acaoFuncao) revisado a partir do documento-fonte 'Bio Tríade — Perguntas, respostas e fichas das espécies' (2026-11-22), que também traz a fonte oficial (MMA) do status de conservação de cada espécie. Não há mais níveis de dificuldade — uma única versão das perguntas.",
   "biomas": [
     { "id": "amazonia", "nome": "Amazônia", "cor": "#14532D", "foto": "uploads/amazonia.jpg" },
     { "id": "cerrado", "nome": "Cerrado", "cor": "#B0562C", "foto": "uploads/cerrado.jpg" },
@@ -20,10 +20,8 @@
     { "id": "produtor", "nome": "Produtor vegetal", "descricao": "Produz o próprio alimento e sustenta os demais níveis da cadeia." },
     { "id": "polinizador", "nome": "Polinizador", "descricao": "Leva o pólen entre as flores e garante que as plantas dêem frutos e sementes." },
     { "id": "herbivoro", "nome": "Herbívoro", "descricao": "Consome vegetação e serve de alimento para os predadores." },
-    { "id": "nidificador", "nome": "Nidificação", "descricao": "Usa uma cavidade, ninho ou substrato para abrigar ovos ou filhotes durante a reprodução." },
-    { "id": "engenheiro", "nome": "Engenharia do ecossistema", "descricao": "Modifica o ambiente físico de um jeito que cria ou amplia recursos para outras espécies, como tocas e abrigos." },
-    { "id": "consumidor_animal", "nome": "Consumo de recurso animal", "descricao": "Obtém alimento de origem animal, como presas pequenas ou partes de artrópodes, sem caracterizar uma predação clássica." },
-    { "id": "reprodutor", "nome": "Reprodução", "descricao": "Realiza um comportamento ligado diretamente à reprodução, como depositar ovos em um local específico." }
+    { "id": "engenheiro", "nome": "Engenharia do ecossistema", "descricao": "Modifica o ambiente físico de um jeito que cria ou amplia recursos para outras espécies, como tocas, abrigos ou florestas inteiras." },
+    { "id": "consumidor_animal", "nome": "Consumo de recurso animal", "descricao": "Obtém alimento de origem animal, como presas pequenas ou partes de artrópodes, sem caracterizar uma predação clássica." }
   ],
   "recursos": [
     { "id": "peixes", "nome": "Peixes", "descricao": "Base alimentar dos predadores aquáticos." },
@@ -54,18 +52,23 @@
       "biomas": ["amazonia"],
       "grupo": "ave_rapina",
       "funcao": "predador",
-      "alimentacao": "Carnívora; caça preguiças, macacos e aves.",
-      "funcaoEcologica": "Predador de topo que controla populações de animais arborícolas.",
-      "status": "vu",
-      "ameacas": ["Desmatamento", "Caça", "Perda de habitat"],
-      "curiosidade": "Possui uma das garras mais fortes entre as aves do mundo.",
-      "pistas": ["Sou uma ave de rapina.", "Caço nas copas.", "Tenho crista e garras robustas."],
-      "acaoFuncao": "captura um mamífero arborícola",
-      "funcaoContextoDificil": "Duas áreas têm a mesma oferta de presas, mas só uma conserva árvores com grandes ninhos. Qual etapa do ciclo da harpia pode explicar a diferença na ocupação?",
+      "alimentacao": "Sobretudo mamíferos arborícolas, como preguiças e macacos.",
+      "funcaoEcologica": "Predação de vertebrados arborícolas.",
+      "status": "ne",
+      "ameacas": ["Desmatamento", "Perda de árvores grandes para nidificação", "Perseguição"],
+      "curiosidade": "Ave de rapina de crista erguida e garras robustas; caça entre as copas.",
+      "pistas": [
+        "Qual ave perderia locais de caça e de reprodução se uma floresta perdesse as copas mais altas?",
+        "Quem pode capturar um mamífero nos galhos antes que ele desça ao chão?",
+        "Que predador depende de uma árvore capaz de sustentar um ninho volumoso e de presas que se deslocam nas copas?",
+        "Se as preguiças permanecem no alto das árvores, que caçadora ainda consegue alcançá-las?",
+        "Quem reúne duas características que raramente aparecem juntas entre as cartas: garras para segurar mamíferos e asas para sair da copa?"
+      ],
+      "acaoFuncao": "captura mamíferos nas copas",
       "conexoes": [
-        "Preda macacos-aranha.",
-        "Depende de grandes árvores para nidificação.",
-        "Indicadora da saúde da floresta."
+        "Preda mamíferos arborícolas na Amazônia.",
+        "Nidifica em árvores emergentes.",
+        "Pode nidificar na castanheira-do-pará."
       ],
       "foto": "img/harpia.jpg"
     },
@@ -76,18 +79,21 @@
       "biomas": ["amazonia"],
       "grupo": "mamifero_aquatico",
       "funcao": "predador",
-      "alimentacao": "Peixes, crustáceos e pequenos vertebrados aquáticos.",
-      "funcaoEcologica": "Controla populações de peixes e contribui para o equilíbrio dos rios.",
+      "alimentacao": "Principalmente peixes.",
+      "funcaoEcologica": "Predação de peixes.",
       "status": "en",
-      "ameacas": ["Poluição", "Barragens", "Pesca predatória", "Captura acidental"],
-      "curiosidade": "A coloração rosa se torna mais intensa conforme a idade.",
-      "pistas": ["Sou um mamífero.", "Respiro na superfície.", "Caço peixes nos rios amazônicos."],
-      "acaoFuncao": "persegue e captura peixes",
-      "funcaoContextoDificil": "Na cheia, observadores veem menos botos no canal principal. Que explicação deve ser testada antes de concluir que a população diminuiu?",
+      "ameacas": ["Enredamento em redes de pesca", "Captura intencional", "Barragens"],
+      "curiosidade": "Cetáceo de água doce com focinho longo; usa ecolocalização.",
+      "pistas": [
+        "Quem pode alcançar novos locais de pesca quando o rio invade a floresta, mas precisa voltar à superfície para respirar?",
+        "Quem procura peixes em água turva usando os ecos de sons que produz?",
+        "Que pescador divide os rios com o pirarucu, mas alimenta a cria com leite?",
+        "Qual nadador tem nadadeiras e focinho comprido, embora não seja um peixe?",
+        "Quem teria seu espaço de caça ampliado pela conexão entre um lago e a mata inundada e usa o som para se orientar?"
+      ],
+      "acaoFuncao": "persegue peixes nos rios e em ambientes conectados",
       "conexoes": [
-        "Controla populações de peixes.",
-        "Depende de rios preservados.",
-        "Sofre impactos das atividades humanas."
+        "Preda peixes nos rios amazônicos."
       ],
       "foto": "img/boto-cor-de-rosa.jpg"
     },
@@ -98,20 +104,24 @@
       "biomas": ["amazonia", "pantanal"],
       "grupo": "felino",
       "funcao": "predador",
-      "alimentacao": "Carnívora; caça capivaras, veados, jacarés e outros vertebrados.",
-      "funcaoEcologica": "Predador de topo responsável pelo controle das cadeias alimentares.",
-      "status": "nt",
-      "ameacas": ["Desmatamento", "Caça", "Conflitos com humanos", "Conflitos com pecuaristas"],
-      "curiosidade": "Possui a mordida mais forte entre os felinos das Américas.",
+      "alimentacao": "Mamíferos e répteis, incluindo capivaras e jacarés.",
+      "funcaoEcologica": "Predação de grandes vertebrados; influência sobre populações de presas.",
+      "status": "vu",
+      "ameacas": ["Perda de habitat", "Redução de presas", "Abate em conflitos com a pecuária"],
+      "curiosidade": "Felino robusto com rosetas que permitem distinguir indivíduos.",
       "curiosidadePorBioma": {
         "pantanal": "O Pantanal abriga uma das maiores concentrações dessa espécie."
       },
-      "pistas": ["Sou um mamífero.", "Tenho manchas em rosetas.", "Sou o maior felino das Américas."],
-      "acaoFuncao": "captura uma capivara",
-      "funcaoContextoDificil": "Duas câmeras registram onças em noites diferentes. Como evitar contar o mesmo indivíduo duas vezes?",
+      "pistas": [
+        "Quem pode ser reconhecido pelo desenho individual das rosetas em fotos de duas margens do mesmo rio?",
+        "Qual caçador poderia ligar uma capivara na margem e um jacaré perto da água à mesma teia alimentar?",
+        "Que mamífero de pelagem manchada pode atravessar rios entre duas áreas de caça?",
+        "Que felino aparece tanto em floresta densa quanto em planície alagável?",
+        "Qual predador poderia deixar pegadas de felino ao lado da água depois de caçar um grande roedor?"
+      ],
+      "acaoFuncao": "captura capivaras que usam a margem",
       "conexoes": [
-        "Preda capivaras e jacarés.",
-        "Controla populações de herbívoros.",
+        "Preda capivaras, jacarés, cervos-do-pantanal e antas-brasileiras.",
         "Necessita de grandes áreas preservadas."
       ],
       "foto": "img/onca-pintada.jpg"
@@ -123,18 +133,22 @@
       "biomas": ["amazonia"],
       "grupo": "primata",
       "funcao": "dispersor",
-      "alimentacao": "Frutas, folhas e sementes.",
-      "funcaoEcologica": "Importante dispersor de sementes.",
+      "alimentacao": "Principalmente frutos maduros; também folhas e outros itens vegetais.",
+      "funcaoEcologica": "Frugivoria; dispersão de sementes.",
       "status": "en",
-      "ameacas": ["Desmatamento", "Caça"],
-      "curiosidade": "Utiliza a cauda como um quinto membro.",
-      "pistas": ["Sou um primata.", "Uso a cauda para me segurar.", "Tenho uma marca branca na testa."],
-      "acaoFuncao": "transporta sementes de frutos que come",
-      "funcaoContextoDificil": "Que observação distingue um primata que apenas come polpa de um que também dispersa sementes?",
+      "ameacas": ["Desmatamento", "Fragmentação florestal", "Caça"],
+      "curiosidade": "Primata arborícola de braços longos, cauda preênsil e testa clara.",
+      "pistas": [
+        "Quem pode levar uma semente de uma copa a outra usando a cauda como apoio?",
+        "Qual primata perderia rotas de alimentação se surgissem grandes vãos entre as copas?",
+        "Quem pode deixar sob outra árvore sementes de frutos que comeu no alto da floresta?",
+        "Que viajante das copas combina braços compridos, cauda preênsil e uma marca clara na testa?",
+        "Que dispersor amazônico consegue prender-se a um galho pela cauda enquanto alcança frutos?"
+      ],
+      "acaoFuncao": "engole sementes com a polpa e pode depositá-las longe",
       "conexoes": [
-        "Dispersa sementes da castanheira.",
-        "Serve de presa para a harpia.",
-        "Contribui para a regeneração florestal."
+        "Dispersa sementes de frutos carnosos.",
+        "Serve de presa para a harpia."
       ],
       "foto": "img/macaco-aranha.jpg"
     },
@@ -145,18 +159,23 @@
       "biomas": ["amazonia"],
       "grupo": "arvore",
       "funcao": "produtor",
-      "alimentacao": "Produz seu próprio alimento por fotossíntese.",
-      "funcaoEcologica": "Fornece alimento e abrigo para diversas espécies.",
+      "alimentacao": "Faz fotossíntese: usa luz, água e gás carbônico para formar açúcares; as raízes absorvem água e sais minerais.",
+      "funcaoEcologica": "Produção primária; oferta de recursos florais e sementes.",
       "status": "vu",
-      "ameacas": ["Desmatamento", "Mudanças climáticas"],
-      "curiosidade": "Pode viver mais de 500 anos.",
-      "pistas": ["Sou uma árvore alta.", "Meu fruto tem uma casca dura.", "Dentro do ouriço ficam as castanhas."],
-      "acaoFuncao": "forma açúcares usando luz",
-      "funcaoContextoDificil": "Como testar se visitantes florais contribuem para formar castanhas?",
+      "ameacas": ["Desmatamento", "Fogo", "Perda de condições para a regeneração"],
+      "curiosidade": "Árvore emergente de grande porte. As sementes se desenvolvem dentro de um fruto lenhoso, o ouriço.",
+      "pistas": [
+        "Quem oferece néctar a abelhas e, meses depois, sementes protegidas por um fruto lenhoso?",
+        "Que árvore reúne muitas sementes dentro de um mesmo ouriço?",
+        "Quem pode ligar abelhas grandes às flores e roedores às sementes em etapas diferentes da reprodução?",
+        "Que gigante da floresta produz sementes comestíveis cuja retirada exige abrir um fruto resistente?",
+        "De quem seria um fruto lenhoso caído no chão, com sinais de dentes de roedor e espaço para várias castanhas?"
+      ],
+      "acaoFuncao": "forma sementes e oferece néctar a visitantes florais",
       "conexoes": [
-        "Alimenta macacos, aves e roedores.",
-        "Depende de polinizadores específicos.",
-        "Ajuda a manter a floresta em pé."
+        "Pode abrigar o ninho da harpia.",
+        "É polinizada pela mamangava.",
+        "Suas sementes são dispersadas por cutias."
       ],
       "foto": "img/castanheira.jpg"
     },
@@ -167,21 +186,24 @@
       "biomas": ["amazonia"],
       "grupo": "inseto",
       "funcao": "polinizador",
-      "alimentacao": "Néctar e pólen de flores.",
-      "funcaoEcologica": "Poliniza plantas de flores grandes e fechadas, entre elas a castanheira.",
+      "alimentacao": "Néctar como fonte de energia; as fêmeas também coletam pólen para a prole.",
+      "funcaoEcologica": "Polinização; consumo de recursos florais.",
       "status": "ne",
-      "ameacas": ["Desmatamento", "Agrotóxicos", "Fragmentação da floresta"],
-      "curiosidade": "É uma das poucas abelhas fortes o bastante para abrir a flor da castanheira.",
-      "pistas": ["Sou um inseto.", "Recolho alimento em flores.", "Posso levar pólen entre castanheiras."],
-      "acaoFuncao": "deposita pólen na estrutura receptiva de outra flor",
-      "funcaoContextoDificil": "Uma abelha retira néctar sem tocar a região receptiva da flor. O registro comprova polinização?",
-      "conexoes": [
-        "Poliniza a castanheira.",
-        "Depende de floresta contínua para se reproduzir.",
-        "É sensível a agrotóxicos."
+      "ameacas": ["Perda de vegetação e de recursos florais", "Exposição a inseticidas"],
+      "curiosidade": "Abelha robusta do grupo das abelhas das orquídeas; visita flores de castanheira.",
+      "pistas": [
+        "Quem ganha alimento ao visitar uma castanheira e pode deixar pólen na flor seguinte?",
+        "Que visitante de seis pernas consegue acessar as estruturas de uma flor robusta de castanheira?",
+        "Quem pode trabalhar durante a floração de manhã e carregar grãos aderidos ao corpo entre árvores?",
+        "Qual visitante floral pertence ao mesmo grupo das abelhas das orquídeas e participa da reprodução da castanheira?",
+        "Qual polinizadora do jogo pode compartilhar com outras abelhas grandes a mesma fonte de néctar sem formar uma colmeia de abelhas-do-mel?"
       ],
-      "foto": "img/mamangava.jpg",
-      "revisar": true
+      "acaoFuncao": "toca estruturas reprodutivas ao buscar alimento nas flores",
+      "conexoes": [
+        "Poliniza a castanheira-do-pará.",
+        "Obtém néctar das flores da castanheira."
+      ],
+      "foto": "img/mamangava.jpg"
     },
     {
       "id": "107",
@@ -190,17 +212,21 @@
       "biomas": ["amazonia"],
       "grupo": "arvore",
       "funcao": "produtor",
-      "alimentacao": "Produz seu próprio alimento por fotossíntese; o tronco libera látex quando cortado.",
-      "funcaoEcologica": "Produz borracha natural (látex) de importância histórica e econômica na Amazônia.",
-      "status": "lc",
-      "ameacas": ["Desmatamento", "Expansão agropecuária"],
-      "curiosidade": "Seu látex abasteceu o ciclo histórico da borracha na Amazônia.",
-      "pistas": ["Sou uma árvore amazônica.", "Meu tronco fornece um líquido branco.", "Meu látex é usado para produzir borracha."],
-      "acaoFuncao": "incorpora carbono ao crescer",
-      "funcaoContextoDificil": "Uma área produziu mais látex que outra. Como comparar o rendimento sem confundir tamanho da população e produção individual?",
+      "alimentacao": "Fotossíntese; absorve água e sais minerais pelas raízes.",
+      "funcaoEcologica": "Produção primária; incorporação de carbono na biomassa.",
+      "status": "ne",
+      "ameacas": ["Desmatamento", "Degradação das populações silvestres"],
+      "curiosidade": "Árvore amazônica produtora de látex, extraído por sangria na casca.",
+      "pistas": [
+        "Quem fornece um recurso que pode ser recolhido do tronco mantendo a árvore viva?",
+        "De quem se obtém um líquido branco usado na produção de borracha natural?",
+        "Que árvore ligaria uma trilha de extrativismo amazônico à fabricação de um material elástico?",
+        "Qual produtora deixa escorrer látex quando se faz uma sangria controlada na casca?",
+        "Em qual carta faz sentido comparar a produção de látex por árvore ao longo de várias coletas?"
+      ],
+      "acaoFuncao": "usa luz para produzir açúcares e formar madeira",
       "conexoes": [
-        "Sua extração de látex não exige corte da árvore.",
-        "Contribui para a cobertura e a saúde do solo da floresta."
+        "Produz látex extraído por sangria, sem precisar ser cortada."
       ],
       "foto": "img/seringueira.jpg"
     },
@@ -211,17 +237,21 @@
       "biomas": ["amazonia"],
       "grupo": "peixe",
       "funcao": "predador",
-      "alimentacao": "Carnívoro; captura peixes menores.",
-      "funcaoEcologica": "Um dos maiores peixes de água doce do mundo; precisa subir à superfície para respirar ar atmosférico.",
+      "alimentacao": "Principalmente peixes e outros animais aquáticos.",
+      "funcaoEcologica": "Predação de animais aquáticos.",
       "status": "ne",
-      "ameacas": ["Pesca excessiva", "Perda de habitat"],
-      "curiosidade": "Pode superar 2 metros de comprimento e precisa respirar ar na superfície.",
-      "pistas": ["Sou um peixe de água doce.", "Tenho escamas grandes.", "Subo à superfície para respirar ar."],
-      "acaoFuncao": "captura um peixe menor",
-      "funcaoContextoDificil": "Dois observadores somam todas as respirações vistas. Por que o total pode superar o número de peixes?",
+      "ameacas": ["Sobrepesca", "Pesca ilegal"],
+      "curiosidade": "Peixe de grande porte e grandes escamas; sobe à superfície para respirar ar.",
+      "pistas": [
+        "Quem precisa subir para respirar embora passe a vida inteira como peixe?",
+        "Que pescador da Amazônia também pode ser contado a partir de suas subidas à superfície?",
+        "De quem seriam as subidas repetidas de um peixe grande que podem enganar quem conta cada respiração como um indivíduo?",
+        "Qual predador aquático combina grandes escamas com respiração aérea obrigatória?",
+        "Quem pode deixar ondas na superfície ao buscar ar e logo voltar a perseguir peixes sob a água?"
+      ],
+      "acaoFuncao": "captura peixes menores e precisa voltar à superfície para respirar",
       "conexoes": [
-        "Preda peixes menores nos lagos e rios amazônicos.",
-        "Precisa subir à superfície para respirar."
+        "Preda peixes menores nos lagos e rios amazônicos."
       ],
       "foto": "img/pirarucu.jpg"
     },
@@ -232,17 +262,21 @@
       "biomas": ["amazonia"],
       "grupo": "mamifero_aquatico",
       "funcao": "herbivoro",
-      "alimentacao": "Vegetação aquática; único sirênio totalmente de água doce do mundo.",
-      "funcaoEcologica": "Herbívoro essencial para o equilíbrio da vegetação aquática dos rios e lagos amazônicos.",
+      "alimentacao": "Macrófitas e outras plantas aquáticas ou inundadas.",
+      "funcaoEcologica": "Herbivoria aquática.",
       "status": "vu",
-      "ameacas": ["Caça", "Captura acidental", "Poluição"],
-      "curiosidade": "É o único sirênio que vive inteiramente em água doce.",
-      "pistas": ["Sou um mamífero aquático.", "Alimento-me de plantas.", "Tenho nadadeiras anteriores e cauda arredondada."],
-      "acaoFuncao": "consome vegetação aquática",
-      "funcaoContextoDificil": "Uma contagem no lago caiu quando o rio subiu. Qual processo distinguir da mortalidade?",
+      "ameacas": ["Caça", "Captura acidental", "Alterações na conectividade dos ambientes aquáticos"],
+      "curiosidade": "Mamífero aquático de nadadeiras anteriores e cauda arredondada; precisa emergir para respirar.",
+      "pistas": [
+        "Que mamífero encontra novas áreas de pastagem quando rios e lagos amazônicos voltam a se conectar?",
+        "Quem procura plantas aquáticas, mas precisa interromper a alimentação para respirar ar?",
+        "Qual herbívoro percorre ambientes inundados com nadadeiras anteriores e uma cauda larga e arredondada?",
+        "Que nadador disputa espaço com barcos nos rios amazônicos e obtém energia principalmente de vegetação?",
+        "Quem pode perder acesso ao alimento quando se fecha a passagem entre um lago e o rio, mesmo havendo plantas do outro lado, e pertence aos sirênios?"
+      ],
+      "acaoFuncao": "consome vegetação de ambientes inundados",
       "conexoes": [
-        "Consome grandes quantidades de vegetação aquática.",
-        "Ajuda a manter o equilíbrio das plantas dos rios e lagos."
+        "Consome vegetação aquática nos rios e lagos amazônicos."
       ],
       "foto": "img/peixe-boi.jpg"
     },
@@ -253,17 +287,21 @@
       "biomas": ["amazonia"],
       "grupo": "inseto",
       "funcao": "consumidor_animal",
-      "alimentacao": "Pequenos artrópodes e néctar; forrageia no chão e na vegetação.",
-      "funcaoEcologica": "Formiga de picada considerada uma das mais dolorosas entre os insetos.",
+      "alimentacao": "Artrópodes e recursos açucarados, como néctar.",
+      "funcaoEcologica": "Predação e consumo de artrópodes; consumo de néctar.",
       "status": "ne",
-      "ameacas": ["Desmatamento"],
-      "curiosidade": "Sua picada está entre as mais doloridas do mundo dos insetos.",
-      "pistas": ["Sou um inseto social.", "Pertenço ao grupo das formigas.", "Meu nome científico começa com Paraponera."],
-      "acaoFuncao": "recolhe um artrópode para alimentação da colônia",
-      "funcaoContextoDificil": "Há tucandeiras forrageando em um tronco. Isso basta para localizar o ninho?",
+      "ameacas": ["Redução de substratos de nidificação e de áreas de forrageamento pela retirada da vegetação"],
+      "curiosidade": "Formiga grande e social; pode nidificar na base de árvores e forragear na vegetação.",
+      "pistas": [
+        "Quem pode fazer o ninho na base de uma árvore e subir ao tronco para procurar alimento em grupo social?",
+        "Qual formiga grande do guia do Rio Negro procura alimento na vegetação e volta a uma colônia?",
+        "Que inseto pode carregar um artrópode até o ninho e também obter alimento açucarado nas plantas?",
+        "Que forrageadora amazônica tem seis pernas e pertence à única espécie atual do gênero Paraponera?",
+        "Quem poderia ser vista sobre os ramos enquanto a entrada de seu formigueiro fica perto das raízes?"
+      ],
+      "acaoFuncao": "forrageia na vegetação e leva recursos à colônia",
       "conexoes": [
-        "Preda pequenos artrópodes no solo e na vegetação.",
-        "Contribui para a aeração do solo da floresta."
+        "Consome artrópodes e néctar na vegetação."
       ],
       "foto": "img/tucandeira.jpg"
     },
@@ -273,18 +311,23 @@
       "nomeCientifico": "Phyllomedusa bicolor",
       "biomas": ["amazonia"],
       "grupo": "anfibio",
-      "funcao": "reprodutor",
-      "alimentacao": "Insetos; adultos caçam à noite na vegetação.",
-      "funcaoEcologica": "Usada tradicionalmente por povos indígenas; a secreção de pele é estudada pela ciência.",
-      "status": "lc",
-      "ameacas": ["Desmatamento", "Coleta para rituais"],
-      "curiosidade": "Sua secreção de pele é usada tradicionalmente em rituais indígenas da Amazônia.",
-      "pistas": ["Sou um anfíbio.", "Vivo na vegetação.", "Deposito ovos em folhas sobre a água."],
-      "acaoFuncao": "usa folhas acima da água para a postura",
-      "funcaoContextoDificil": "O lago continua cheio, mas foram retiradas folhas sobre a margem. Qual fase pode perder suporte primeiro?",
+      "funcao": "predador",
+      "alimentacao": "Na fase adulta, principalmente insetos e outros invertebrados.",
+      "funcaoEcologica": "Predação de invertebrados na fase adulta.",
+      "status": "ne",
+      "ameacas": ["Perda de vegetação", "Degradação das poças e margens usadas para reprodução"],
+      "curiosidade": "Anfíbio arborícola verde; deposita ovos em folhas sobre a água e apresenta fase larval aquática.",
+      "pistas": [
+        "Quem começa a vida em ovos presos à vegetação e passa a fase seguinte na água?",
+        "Que anfíbio depende de folhas acima da água para que os girinos possam alcançá-la ao sair dos ovos?",
+        "Qual vertebrado arborícola usa ambientes diferentes para a postura e para o desenvolvimento larval?",
+        "Quem pode perder um local de reprodução com a retirada de ramos sobre uma poça, mesmo que a água permaneça?",
+        "De quem seriam girinos que chegam à poça vindos de folhas e cujos adultos são pererecas grandes e verdes da Amazônia?"
+      ],
+      "acaoFuncao": "captura pequenos invertebrados na vegetação",
       "conexoes": [
-        "Depende de vegetação próxima à água para se reproduzir.",
-        "Os girinos se desenvolvem na água após a eclosão."
+        "Preda invertebrados na fase adulta.",
+        "Deposita ovos em folhas sobre a água."
       ],
       "foto": "img/ra-kambo.jpg"
     },
@@ -295,18 +338,22 @@
       "biomas": ["cerrado"],
       "grupo": "canideo",
       "funcao": "dispersor",
-      "alimentacao": "Frutas, pequenos vertebrados e insetos.",
-      "funcaoEcologica": "Dispersor de sementes e controlador de pequenos animais.",
-      "status": "nt",
-      "ameacas": ["Atropelamentos", "Queimadas", "Perda de habitat"],
-      "curiosidade": "Apesar do nome, não forma matilhas como os lobos.",
-      "pistas": ["Sou um mamífero de pernas longas.", "Como frutos e pequenos animais.", "Meu nome lembra um lobo."],
-      "acaoFuncao": "transporta sementes de lobeira no trato digestivo",
-      "funcaoContextoDificil": "Sementes de lobeira aparecem nas fezes. O que falta medir para avaliar sua contribuição à regeneração?",
+      "alimentacao": "Frutos, como a lobeira, e pequenos vertebrados.",
+      "funcaoEcologica": "Predação de pequenos animais; frugivoria; dispersão de sementes.",
+      "status": "vu",
+      "ameacas": ["Atropelamento", "Perda de habitat", "Contato com cães domésticos"],
+      "curiosidade": "Canídeo alto, de pernas compridas e pelagem avermelhada.",
+      "pistas": [
+        "Quem pode deixar pelos e sementes nas fezes por consumir tanto animais quanto frutos?",
+        "Que dispersor procura frutos em campos abertos andando sobre pernas compridas?",
+        "Quem poderia conectar a lobeira e um pequeno roedor à dieta do mesmo canídeo?",
+        "Qual canídeo pode levar sementes para longe sem guardá-las em um esconderijo?",
+        "De quem poderiam ser fezes com sementes de lobeira perto de pegadas de um canídeo alto e avermelhado?"
+      ],
+      "acaoFuncao": "come frutos e pode defecar sementes intactas depois de se deslocar",
       "conexoes": [
-        "Dispersa sementes.",
-        "Controla populações de roedores.",
-        "Depende do Cerrado preservado."
+        "Dispersa sementes da lobeira.",
+        "Preda pequenos roedores."
       ],
       "foto": "img/lobo-guara.jpg"
     },
@@ -317,18 +364,22 @@
       "biomas": ["cerrado"],
       "grupo": "mirmecofago",
       "funcao": "predador",
-      "alimentacao": "Formigas e cupins.",
-      "funcaoEcologica": "Controle natural de insetos.",
+      "alimentacao": "Principalmente formigas e cupins.",
+      "funcaoEcologica": "Predação de insetos sociais.",
       "status": "vu",
-      "ameacas": ["Queimadas", "Atropelamentos", "Caça"],
-      "curiosidade": "Sua língua pode ultrapassar 60 cm.",
-      "pistas": ["Sou um mamífero.", "Tenho focinho alongado.", "Minha cauda peluda lembra uma bandeira."],
-      "acaoFuncao": "captura formigas com a língua",
-      "funcaoContextoDificil": "Um tamanduá é visto consumindo cupins. Isso demonstra redução populacional dos cupins em toda a área?",
+      "ameacas": ["Incêndios", "Atropelamento", "Perda de habitat"],
+      "curiosidade": "Mamífero de focinho longo, língua extensível, grandes garras e cauda peluda.",
+      "pistas": [
+        "Quem abre uma passagem no cupinzeiro com as garras e alcança as galerias com a língua?",
+        "Que mamífero consegue capturar muitos insetos sociais sem mastigá-los com dentes?",
+        "Quem usa um focinho alongado para explorar uma colônia depois de romper sua parede?",
+        "Que visitante de formigueiros possui cauda volumosa e peluda, além de fortes garras anteriores?",
+        "Qual consumidor de cupins depende mais do alcance da língua que da força da mordida?"
+      ],
+      "acaoFuncao": "abre colônias e captura insetos com a língua",
       "conexoes": [
-        "Controla cupins e formigas.",
-        "Influencia a dinâmica do solo.",
-        "Serve de indicador ambiental."
+        "Preda cupins e formigas.",
+        "Influencia a dinâmica do solo."
       ],
       "foto": "img/tamandua-bandeira.jpg"
     },
@@ -339,40 +390,49 @@
       "biomas": ["cerrado"],
       "grupo": "mirmecofago",
       "funcao": "engenheiro",
-      "alimentacao": "Cupins, formigas e insetos.",
-      "funcaoEcologica": "Engenheiro do ecossistema por escavar grandes tocas.",
+      "alimentacao": "Principalmente cupins e formigas, além de outros invertebrados.",
+      "funcaoEcologica": "Engenharia do ecossistema; predação de invertebrados.",
       "status": "vu",
-      "ameacas": ["Caça", "Destruição do habitat"],
-      "curiosidade": "É o maior tatu do mundo.",
-      "pistas": ["Sou um mamífero com carapaça.", "Escavo o solo com garras.", "Faço grandes tocas usadas por outros animais."],
-      "acaoFuncao": "escava uma toca que outro animal usa como abrigo",
-      "funcaoContextoDificil": "Como distinguir abrigo compartilhado de encontro casual perto de uma toca?",
+      "ameacas": ["Caça", "Desmatamento", "Perda de áreas contínuas"],
+      "curiosidade": "Mamífero com carapaça e grandes garras anteriores; escava tocas profundas.",
+      "pistas": [
+        "Quem deixa um abrigo que continua servindo a outros animais depois de partir?",
+        "Que mamífero pode ligar cupinzeiros e grandes tocas à mesma rede por razões diferentes?",
+        "Quem modifica fisicamente o solo ao abrir galerias com as garras e tem carapaça articulada?",
+        "De quem seria uma grande toca escavada por um consumidor de insetos protegido por placas?",
+        "Que escavador pode beneficiar um visitante da toca sem que os dois cheguem a se encontrar?"
+      ],
+      "acaoFuncao": "escava abrigos aproveitados por outros animais",
       "conexoes": [
-        "Suas tocas abrigam outras espécies.",
-        "Controla insetos.",
+        "Suas tocas abandonadas abrigam outras espécies.",
+        "Preda cupins e formigas.",
         "Melhora a aeração do solo."
       ],
       "foto": "img/tatu-canastra.jpg"
     },
     {
       "id": "204",
-      "nome": "Pequi",
+      "nome": "Pequizeiro",
       "nomeCientifico": "Caryocar brasiliense",
       "biomas": ["cerrado"],
       "grupo": "arvore",
       "funcao": "produtor",
-      "alimentacao": "Produz alimento por fotossíntese.",
-      "funcaoEcologica": "Fonte de alimento para animais e humanos.",
-      "status": "lc",
-      "ameacas": ["Desmatamento", "Queimadas frequentes"],
-      "curiosidade": "Seu fruto é símbolo cultural do Cerrado.",
-      "pistas": ["Sou uma árvore.", "Produzo fruto de polpa amarela.", "Há espinhos na parte interna do meu fruto."],
-      "acaoFuncao": "produz matéria orgânica por fotossíntese",
-      "funcaoContextoDificil": "Há muitas flores visitadas e poucos frutos. Qual variável distingue visita de fecundação bem-sucedida?",
+      "alimentacao": "Fotossíntese; absorve água e sais minerais pelas raízes.",
+      "funcaoEcologica": "Produção primária; oferta de néctar e frutos.",
+      "status": "ne",
+      "ameacas": ["Conversão da vegetação nativa", "Perda de áreas de regeneração"],
+      "curiosidade": "Árvore de flores visitadas por morcegos. O fruto tem polpa amarela e endocarpo com espinhos.",
+      "pistas": [
+        "Quem recebe visitas florais à noite e depois oferece um fruto de polpa amarela?",
+        "Qual árvore exige cuidado ao comer o fruto porque há espinhos junto à parte interna?",
+        "Quem poderia ligar morcegos visitantes de flores e pessoas que coletam frutos no Cerrado?",
+        "Que árvore do jogo reúne flores visitadas por morcegos e frutos cujo caroço é espinhoso?",
+        "Qual produtora pode ser reconhecida pela combinação de floração visitada à noite e polpa que se retira sem morder o caroço?"
+      ],
+      "acaoFuncao": "usa a energia luminosa para formar tecidos e frutos",
       "conexoes": [
-        "Alimenta aves e mamíferos.",
-        "Suas sementes são dispersadas por animais.",
-        "Contribui para a biodiversidade local."
+        "É polinizado por morcegos, como o morcego-polinizador.",
+        "Seus frutos alimentam aves e mamíferos."
       ],
       "foto": "img/pequi.jpg"
     },
@@ -383,18 +443,21 @@
       "biomas": ["cerrado"],
       "grupo": "ave_terrestre",
       "funcao": "predador",
-      "alimentacao": "Insetos, pequenos vertebrados e frutos.",
-      "funcaoEcologica": "Controle de insetos e pequenos animais.",
-      "status": "lc",
-      "ameacas": ["Perda de habitat", "Queimadas"],
-      "curiosidade": "Possui um canto que pode ser ouvido a quilômetros.",
-      "pistas": ["Sou uma ave terrestre.", "Tenho pernas compridas e canto forte.", "Exibo um topete junto ao bico."],
-      "acaoFuncao": "captura um inseto no chão",
-      "funcaoContextoDificil": "Duas áreas têm igual número de seriemas, mas uma tem mais insetos. A abundância das aves mede o consumo de insetos?",
+      "alimentacao": "Insetos, outros invertebrados e pequenos vertebrados.",
+      "funcaoEcologica": "Predação de insetos e pequenos vertebrados.",
+      "status": "ne",
+      "ameacas": ["Atropelamentos", "Alterações no habitat local"],
+      "curiosidade": "Ave terrestre de pernas longas, topete junto ao bico e vocalização forte.",
+      "pistas": [
+        "Qual ave procura pequenos animais andando no campo e se comunica com um canto que se ouve de longe?",
+        "Quem pode perseguir presas no chão sem depender de água rasa para encontrá-las?",
+        "Que caçadora terrestre tem pernas compridas e topete próximo ao bico?",
+        "Qual ave usa os campos para correr atrás de insetos e pequenos vertebrados?",
+        "Quem combinaria pegadas de ave corredora em terreno seco com um chamado forte e repetido?"
+      ],
+      "acaoFuncao": "procura presas no solo dos campos",
       "conexoes": [
-        "Controla insetos.",
-        "Alimenta-se de pequenos répteis.",
-        "Participa da dispersão de sementes."
+        "Preda insetos e pequenos répteis."
       ],
       "foto": "img/seriema.jpg"
     },
@@ -406,20 +469,23 @@
       "grupo": "morcego",
       "funcao": "polinizador",
       "alimentacao": "Néctar, pólen, frutos e insetos.",
-      "funcaoEcologica": "Poliniza flores que abrem à noite, como as do pequi, e ainda dispersa sementes.",
-      "status": "lc",
-      "ameacas": ["Perda de habitat", "Queimadas", "Agrotóxicos", "Destruição de abrigos"],
-      "curiosidade": "A flor do pequi abre à noite justamente para ser polinizada por morcegos.",
-      "pistas": ["Sou um mamífero.", "Voo à noite.", "Uso a língua comprida para alcançar néctar."],
-      "acaoFuncao": "leva pólen entre flores ao buscar néctar",
-      "funcaoContextoDificil": "Que registro distingue alimentação com néctar de prestação de serviço de polinização?",
-      "conexoes": [
-        "Poliniza o pequi.",
-        "Também dispersa sementes pelo Cerrado.",
-        "Depende de ocos e cavernas para se abrigar."
+      "funcaoEcologica": "Polinização; consumo de néctar.",
+      "status": "ne",
+      "ameacas": ["Perda de abrigos", "Perda de plantas que fornecem alimento"],
+      "curiosidade": "Morcego de focinho alongado e língua comprida; visita flores à noite.",
+      "pistas": [
+        "Quem encontra alimento em flores abertas no escuro e pode transferir pólen entre elas?",
+        "Qual mamífero usa uma língua comprida para alcançar néctar durante o voo?",
+        "Quem poderia visitar uma flor de pequi quando as aves diurnas já pararam de forragear?",
+        "Que visitante de flores alimenta sua própria cria com leite e pode levar pólen aderido ao pelo?",
+        "De quem seria o registro de uma visita noturna com asas membranosas e focinho mergulhado numa flor?"
       ],
-      "foto": "img/morcego-polinizador.jpg",
-      "revisar": true
+      "acaoFuncao": "transporta pólen no pelo ao visitar flores",
+      "conexoes": [
+        "Poliniza o pequizeiro.",
+        "Também visita outras flores de abertura noturna."
+      ],
+      "foto": "img/morcego-polinizador.jpg"
     },
     {
       "id": "207",
@@ -428,16 +494,21 @@
       "biomas": ["cerrado"],
       "grupo": "palmeira",
       "funcao": "dispersor",
-      "alimentacao": "Produz seu próprio alimento por fotossíntese; frutos comestíveis para diversos animais.",
-      "funcaoEcologica": "Fonte de alimento e água para a fauna; marca as veredas do Cerrado.",
-      "status": "lc",
-      "ameacas": ["Queimadas", "Drenagem de veredas"],
-      "curiosidade": "Suas folhas em leque são um dos sinais mais fáceis de reconhecer uma vereda.",
-      "pistas": ["Sou uma palmeira.", "Tenho folhas em leque.", "Sou marcante em veredas."],
-      "acaoFuncao": "oferece frutos cujas sementes podem ser levadas por animais",
-      "funcaoContextoDificil": "Um animal come a polpa e abandona a semente sob a palmeira. Qual dado permite medir o deslocamento?",
+      "alimentacao": "Fotossíntese; absorve água e sais minerais pelas raízes.",
+      "funcaoEcologica": "Produção primária; oferta de frutos à fauna.",
+      "status": "ne",
+      "ameacas": ["Drenagem de veredas", "Alteração do regime hídrico", "Queimadas intensas"],
+      "curiosidade": "Palmeira de folhas em leque, associada a solos úmidos; os frutos têm casca com escamas.",
+      "pistas": [
+        "Qual palmeira pode indicar um ambiente úmido mesmo em uma paisagem com longa estação seca?",
+        "Quem fornece frutos a animais e forma uma copa de folhas parecidas com leques?",
+        "Que planta permite reconhecer uma vereda pela combinação de umidade e presença de palmeiras altas?",
+        "De quem poderiam ser os frutos com casca de pequenas escamas numa área de solo encharcado?",
+        "Qual produtora aproxima Amazônia e Cerrado por ocorrer tanto em áreas úmidas amazônicas quanto em veredas?"
+      ],
+      "acaoFuncao": "oferece polpa e sementes aos consumidores de frutos",
       "conexoes": [
-        "Seus frutos alimentam antas, tracajás e diversos outros animais.",
+        "Seus frutos alimentam a anta-brasileira e diversos outros animais.",
         "É marcante nas veredas do Cerrado."
       ],
       "foto": "img/buriti.jpg"
@@ -449,17 +520,21 @@
       "biomas": ["cerrado"],
       "grupo": "canideo",
       "funcao": "predador",
-      "alimentacao": "Cupins, insetos, pequenos vertebrados e frutos.",
-      "funcaoEcologica": "Pequeno canídeo especializado, com cupins como base da dieta em campos abertos.",
-      "status": "nt",
-      "ameacas": ["Atropelamentos", "Perda de habitat", "Conflito com cães domésticos"],
-      "curiosidade": "Apesar do nome, cupins são a base principal de sua dieta.",
-      "pistas": ["Sou um mamífero de campo aberto.", "Sou um pequeno canídeo.", "Cupins têm destaque na minha dieta."],
-      "acaoFuncao": "captura cupins",
-      "funcaoContextoDificil": "Uma raposa foi registrada em campo seco junto ao Pantanal. Por que guardar também o tipo de habitat?",
+      "alimentacao": "Cupins, outros insetos, frutos e pequenos vertebrados.",
+      "funcaoEcologica": "Predação de insetos, com destaque para cupins.",
+      "status": "ne",
+      "ameacas": ["Atropelamento", "Alteração do habitat", "Contato com cães domésticos"],
+      "curiosidade": "Pequeno canídeo associado a ambientes abertos; insetos sociais têm destaque em sua dieta.",
+      "pistas": [
+        "Que pequeno canídeo pode encontrar boa parte de seu alimento num campo rico em cupins?",
+        "Quem usa ambientes abertos e procura insetos com frequência, embora pertença à ordem dos carnívoros?",
+        "Qual parente do lobo-guará tem menor porte e forte ligação alimentar com cupins?",
+        "Que canídeo brasileiro ilustra por que uma área seca junto ao Pantanal pode abrigar fauna associada ao Cerrado?",
+        "Qual raposa da coleção perderia oportunidades de alimentação se diminuíssem os cupins de uma área campestre?"
+      ],
+      "acaoFuncao": "captura cupins em áreas abertas",
       "conexoes": [
-        "Controla populações de cupins em áreas abertas.",
-        "Depende da conservação de campos e cerrados abertos."
+        "Preda cupins em áreas abertas."
       ],
       "foto": "img/raposa-do-campo.jpg"
     },
@@ -467,20 +542,25 @@
       "id": "209",
       "nome": "Anta-brasileira",
       "nomeCientifico": "Tapirus terrestris",
-      "biomas": ["cerrado"],
+      "biomas": ["cerrado", "pantanal"],
       "grupo": "anta",
       "funcao": "dispersor",
-      "alimentacao": "Frutas, folhas e brotos; é o maior mamífero terrestre nativo da América do Sul.",
-      "funcaoEcologica": "Importante dispersora de sementes de grandes frutos pela vegetação.",
+      "alimentacao": "Folhas, brotos, frutos e outras partes vegetais.",
+      "funcaoEcologica": "Herbivoria; frugivoria; dispersão de sementes.",
       "status": "vu",
-      "ameacas": ["Atropelamentos", "Caça", "Perda de habitat"],
-      "curiosidade": "É o maior mamífero terrestre nativo da América do Sul.",
-      "pistas": ["Sou um mamífero.", "Como frutos.", "Meu focinho forma uma pequena tromba."],
-      "acaoFuncao": "deposita longe da planta uma semente ingerida",
-      "funcaoContextoDificil": "Encontraram sementes intactas nas fezes da anta. Que etapa separa transporte de recrutamento vegetal?",
+      "ameacas": ["Caça", "Atropelamentos", "Incêndios", "Fragmentação de habitat"],
+      "curiosidade": "Mamífero terrestre com focinho flexível em forma de pequena tromba; também nada.",
+      "pistas": [
+        "Quem leva sementes através de trilhas na mata e usa um focinho que se prolonga numa pequena tromba?",
+        "Qual grande herbívoro pode conectar fragmentos ao depositar sementes ingeridas em outro local?",
+        "Que dispersor terrestre usa o focinho móvel para colher alimento e ocorre nos três biomas do jogo?",
+        "Qual mamífero pode deixar sementes nas fezes depois de atravessar um rio, sem ser um primata nem um canídeo?",
+        "Quem reúne casco nos dedos, focinho flexível e capacidade de transportar sementes grandes?"
+      ],
+      "acaoFuncao": "engole frutos e deixa sementes ao longo dos deslocamentos",
       "conexoes": [
-        "Dispersa sementes de frutos grandes, como o buriti.",
-        "Ajuda a renovar a vegetação por onde se desloca."
+        "Dispersa sementes de diversas plantas, como o buriti.",
+        "Pode ser predada pela onça-pintada."
       ],
       "foto": "img/anta.jpg"
     },
@@ -491,17 +571,21 @@
       "biomas": ["cerrado"],
       "grupo": "serpente",
       "funcao": "predador",
-      "alimentacao": "Pequenos vertebrados, como lagartos, aves e roedores jovens.",
-      "funcaoEcologica": "Serpente ágil que caça entre os ramos da vegetação.",
-      "status": "lc",
-      "ameacas": ["Perda de habitat"],
-      "curiosidade": "O nome popular \"cobra-cipó\" pode ser usado para mais de uma espécie diferente.",
-      "pistas": ["Sou um réptil.", "Posso me deslocar sobre ramos.", "Tenho corpo alongado e frequentemente verde."],
-      "acaoFuncao": "captura um pequeno vertebrado",
-      "funcaoContextoDificil": "Um aluno identifica uma serpente verde como cobra-cipó pela cor. Como testar a identificação?",
+      "alimentacao": "Pequenos vertebrados, como anfíbios, lagartos e aves.",
+      "funcaoEcologica": "Predação de pequenos vertebrados.",
+      "status": "ne",
+      "ameacas": ["Perda da cobertura vegetal", "Atropelamentos", "Perseguição"],
+      "curiosidade": "Serpente esguia, frequentemente verde, que usa o solo e a vegetação; a cor isolada é insuficiente para identificá-la.",
+      "pistas": [
+        "Quem pode usar um galho como caminho de caça e avançar por ele sem patas?",
+        "Que serpente delgada, muitas vezes verde, procura pequenos vertebrados entre ramos e no solo?",
+        "Qual caçadora pode usar a vegetação como suporte e é representada aqui pelo gênero Philodryas?",
+        "Quem perderia rotas entre arbustos depois da retirada dos ramos e se desloca por ondulações do corpo?",
+        "Qual réptil de corpo alongado combina uso de vegetação e predação de pequenos vertebrados, sem o porte robusto da sucuri?"
+      ],
+      "acaoFuncao": "utiliza a vegetação como suporte para alcançar presas",
       "conexoes": [
-        "Preda pequenos vertebrados entre os ramos.",
-        "O nome popular pode designar mais de uma espécie."
+        "Preda pequenos vertebrados entre os ramos e no solo."
       ],
       "foto": "img/cobra-cipo.jpg"
     },
@@ -511,18 +595,23 @@
       "nomeCientifico": "Podocnemis unifilis",
       "biomas": ["cerrado"],
       "grupo": "quelonio",
-      "funcao": "nidificador",
-      "alimentacao": "Herbívoro; come folhas, frutos e flores que caem na água.",
-      "funcaoEcologica": "Usa as praias dos rios para reprodução.",
-      "status": "vu",
-      "ameacas": ["Caça de ovos e indivíduos", "Alteração do regime dos rios"],
-      "curiosidade": "Usa a mesma praia, ano após ano, para depositar os ovos na areia.",
-      "pistas": ["Sou um réptil.", "Tenho casco.", "Uso margens expostas para depositar ovos."],
-      "acaoFuncao": "usa substrato exposto para colocar ovos",
-      "funcaoContextoDificil": "Dois anos têm a mesma altura máxima de cheia, mas diferentes perdas de ovos. Qual dado temporal é decisivo?",
+      "funcao": "consumidor_animal",
+      "alimentacao": "Frutos, sementes, outras partes de plantas e matéria animal.",
+      "funcaoEcologica": "Consumo de matéria vegetal e animal.",
+      "status": "ne",
+      "ameacas": ["Coleta de ovos", "Captura para consumo", "Alterações nas áreas de desova"],
+      "curiosidade": "Quelônio de água doce; deposita os ovos em margens expostas.",
+      "pistas": [
+        "Quem depende de água para viver e de uma margem exposta para enterrar ovos?",
+        "Que réptil com casco pode perder uma postura quando o rio sobe antes da eclosão?",
+        "Qual quelônio da lista liga as praias fluviais amazônicas à reprodução?",
+        "Quem sai da água para preparar um ninho na margem e carrega consigo uma proteção óssea?",
+        "De quem pode ser uma postura enterrada numa praia amazônica cujo adulto pertence ao gênero Podocnemis?"
+      ],
+      "acaoFuncao": "obtém alimento no ambiente aquático e deposita ovos em margens expostas",
       "conexoes": [
-        "Ajuda a dispersar sementes de frutos que caem na água.",
-        "Usa praias de areia para depositar os ovos."
+        "Deposita ovos em margens expostas dos rios.",
+        "Se alimenta de frutos e sementes que caem na água."
       ],
       "foto": "img/tracaja.jpg"
     },
@@ -533,18 +622,22 @@
       "biomas": ["pantanal"],
       "grupo": "ave_pernalta",
       "funcao": "predador",
-      "alimentacao": "Peixes, anfíbios e pequenos animais aquáticos.",
-      "funcaoEcologica": "Controle de populações aquáticas.",
-      "status": "lc",
-      "ameacas": ["Perda de áreas úmidas", "Queimadas"],
-      "curiosidade": "É a ave-símbolo do Pantanal.",
-      "pistas": ["Sou uma ave de pernas longas.", "Procuro presas na água.", "Meu pescoço preto tem uma faixa vermelha."],
-      "acaoFuncao": "captura um peixe em água rasa",
-      "funcaoContextoDificil": "Na vazante aumentam os peixes capturados por minuto. Isso demonstra aumento da população de peixes?",
+      "alimentacao": "Principalmente peixes e outros pequenos animais de ambientes aquáticos.",
+      "funcaoEcologica": "Predação de animais aquáticos.",
+      "status": "ne",
+      "ameacas": ["Degradação de áreas úmidas", "Perda de árvores de nidificação"],
+      "curiosidade": "Ave de áreas úmidas com bico comprido, pescoço preto e faixa vermelha; constrói grandes ninhos.",
+      "pistas": [
+        "Quem pode capturar mais peixes quando a água baixa e eles ficam ao alcance de seu bico longo?",
+        "Que ave de áreas alagáveis constrói um grande ninho de galhos e pesca a pé?",
+        "Qual pescador de pernas altas tem corpo claro e pescoço escuro com uma região vermelha?",
+        "Quem poderia aproveitar uma poça isolada na vazante e depois voltar voando ao ninho na árvore?",
+        "Qual ave de pescoço escuro captura peixes com um bico comprido cuja ponta não se alarga em colher?"
+      ],
+      "acaoFuncao": "captura presas caminhando em água rasa",
       "conexoes": [
-        "Controla peixes e anfíbios.",
-        "Depende das áreas alagadas.",
-        "Indica a qualidade dos ambientes aquáticos."
+        "Preda peixes e outros pequenos animais aquáticos.",
+        "Depende de áreas alagadas preservadas."
       ],
       "foto": "img/tuiuiu.jpg"
     },
@@ -556,17 +649,21 @@
       "grupo": "mamifero_aquatico",
       "funcao": "predador",
       "alimentacao": "Principalmente peixes.",
-      "funcaoEcologica": "Predador que regula populações aquáticas.",
+      "funcaoEcologica": "Predação de peixes.",
       "status": "en",
-      "ameacas": ["Poluição", "Pesca predatória", "Perda de habitat"],
-      "curiosidade": "Vive em grupos familiares muito organizados.",
-      "pistas": ["Sou um mamífero semiaquático.", "Vivo em grupos.", "Tenho uma mancha clara na garganta."],
-      "acaoFuncao": "captura peixes no rio",
-      "funcaoContextoDificil": "Como distinguir cinco encontros com um grupo de cinco grupos diferentes?",
+      "ameacas": ["Degradação dos rios", "Contaminação", "Perturbação de áreas de abrigo"],
+      "curiosidade": "Mamífero semiaquático que vive em grupos familiares; a mancha da garganta permite reconhecer indivíduos.",
+      "pistas": [
+        "Quem caça peixes em grupo e pode ser reconhecido individualmente pela garganta?",
+        "Que pescador precisa tanto do rio para se alimentar quanto de margens para se abrigar?",
+        "Qual mamífero pode deixar rastros na margem depois de uma caçada coletiva dentro da água?",
+        "Quem tem corpo alongado, pelo e uma marca clara na garganta, mesmo passando boa parte do tempo nadando?",
+        "Qual predador pode reunir uma família de pescadores em volta de uma toca na margem?"
+      ],
+      "acaoFuncao": "captura e consome peixes nos rios",
       "conexoes": [
-        "Controla populações de peixes.",
-        "Depende de rios limpos.",
-        "Compete com outros predadores aquáticos."
+        "Preda peixes em grupos familiares.",
+        "Depende de rios limpos e margens preservadas."
       ],
       "foto": "img/ariranha.jpg"
     },
@@ -577,18 +674,22 @@
       "biomas": ["pantanal"],
       "grupo": "crocodiliano",
       "funcao": "predador",
-      "alimentacao": "Peixes, aves e pequenos mamíferos.",
-      "funcaoEcologica": "Predador que regula populações de animais aquáticos.",
-      "status": "lc",
-      "ameacas": ["Poluição", "Destruição de áreas úmidas"],
-      "curiosidade": "Pode permanecer muito tempo imóvel esperando a presa.",
-      "pistas": ["Sou um réptil semiaquático.", "Tenho corpo coberto por escamas.", "Uso as mandíbulas para capturar presas."],
-      "acaoFuncao": "captura um peixe",
-      "funcaoContextoDificil": "Há mais jacarés visíveis por metro de margem na seca. Que mudança física pode explicar o resultado?",
+      "alimentacao": "Peixes e outros vertebrados e invertebrados; a dieta varia com o tamanho.",
+      "funcaoEcologica": "Predação de animais aquáticos; presa de grandes carnívoros.",
+      "status": "ne",
+      "ameacas": ["Degradação dos ambientes aquáticos", "Alteração do regime de inundação"],
+      "curiosidade": "Réptil semiaquático com escamas, placas dorsais, mandíbulas fortes e cauda musculosa.",
+      "pistas": [
+        "Quem pode esperar quase submerso até um peixe se aproximar de suas mandíbulas?",
+        "Que réptil liga ambientes aquáticos de alimentação a locais de postura fora da água e tem dentes expostos?",
+        "Qual caçador pode compartilhar uma lagoa com a sucuri, mas usa patas e mandíbulas para dominar presas?",
+        "Quem possui placas no dorso e pode ficar à espreita junto à margem?",
+        "Que predador de cauda musculosa pode pescar numa lagoa e repousar em terra firme, com olhos e narinas no alto da cabeça?"
+      ],
+      "acaoFuncao": "captura peixes e pode ser capturado pela onça",
       "conexoes": [
-        "Serve de presa para onças jovens.",
-        "Controla peixes e aves.",
-        "Mantém o equilíbrio dos rios."
+        "Preda peixes.",
+        "Serve de presa para a onça-pintada."
       ],
       "foto": "img/jacare-do-pantanal.jpg"
     },
@@ -599,18 +700,22 @@
       "biomas": ["pantanal"],
       "grupo": "roedor",
       "funcao": "herbivoro",
-      "alimentacao": "Gramíneas e plantas aquáticas.",
-      "funcaoEcologica": "Herbívoro que influencia a vegetação e serve de alimento para predadores.",
-      "status": "lc",
-      "ameacas": ["Perda de habitat", "Caça ilegal"],
-      "curiosidade": "É o maior roedor do mundo.",
-      "pistas": ["Sou um mamífero.", "Costumo ficar perto da água.", "Sou um grande roedor que pasta."],
-      "acaoFuncao": "come gramíneas na margem",
-      "funcaoContextoDificil": "Uma margem tem alimento, mas fica distante de um corpo d'água. Qual variável acrescentar ao estudo do uso da área?",
+      "alimentacao": "Gramíneas e outras plantas terrestres e aquáticas.",
+      "funcaoEcologica": "Herbivoria; presa de grandes carnívoros.",
+      "status": "ne",
+      "ameacas": ["Caça", "Perda de vegetação nas margens"],
+      "curiosidade": "Grande roedor semiaquático que costuma viver em grupos junto à água.",
+      "pistas": [
+        "Quem pasta na margem e pode procurar refúgio na água ao perceber um predador?",
+        "Que roedor conecta as gramíneas da planície à dieta da onça?",
+        "Qual herbívoro tem dentes incisivos grandes e costuma reunir-se em grupos perto da água?",
+        "De quem seriam marcas de pastejo próximas de pegadas de um grande roedor sem cauda aparente?",
+        "Qual nadador sai da água para pastar, ao contrário de um mamífero que se alimenta permanecendo submerso?"
+      ],
+      "acaoFuncao": "pasta na margem e pode servir de alimento à onça",
       "conexoes": [
-        "Alimenta a onça-pintada.",
-        "Influencia a vegetação aquática.",
-        "Ajuda na dispersão de sementes."
+        "É presa importante da onça-pintada.",
+        "Consome gramíneas nas margens dos rios."
       ],
       "foto": "img/capivara.jpg"
     },
@@ -621,21 +726,23 @@
       "biomas": ["pantanal"],
       "grupo": "beija_flor",
       "funcao": "polinizador",
-      "alimentacao": "Néctar de flores e pequenos insetos.",
-      "funcaoEcologica": "Poliniza flores nativas enquanto se alimenta de néctar.",
-      "status": "lc",
-      "ameacas": ["Perda de habitat", "Queimadas", "Redução das plantas nativas com flor"],
-      "curiosidade": "Bate as asas dezenas de vezes por segundo e consegue voar parado no ar.",
-      "pistas": ["Sou uma ave pequena.", "Consigo pairar diante de flores.", "Minha cauda longa é bifurcada."],
-      "acaoFuncao": "transfere pólen entre flores",
-      "funcaoContextoDificil": "Duas flores receberam o mesmo número de visitas. Isso garante a mesma quantidade de pólen transferido?",
-      "conexoes": [
-        "Poliniza flores nativas.",
-        "Depende de plantas floridas ao longo do ano.",
-        "Defende seu território com vigor."
+      "alimentacao": "Néctar e pequenos artrópodes.",
+      "funcaoEcologica": "Polinização; consumo de néctar.",
+      "status": "ne",
+      "ameacas": ["Redução de recursos florais", "Alteração da vegetação local"],
+      "curiosidade": "Ave pequena que paira diante das flores e tem cauda longa e bifurcada.",
+      "pistas": [
+        "Quem paira junto às flores durante o dia e pode sair com pólen preso à cabeça?",
+        "Qual visitante de flores tem penas e duas pontas compridas na cauda?",
+        "Que ave consegue manter o bico diante da corola enquanto as asas sustentam o corpo no ar?",
+        "Qual polinizador pode disputar flores com outras aves enquanto procura néctar sem pousar?",
+        "Quem ligaria flores de um jardim a outras flores próximas por voo diurno e tem cauda profundamente bifurcada?"
       ],
-      "foto": "img/beija-flor-tesoura.jpg",
-      "revisar": true
+      "acaoFuncao": "visita flores e pode transportar pólen entre elas",
+      "conexoes": [
+        "Poliniza flores nativas enquanto busca néctar."
+      ],
+      "foto": "img/beija-flor-tesoura.jpg"
     },
     {
       "id": "306",
@@ -644,17 +751,21 @@
       "biomas": ["pantanal"],
       "grupo": "serpente",
       "funcao": "predador",
-      "alimentacao": "Serpente constritora; captura peixes, aves e pequenos mamíferos em áreas alagadas.",
-      "funcaoEcologica": "Predadora que regula populações de presas em ambientes alagados.",
-      "status": "lc",
-      "ameacas": ["Perda de áreas alagadas", "Caça"],
-      "curiosidade": "Mata as presas por constrição, enrolando o corpo até imobilizá-las.",
-      "pistas": ["Sou uma serpente.", "Frequento áreas alagadas.", "Tenho fundo amarelado com manchas escuras."],
-      "acaoFuncao": "captura e imobiliza uma presa por constrição",
-      "funcaoContextoDificil": "Uma presa foi encontrada junto de uma sucuri. Que registro confirma a relação trófica?",
+      "alimentacao": "Vertebrados, incluindo aves e mamíferos.",
+      "funcaoEcologica": "Predação de vertebrados.",
+      "status": "ne",
+      "ameacas": ["Perda de áreas úmidas", "Abate por perseguição"],
+      "curiosidade": "Serpente robusta de áreas alagadas, com manchas escuras sobre fundo amarelado; captura por constrição.",
+      "pistas": [
+        "Que predadora de áreas alagadas consegue conter uma presa com voltas do próprio corpo?",
+        "Quem pode emboscar uma presa na água sem usar patas nem depender de veneno para dominá-la?",
+        "Qual serpente tem padrão escuro sobre fundo amarelado e se desloca com facilidade em brejos?",
+        "Que réptil sem patas compartilha ambientes pantaneiros com o jacaré e usa constrição?",
+        "Qual caçadora perderia locais de emboscada com a drenagem de um brejo e tem corpo robusto e manchado?"
+      ],
+      "acaoFuncao": "domina presas por constrição em ambientes úmidos",
       "conexoes": [
-        "Preda capivaras e outros animais em áreas alagadas.",
-        "Depende de ambientes alagados para se deslocar e caçar."
+        "Preda vertebrados de áreas úmidas, como aves e mamíferos."
       ],
       "foto": "img/sucuri-amarela.jpg"
     },
@@ -664,18 +775,22 @@
       "nomeCientifico": "Vochysia divergens",
       "biomas": ["pantanal"],
       "grupo": "arvore",
-      "funcao": "produtor",
-      "alimentacao": "Produz seu próprio alimento por fotossíntese.",
-      "funcaoEcologica": "Forma os cambarazais, florestas inundáveis típicas do Pantanal.",
+      "funcao": "engenheiro",
+      "alimentacao": "Fotossíntese; absorve água e sais minerais pelas raízes.",
+      "funcaoEcologica": "Produção primária; estruturação do habitat em cambarazais.",
       "status": "ne",
-      "ameacas": ["Desmatamento", "Alterações no regime de cheias"],
-      "curiosidade": "Pode formar florestas quase só de sua espécie, os cambarazais.",
-      "pistas": ["Sou uma árvore.", "Ocorro em áreas inundáveis.", "Posso predominar em formações chamadas cambarazais."],
-      "acaoFuncao": "incorpora carbono por fotossíntese",
-      "funcaoContextoDificil": "Duas parcelas têm cambarás. O que distingue aquela que constitui um cambarazal?",
+      "ameacas": ["Alterações hidrológicas", "Incêndios intensos"],
+      "curiosidade": "Árvore tolerante ao alagamento periódico; pode predominar em cambarazais.",
+      "pistas": [
+        "Quem tolera o alagamento periódico e pode predominar entre as árvores de uma parcela pantaneira?",
+        "Qual árvore dá origem a uma formação florestal quando muitos indivíduos predominam na planície?",
+        "Que espécie investigar quando uma área aberta inundável passa a ter muitos indivíduos de Vochysiaceae?",
+        "Quem poderia dominar a contagem de troncos numa formação pantaneira conhecida como cambarazal?",
+        "De quem seria uma população estudada para entender como árvores colonizam campos inundáveis e formam cambarazais?"
+      ],
+      "acaoFuncao": "forma povoamentos onde uma espécie pode predominar",
       "conexoes": [
-        "Forma os cambarazais, florestas inundáveis do Pantanal.",
-        "Pode servir de alimento complementar para o cervo-do-pantanal."
+        "Forma os cambarazais, florestas inundáveis do Pantanal."
       ],
       "foto": "img/cambara.jpg"
     },
@@ -686,17 +801,22 @@
       "biomas": ["pantanal"],
       "grupo": "cervideo",
       "funcao": "herbivoro",
-      "alimentacao": "Plantas de ambientes alagados, como gramíneas e folhas aquáticas.",
-      "funcaoEcologica": "Maior cervídeo da América do Sul; indicador da saúde das áreas úmidas.",
+      "alimentacao": "Plantas de brejos e campos úmidos.",
+      "funcaoEcologica": "Herbivoria de áreas úmidas.",
       "status": "vu",
-      "ameacas": ["Perda de áreas úmidas", "Caça"],
-      "curiosidade": "Suas galhadas ramificadas só aparecem nos machos adultos.",
-      "pistas": ["Sou um mamífero.", "Uso áreas úmidas.", "Os machos adultos têm galhadas ramificadas."],
-      "acaoFuncao": "come plantas de ambientes alagados",
-      "funcaoContextoDificil": "A drenagem de um brejo afeta os cervos. Que medida ajuda a testar uma explicação alimentar?",
+      "ameacas": ["Drenagem", "Barragens", "Incêndios", "Perda das áreas alagáveis"],
+      "curiosidade": "Grande cervídeo de áreas úmidas; os machos adultos apresentam galhadas ramificadas.",
+      "pistas": [
+        "Qual herbívoro de áreas úmidas tem machos adultos com galhadas ramificadas?",
+        "Quem pode perder alimento quando se drena um brejo e tem cascos adaptados a solo encharcado?",
+        "Que mamífero se desloca entre manchas de vegetação palustre sobre pernas longas e tem galhada nos machos?",
+        "Qual consumidor de plantas poderia ser confundido com outro veado se usássemos apenas a palavra Pantanal como pista?",
+        "Que cervídeo de grande porte utiliza brejos e campos alagáveis para buscar plantas?"
+      ],
+      "acaoFuncao": "consome plantas em brejos e campos alagáveis",
       "conexoes": [
-        "Consome vegetação de áreas alagadas e cambarazais.",
-        "Depende da conservação de brejos e áreas úmidas."
+        "Pode ser predado pela onça-pintada.",
+        "Consome plantas palustres."
       ],
       "foto": "img/cervo-do-pantanal.jpg"
     },
@@ -707,17 +827,21 @@
       "biomas": ["pantanal"],
       "grupo": "ave_pernalta",
       "funcao": "predador",
-      "alimentacao": "Pequenos peixes, crustáceos e insetos aquáticos capturados com o bico em forma de colher.",
-      "funcaoEcologica": "Ave emblemática das áreas úmidas, visível à distância pela plumagem rosada.",
-      "status": "lc",
-      "ameacas": ["Perda de áreas úmidas", "Poluição da água"],
-      "curiosidade": "Sua plumagem rosada vem dos crustáceos que consome, como nos flamingos.",
-      "pistas": ["Sou uma ave de áreas úmidas.", "Tenho plumagem rosada.", "A ponta do meu bico é achatada como uma colher."],
-      "acaoFuncao": "varre a água com o bico e captura pequenos animais",
-      "funcaoContextoDificil": "A água ficou turva. Por que seria insuficiente prever que a ave deixará de encontrar alimento?",
+      "alimentacao": "Pequenos crustáceos, insetos aquáticos, peixes e outras presas pequenas.",
+      "funcaoEcologica": "Predação de pequenos animais aquáticos.",
+      "status": "ne",
+      "ameacas": ["Perda de áreas rasas para alimentação", "Perturbação de colônias reprodutivas"],
+      "curiosidade": "Ave rosada com a extremidade do bico achatada; procura presas movendo o bico lateralmente.",
+      "pistas": [
+        "Quem consegue localizar pequenos animais pelo contato do bico enquanto o move de um lado para o outro?",
+        "Qual ave rosada depende de água rasa para varrer o fundo com o bico?",
+        "Que pescador usa a extremidade alargada do bico para procurar alimento mesmo com baixa visibilidade?",
+        "Qual ave de brejo pode capturar pequenos invertebrados sem precisar enxergá-los com precisão?",
+        "Quem deixaria de alcançar parte das presas se a água subisse além do alcance de seu bico achatado?"
+      ],
+      "acaoFuncao": "move o bico lateralmente e encontra presas por contato",
       "conexoes": [
-        "Preda pequenos peixes em águas rasas.",
-        "Sua plumagem rosada vem da dieta rica em crustáceos."
+        "Preda invertebrados aquáticos e pequenos peixes."
       ],
       "foto": "img/colhereiro.jpg"
     },
@@ -727,18 +851,23 @@
       "nomeCientifico": "Anodorhynchus hyacinthinus",
       "biomas": ["pantanal"],
       "grupo": "psitacideo",
-      "funcao": "nidificador",
-      "alimentacao": "Principalmente cocos de palmeiras, como o de acuri e bocaiuva.",
-      "funcaoEcologica": "Maior papagaio voador do mundo; depende de árvores grandes com ocos para nidificar.",
+      "funcao": "herbivoro",
+      "alimentacao": "Principalmente sementes de palmeiras; no Pantanal, usa acuri e bocaiuva.",
+      "funcaoEcologica": "Consumo de sementes de palmeiras.",
       "status": "vu",
-      "ameacas": ["Tráfico de animais", "Perda de árvores com ocos para nidificação"],
-      "curiosidade": "É a maior arara do mundo e depende de árvores antigas para nidificar.",
-      "pistas": ["Sou uma ave de plumagem azul.", "Tenho bico forte.", "No Pantanal uso cavidades de manduvi para criar filhotes."],
-      "acaoFuncao": "ocupa uma cavidade de árvore para criar filhotes",
-      "funcaoContextoDificil": "Dois trechos têm palmeiras com frutos, mas só um tem árvores com ocos. Qual recurso pode limitar a reprodução?",
+      "ameacas": ["Perda de palmeiras e árvores com cavidades", "Incêndios", "Captura ilegal"],
+      "curiosidade": "Arara de plumagem azul, bico robusto e pele amarela ao redor dos olhos e junto à mandíbula.",
+      "pistas": [
+        "Quem pode encontrar alimento em palmeiras e abrigo para os filhotes no tronco de outra árvore?",
+        "Qual ave usa o bico forte para abrir frutos de palmeiras e procura cavidades para se reproduzir?",
+        "Que visitante do manduvi pode criar filhotes no oco sem precisar comer a madeira da árvore?",
+        "Qual ave de grande porte liga o acuri à alimentação e o manduvi à nidificação no Pantanal?",
+        "Quem poderia perder locais de reprodução mesmo com cocos abundantes e tem plumagem azul intensa?"
+      ],
+      "acaoFuncao": "abre frutos de palmeiras e consome as sementes",
       "conexoes": [
-        "Depende de árvores grandes com ocos para nidificar.",
-        "Alimenta-se principalmente de cocos de palmeiras."
+        "Consome sementes de palmeiras, como o acuri.",
+        "Nidifica em cavidades do manduvi."
       ],
       "foto": "img/arara-azul-grande.jpg"
     }
@@ -850,7 +979,7 @@
             { "alvo": "206", "efeito": "declinio", "porque": "Perde as flores noturnas de que se alimenta." },
             { "alvo": "209", "efeito": "declinio", "porque": "Perde parte das árvores que oferecem frutos ao longo do ano." }
           ],
-          "explicacao": "O pequi é fonte de alimento e ponto de encontro da fauna. Sem os frutos, quem os comia se desloca — e as sementes deixam de ser levadas para longe."
+          "explicacao": "O pequizeiro é fonte de alimento e ponto de encontro da fauna. Sem os frutos, quem os comia se desloca — e as sementes deixam de ser levadas para longe."
         },
         {
           "id": "cer_rodovia",
