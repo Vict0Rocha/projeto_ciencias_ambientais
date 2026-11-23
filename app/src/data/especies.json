@@ -32,7 +32,16 @@
     { "id": "flores_nativas", "nome": "Flores nativas", "descricao": "Plantas com flor que dependem de polinizadores para frutificar." },
     { "id": "solo", "nome": "Solo", "descricao": "Aeração, ciclagem de nutrientes e germinação de sementes." },
     { "id": "artropodes", "nome": "Pequenos artrópodes", "descricao": "Presas de formigas caçadoras e outros invertebrados predadores." },
-    { "id": "cavidades_arvore", "nome": "Cavidades em árvores grandes", "descricao": "Ocos usados por aves e outros animais para nidificar." }
+    { "id": "cavidades_arvore", "nome": "Cavidades em árvores grandes", "descricao": "Ocos usados por aves e outros animais para nidificar." },
+    { "id": "cutias", "nome": "Cutias", "descricao": "Roedores que dispersam sementes de árvores de frutos grandes, como a castanheira-do-pará." },
+    { "id": "lobeira", "nome": "Lobeira", "descricao": "Arbusto do Cerrado cujos frutos são dispersos pelo lobo-guará." },
+    { "id": "tocas", "nome": "Tocas", "descricao": "Abrigos escavados que continuam servindo a outros animais depois que quem os escavou vai embora." },
+    { "id": "margens_expostas", "nome": "Margens expostas", "descricao": "Praias e barrancos usados por répteis aquáticos para depositar ovos." },
+    { "id": "folhas_sobre_agua", "nome": "Folhas sobre a água", "descricao": "Vegetação acima da água usada por anfíbios arborícolas para depositar ovos." },
+    { "id": "invertebrados_aquaticos", "nome": "Invertebrados aquáticos", "descricao": "Pequenos crustáceos e insetos aquáticos de águas rasas." },
+    { "id": "acuri", "nome": "Acuri", "descricao": "Palmeira do Pantanal cujas sementes alimentam a arara-azul-grande." },
+    { "id": "manduvi", "nome": "Manduvi", "descricao": "Árvore do Pantanal cujo tronco forma cavidades usadas por aves para nidificar." },
+    { "id": "cambarazal", "nome": "Cambarazal", "descricao": "Floresta inundável do Pantanal formada quando o cambará predomina sobre as demais árvores." }
   ],
   "tiposRelacao": [
     { "id": "preda", "rotulo": "preda", "descricao": "A primeira espécie se alimenta da segunda." },
@@ -42,7 +51,9 @@
     { "id": "abriga", "rotulo": "abriga", "descricao": "A primeira cria abrigo usado pela segunda." },
     { "id": "depende", "rotulo": "depende de", "descricao": "A primeira precisa da segunda para viver ou se reproduzir." },
     { "id": "compete", "rotulo": "compete com", "descricao": "As duas disputam o mesmo recurso." },
-    { "id": "melhora", "rotulo": "melhora", "descricao": "A primeira beneficia a segunda sem consumi-la." }
+    { "id": "melhora", "rotulo": "melhora", "descricao": "A primeira beneficia a segunda sem consumi-la." },
+    { "id": "forma", "rotulo": "forma", "descricao": "A primeira constrói ou origina uma estrutura ou formação que passa a existir no ambiente." },
+    { "id": "nidifica", "rotulo": "nidifica em", "descricao": "A primeira usa a segunda como local de reprodução ou para abrigar ninhos e filhotes." }
   ],
   "especies": [
     {
@@ -875,22 +886,24 @@
   "redes": [
     {
       "bioma": "amazonia",
-      "nos": ["101", "102", "103", "104", "105", "106", "107", "108", "109", "110", "111", "peixes", "vegetacao_aquatica", "solo", "artropodes"],
+      "nos": ["101", "102", "103", "104", "105", "106", "107", "108", "109", "110", "111", "peixes", "vegetacao_aquatica", "solo", "artropodes", "cutias", "flores_nativas", "folhas_sobre_agua"],
       "relacoes": [
         { "de": "101", "tipo": "preda", "para": "104", "fonte": "ficha" },
-        { "de": "101", "tipo": "depende", "para": "105", "nota": "Nidifica em árvores emergentes de grande porte.", "fonte": "ficha" },
+        { "de": "101", "tipo": "nidifica", "para": "105", "nota": "Pode nidificar em árvores emergentes, como a castanheira-do-pará.", "fonte": "ficha" },
         { "de": "104", "tipo": "dispersa", "para": "105", "fonte": "ficha" },
+        { "de": "cutias", "tipo": "dispersa", "para": "105", "fonte": "ficha" },
         { "de": "105", "tipo": "alimenta", "para": "104", "fonte": "ficha" },
         { "de": "103", "tipo": "preda", "para": "104", "revisar": true },
         { "de": "102", "tipo": "preda", "para": "peixes", "fonte": "ficha" },
-        { "de": "106", "tipo": "poliniza", "para": "105", "revisar": true },
-        { "de": "105", "tipo": "alimenta", "para": "106", "nota": "Néctar e pólen das flores.", "revisar": true },
+        { "de": "106", "tipo": "poliniza", "para": "105", "fonte": "ficha" },
+        { "de": "105", "tipo": "alimenta", "para": "106", "nota": "Néctar e pólen das flores.", "fonte": "ficha" },
         { "de": "108", "tipo": "preda", "para": "peixes", "fonte": "ficha" },
         { "de": "109", "tipo": "preda", "para": "vegetacao_aquatica", "nota": "Herbivoria sobre plantas aquáticas.", "fonte": "ficha" },
         { "de": "110", "tipo": "preda", "para": "artropodes", "fonte": "ficha" },
+        { "de": "flores_nativas", "tipo": "alimenta", "para": "110", "nota": "Néctar.", "fonte": "ficha" },
         { "de": "110", "tipo": "melhora", "para": "solo", "revisar": true },
         { "de": "107", "tipo": "melhora", "para": "solo", "revisar": true },
-        { "de": "111", "tipo": "depende", "para": "vegetacao_aquatica", "nota": "Usa folhas de plantas próximas à água para depositar os ovos.", "revisar": true }
+        { "de": "111", "tipo": "depende", "para": "folhas_sobre_agua", "nota": "Deposita os ovos em folhas acima da água; os girinos caem na água ao eclodir.", "fonte": "ficha" }
       ],
       "eventos": [
         {
@@ -946,26 +959,29 @@
     },
     {
       "bioma": "cerrado",
-      "nos": ["201", "202", "203", "204", "205", "206", "207", "208", "209", "210", "211", "insetos", "roedores", "repteis", "solo"],
+      "nos": ["201", "202", "203", "204", "205", "206", "207", "208", "209", "210", "211", "insetos", "roedores", "repteis", "solo", "lobeira", "tocas", "margens_expostas"],
       "relacoes": [
         { "de": "204", "tipo": "alimenta", "para": "201", "fonte": "ficha" },
         { "de": "201", "tipo": "dispersa", "para": "204", "fonte": "ficha" },
+        { "de": "201", "tipo": "dispersa", "para": "lobeira", "fonte": "ficha" },
         { "de": "201", "tipo": "preda", "para": "roedores", "fonte": "ficha" },
         { "de": "202", "tipo": "preda", "para": "insetos", "fonte": "ficha" },
         { "de": "203", "tipo": "preda", "para": "insetos", "fonte": "ficha" },
+        { "de": "203", "tipo": "forma", "para": "tocas", "fonte": "ficha" },
         { "de": "205", "tipo": "preda", "para": "insetos", "fonte": "ficha" },
         { "de": "205", "tipo": "preda", "para": "repteis", "fonte": "ficha" },
         { "de": "205", "tipo": "dispersa", "para": "204", "revisar": true },
         { "de": "203", "tipo": "abriga", "para": "202", "nota": "Tocas abandonadas servem de abrigo a várias espécies.", "revisar": true },
         { "de": "203", "tipo": "melhora", "para": "solo", "fonte": "ficha" },
         { "de": "insetos", "tipo": "melhora", "para": "solo", "revisar": true },
-        { "de": "206", "tipo": "poliniza", "para": "204", "revisar": true },
-        { "de": "204", "tipo": "alimenta", "para": "206", "nota": "Néctar das flores noturnas.", "revisar": true },
+        { "de": "206", "tipo": "poliniza", "para": "204", "fonte": "ficha" },
+        { "de": "204", "tipo": "alimenta", "para": "206", "nota": "Néctar das flores noturnas.", "fonte": "ficha" },
         { "de": "206", "tipo": "preda", "para": "insetos", "revisar": true },
         { "de": "209", "tipo": "dispersa", "para": "207", "fonte": "ficha" },
         { "de": "211", "tipo": "dispersa", "para": "207", "revisar": true },
+        { "de": "211", "tipo": "depende", "para": "margens_expostas", "fonte": "ficha" },
         { "de": "208", "tipo": "preda", "para": "insetos", "fonte": "ficha" },
-        { "de": "210", "tipo": "preda", "para": "roedores", "revisar": true }
+        { "de": "210", "tipo": "preda", "para": "roedores", "fonte": "ficha" }
       ],
       "eventos": [
         {
@@ -1013,23 +1029,30 @@
     },
     {
       "bioma": "pantanal",
-      "nos": ["103", "304", "303", "301", "302", "305", "306", "307", "308", "309", "310", "peixes", "vegetacao_aquatica", "flores_nativas", "cavidades_arvore"],
+      "nos": ["103", "304", "303", "301", "302", "305", "306", "307", "308", "309", "310", "209", "peixes", "vegetacao_aquatica", "flores_nativas", "cavidades_arvore", "invertebrados_aquaticos", "acuri", "manduvi", "cambarazal"],
       "relacoes": [
         { "de": "103", "tipo": "preda", "para": "304", "fonte": "ficha" },
         { "de": "103", "tipo": "preda", "para": "303", "fonte": "ficha" },
+        { "de": "103", "tipo": "preda", "para": "308", "fonte": "ficha" },
+        { "de": "103", "tipo": "preda", "para": "209", "fonte": "ficha" },
         { "de": "304", "tipo": "preda", "para": "vegetacao_aquatica", "nota": "Herbivoria sobre gramíneas e plantas aquáticas.", "fonte": "ficha" },
         { "de": "303", "tipo": "preda", "para": "peixes", "fonte": "ficha" },
         { "de": "302", "tipo": "preda", "para": "peixes", "fonte": "ficha" },
         { "de": "301", "tipo": "preda", "para": "peixes", "fonte": "ficha" },
         { "de": "302", "tipo": "compete", "para": "303", "fonte": "ficha" },
         { "de": "304", "tipo": "dispersa", "para": "vegetacao_aquatica", "revisar": true },
-        { "de": "305", "tipo": "poliniza", "para": "flores_nativas", "revisar": true },
-        { "de": "flores_nativas", "tipo": "alimenta", "para": "305", "nota": "Néctar.", "revisar": true },
+        { "de": "305", "tipo": "poliniza", "para": "flores_nativas", "fonte": "ficha" },
+        { "de": "flores_nativas", "tipo": "alimenta", "para": "305", "nota": "Néctar.", "fonte": "ficha" },
         { "de": "306", "tipo": "preda", "para": "304", "fonte": "ficha" },
         { "de": "308", "tipo": "preda", "para": "vegetacao_aquatica", "fonte": "ficha" },
         { "de": "308", "tipo": "preda", "para": "307", "nota": "Pode se alimentar da vegetação de áreas de cambarazal quando acessível.", "revisar": true },
+        { "de": "307", "tipo": "forma", "para": "cambarazal", "fonte": "ficha" },
         { "de": "309", "tipo": "preda", "para": "peixes", "fonte": "ficha" },
-        { "de": "310", "tipo": "depende", "para": "cavidades_arvore", "nota": "Usa ocos de árvores grandes, como o manduvi, para nidificar.", "revisar": true }
+        { "de": "309", "tipo": "preda", "para": "invertebrados_aquaticos", "fonte": "ficha" },
+        { "de": "310", "tipo": "depende", "para": "cavidades_arvore", "nota": "Usa ocos de árvores grandes para nidificar.", "revisar": true },
+        { "de": "310", "tipo": "nidifica", "para": "manduvi", "fonte": "ficha" },
+        { "de": "310", "tipo": "preda", "para": "acuri", "nota": "Consome as sementes do fruto.", "fonte": "ficha" },
+        { "de": "209", "tipo": "dispersa", "para": "vegetacao_aquatica", "nota": "Dispersa sementes de plantas ao se deslocar entre áreas alagadas.", "revisar": true }
       ],
       "eventos": [
         {

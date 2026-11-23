@@ -19,7 +19,9 @@ export type TipoRelacaoId =
   | 'abriga'
   | 'depende'
   | 'compete'
-  | 'melhora';
+  | 'melhora'
+  | 'forma'
+  | 'nidifica';
 
 export interface Bioma {
   id: BiomaId;
