@@ -1,8 +1,11 @@
 import { create } from 'zustand';
-import { getAllBiomas, getRedePorBioma } from '../domain/especiesRepository';
+import { getAllBiomas, getNomeNoRede, getRedePorBioma, limitarRedeParaPartida } from '../domain/especiesRepository';
 import { calcularLayoutRede, type NoPosicionado } from '../domain/redeLayout';
 import type { Estrelas } from '../domain/scoring';
 import type { BiomaId, RedeBioma, RelacaoRede } from '../domain/types';
+
+/** Cada bioma tem 16–22 relações cadastradas; uma partida só usa uma amostra disso (ver `limitarRedeParaPartida`). */
+const MAX_RELACOES_POR_PARTIDA = 11;
 
 export type FaseRede = 'montagem' | 'confirmado' | 'eventos' | 'concluido';
 
@@ -68,10 +71,11 @@ export const useRedeStore = create<RedeSessionState>()((set) => ({
   iniciarPartida: () => {
     const biomas = getAllBiomas();
     const bioma = biomas[Math.floor(Math.random() * biomas.length)].id;
-    const rede = getRedePorBioma(bioma);
+    const rede = limitarRedeParaPartida(getRedePorBioma(bioma), MAX_RELACOES_POR_PARTIDA);
     const nos = calcularLayoutRede(
       rede.nos,
       rede.relacoes.map((r) => ({ de: r.de, para: r.para })),
+      getNomeNoRede,
     );
     set({ ...ESTADO_INICIAL, bioma, rede, nos });
   },

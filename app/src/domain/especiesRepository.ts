@@ -11,6 +11,7 @@ import {
   type NoRede,
   type Recurso,
   type RedeBioma,
+  type RelacaoRede,
   type StatusConservacao,
   type StatusConservacaoId,
   type TipoRelacao,
@@ -85,6 +86,65 @@ export function getRedePorBioma(bioma: BiomaId): RedeBioma {
   const rede = redesPorBioma.get(bioma);
   if (!rede) throw new Error(`Rede desconhecida para o bioma: ${bioma}`);
   return rede;
+}
+
+/** Nome de exibição de um nó da Rede da Vida (carta de espécie ou recurso), com fallback pro próprio id. */
+export function getNomeNoRede(id: string): string {
+  return resolveNoRede(id)?.data.nome ?? id;
+}
+
+/**
+ * Sorteia uma amostra das relações de um bioma para uma partida de "Rede da Vida":
+ * os biomas têm de 16 a 22 relações cadastradas, o que deixa o grafo cheio demais
+ * para jogar. Cada partida usa só até `maxRelacoes`, priorizando as confirmadas
+ * pela ficha (`fonte: "ficha"`) sobre as ainda marcadas "revisar" — e garante que
+ * todo nó citado nos eventos continue com pelo menos 1 relação, senão ele apareceria
+ * isolado (sem nenhuma ligação) na fase de montagem. Os nós retornados são só os
+ * usados pelas relações sorteadas + pelos eventos, não a rede inteira do bioma.
+ */
+export function limitarRedeParaPartida(rede: RedeBioma, maxRelacoes: number): RedeBioma {
+  const idsEventos = new Set<string>();
+  rede.eventos.forEach((evento) => {
+    evento.impactoDireto.forEach((id) => idsEventos.add(id));
+    evento.cascata.forEach((c) => idsEventos.add(c.alvo));
+  });
+
+  const porPrioridade = [
+    ...shuffle(rede.relacoes.filter((r) => r.fonte === 'ficha')),
+    ...shuffle(rede.relacoes.filter((r) => r.fonte !== 'ficha')),
+  ];
+
+  const chaveRelacao = (r: RelacaoRede) => `${r.de}|${r.tipo}|${r.para}`;
+  const selecionadas: RelacaoRede[] = [];
+  const chavesSelecionadas = new Set<string>();
+  function adicionar(r: RelacaoRede) {
+    const chave = chaveRelacao(r);
+    if (chavesSelecionadas.has(chave)) return;
+    chavesSelecionadas.add(chave);
+    selecionadas.push(r);
+  }
+
+  idsEventos.forEach((id) => {
+    const relacao = porPrioridade.find((r) => r.de === id || r.para === id);
+    if (relacao) adicionar(relacao);
+  });
+
+  for (const relacao of porPrioridade) {
+    if (selecionadas.length >= maxRelacoes) break;
+    adicionar(relacao);
+  }
+
+  const idsNecessarios = new Set<string>(idsEventos);
+  selecionadas.forEach((r) => {
+    idsNecessarios.add(r.de);
+    idsNecessarios.add(r.para);
+  });
+
+  return {
+    ...rede,
+    nos: rede.nos.filter((id) => idsNecessarios.has(id)),
+    relacoes: selecionadas,
+  };
 }
 
 /** Espécies de um bioma, na ordem em que aparecem no especies.json. */

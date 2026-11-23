@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useRedeStore, type LigacaoFeita, type LigacaoResultado } from '../../../store/redeStore';
 import { useProgressStore } from '../../../store/progressStore';
-import { getBioma, getTipoRelacao, resolveNoRede } from '../../../domain/especiesRepository';
+import { getBioma, getNomeNoRede, getTipoRelacao, resolveNoRede } from '../../../domain/especiesRepository';
 import { CARTA_ID_REGEX, type RelacaoRede } from '../../../domain/types';
 import { tocarAcerto, tocarErro } from '../../../domain/sound';
 import { ChallengeHeader } from '../ChallengeHeader';
@@ -11,9 +11,7 @@ import { StarRating } from '../../../design-system/components/StarRating';
 import { RedeGraph, type Aresta, type DestaqueNo } from './RedeGraph';
 import styles from './RedeDaVidaPage.module.css';
 
-function nomeDoNo(id: string): string {
-  return resolveNoRede(id)?.data.nome ?? id;
-}
+const nomeDoNo = getNomeNoRede;
 
 /** Uma relação real "bateu" com alguma ligação certa do jogador, em qualquer sentido. */
 function relacaoFoiEncontrada(relacao: RelacaoRede, feitas: LigacaoResultado[]): boolean {
@@ -141,6 +139,10 @@ export function RedeDaVidaPage() {
         <div className={styles.body}>
           <div className={styles.main}>
             <p className={styles.instrucao}>Ligue as espécies como você acha que elas se relacionam — confira no final.</p>
+            <p className={styles.legenda}>
+              <span className={styles.legendaChip} data-tipo="especie" aria-hidden="true" /> espécie
+              <span className={styles.legendaChip} data-tipo="recurso" aria-hidden="true" /> elemento do ambiente
+            </p>
             <RedeGraph
               nos={nos}
               resolveNo={resolveNoRede}

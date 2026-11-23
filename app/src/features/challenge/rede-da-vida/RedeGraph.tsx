@@ -1,5 +1,4 @@
-import type { KeyboardEvent } from 'react';
-import { getFotoAltText } from '../../../domain/especiesRepository';
+import type { CSSProperties, KeyboardEvent } from 'react';
 import { ALTURA_LOGICA, LARGURA_LOGICA, type NoPosicionado } from '../../../domain/redeLayout';
 import type { NoRede } from '../../../domain/types';
 import styles from './RedeGraph.module.css';
@@ -25,8 +24,8 @@ export interface RedeGraphProps {
   ariaLabel: string;
 }
 
-const RAIO_ESPECIE = 30;
-const RAIO_RECURSO = 24;
+/** Área de toque mínima recomendada, mesmo quando o chip visual do nó é menor. */
+const TOQUE_MINIMO = 44;
 
 const COR_DESTAQUE: Record<DestaqueNo, string> = {
   impacto: 'var(--color-ink)',
@@ -68,26 +67,6 @@ export function RedeGraph({
         role="group"
         aria-label={ariaLabel}
       >
-        <defs>
-          {nos.map((no) => {
-            const resolvido = resolveNo(no.id);
-            if (resolvido?.kind !== 'especie') return null;
-            return (
-              <pattern key={no.id} id={`foto-${no.id}`} patternUnits="objectBoundingBox" width="1" height="1">
-                <image
-                  href={`/${resolvido.data.foto}`}
-                  aria-label={getFotoAltText(resolvido.data)}
-                  x="-25%"
-                  y="-25%"
-                  width="150%"
-                  height="150%"
-                  preserveAspectRatio="xMidYMid slice"
-                />
-              </pattern>
-            );
-          })}
-        </defs>
-
         {arestas.map((aresta, index) => {
           const de = posicaoPorId.get(aresta.de);
           const para = posicaoPorId.get(aresta.para);
@@ -111,10 +90,17 @@ export function RedeGraph({
           const resolvido = resolveNo(no.id);
           if (!resolvido) return null;
           const ehEspecie = resolvido.kind === 'especie';
-          const raio = ehEspecie ? RAIO_ESPECIE : RAIO_RECURSO;
           const nome = resolvido.data.nome;
           const selecionado = noSelecionado === no.id;
           const destaque = nosDestacados?.[no.id];
+          const larguraToque = Math.max(no.largura, TOQUE_MINIMO);
+          const alturaToque = Math.max(no.altura, TOQUE_MINIMO);
+
+          const estiloChip: CSSProperties | undefined = ehEspecie
+            ? { stroke: destaque ? COR_DESTAQUE[destaque] : corBioma, strokeWidth: destaque ? 4 : 2.5 }
+            : destaque
+              ? { stroke: COR_DESTAQUE[destaque], strokeWidth: 4 }
+              : undefined;
 
           return (
             <g
@@ -130,31 +116,49 @@ export function RedeGraph({
               onKeyDown={(event) => handleKeyDown(event, no.id)}
             >
               {selecionado && (
-                <circle r={raio + 7} fill="none" stroke="var(--color-accent-lime)" strokeWidth={3} />
+                <rect
+                  x={-no.largura / 2 - 6}
+                  y={-no.altura / 2 - 6}
+                  width={no.largura + 12}
+                  height={no.altura + 12}
+                  rx={(no.altura + 12) / 2}
+                  fill="none"
+                  stroke="var(--color-accent-lime)"
+                  strokeWidth={3}
+                />
               )}
-              <circle
+              <rect
                 className={styles.foco}
-                r={raio + 11}
+                x={-no.largura / 2 - 10}
+                y={-no.altura / 2 - 10}
+                width={no.largura + 20}
+                height={no.altura + 20}
+                rx={(no.altura + 20) / 2}
                 fill="none"
                 stroke="var(--color-accent-lime)"
                 strokeWidth={2}
               />
-              {/* área de toque mínima de 44px, mesmo quando o círculo visual é menor */}
-              <circle r={Math.max(raio, 22)} fill="transparent" />
-              <circle
-                r={raio}
-                fill={ehEspecie ? `url(#foto-${no.id})` : 'var(--color-surface-sunken)'}
-                stroke={destaque ? COR_DESTAQUE[destaque] : ehEspecie ? corBioma : 'var(--color-border-strong)'}
-                strokeWidth={destaque ? 4 : 2.5}
+              {/* área de toque mínima, mesmo quando o chip visual é menor */}
+              <rect x={-larguraToque / 2} y={-alturaToque / 2} width={larguraToque} height={alturaToque} fill="transparent" />
+              <rect
+                className={ehEspecie ? styles.chipEspecie : styles.chipRecurso}
+                x={-no.largura / 2}
+                y={-no.altura / 2}
+                width={no.largura}
+                height={no.altura}
+                rx={no.altura / 2}
+                style={estiloChip}
               />
               {destaque && GLIFO_DESTAQUE[destaque] && (
-                <text className={styles.efeito} y={-raio - 10} fill={COR_DESTAQUE[destaque]}>
+                <text className={styles.efeito} y={-no.altura / 2 - 10} fill={COR_DESTAQUE[destaque]}>
                   {GLIFO_DESTAQUE[destaque]}
                 </text>
               )}
-              <text className={styles.label} y={raio + 18}>
-                {nome}
-              </text>
+              {no.linhas.map((linha, i) => (
+                <text key={i} className={styles.label} y={(i - (no.linhas.length - 1) / 2) * 13}>
+                  {linha}
+                </text>
+              ))}
             </g>
           );
         })}
