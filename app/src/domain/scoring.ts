@@ -1,11 +1,13 @@
 /**
  * Regras de pontuação do Bio Tríade (README § "Regras do jogo").
- * Tentativas: 2 por desafio. Pistas: até 5, só em Quem Sou Eu — pedir pista não
- * consome tentativa, mas reduz a estrela máxima possível.
+ * Tentativas: 2 por desafio. Pistas: até 3 (cada espécie tem 5 cadastradas em
+ * `especies.json`, mas só as 3 primeiras são reveláveis numa partida), só em
+ * Quem Sou Eu — pedir pista não consome tentativa, mas reduz a estrela máxima
+ * possível.
  */
 
 export const MAX_TENTATIVAS = 2;
-export const MAX_PISTAS = 5;
+export const MAX_PISTAS = 3;
 
 export type NumeroTentativa = 1 | 2;
 export type Estrelas = 0 | 1 | 2 | 3;
