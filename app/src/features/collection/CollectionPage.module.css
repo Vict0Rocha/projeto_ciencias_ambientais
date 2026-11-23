@@ -164,10 +164,21 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  transform: translateY(0) scale(1);
+  transition:
+    transform 220ms cubic-bezier(0.2, 0.7, 0.2, 1),
+    box-shadow 220ms ease,
+    border-color 220ms ease;
 }
-.card:hover {
+.card:hover,
+.card:focus-visible {
   border-color: var(--color-accent-lime);
   box-shadow: var(--shadow-card-hover);
+  transform: translateY(-6px) scale(1.03);
+}
+.card:active {
+  transform: translateY(-2px) scale(1.01);
+  transition-duration: 90ms;
 }
 
 .stripe {
@@ -181,6 +192,11 @@
   aspect-ratio: 1;
   object-fit: cover;
   background: var(--color-surface-sunken);
+  transition: transform 260ms ease;
+}
+.card:hover .cardPhoto,
+.card:focus-visible .cardPhoto {
+  transform: scale(1.06);
 }
 
 .cardBody {
