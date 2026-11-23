@@ -21,35 +21,6 @@
   line-height: 1.35;
 }
 
-.legenda {
-  margin: -6px 0 0;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 12px;
-  color: var(--color-ink-muted);
-}
-
-.legendaChip {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  border: 2px solid var(--color-border-strong);
-  flex-shrink: 0;
-}
-.legendaChip:not(:first-child) {
-  margin-left: 14px;
-}
-.legendaChip[data-tipo='especie'] {
-  border-style: solid;
-  border-color: var(--color-ink-muted);
-  background: var(--color-surface);
-}
-.legendaChip[data-tipo='recurso'] {
-  border-style: dashed;
-  background: var(--color-surface-sunken);
-}
-
 .sidebar {
   display: flex;
   flex-direction: column;

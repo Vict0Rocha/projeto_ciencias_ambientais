@@ -74,7 +74,6 @@ export function RedeDaVidaPage() {
   }
 
   const redeAtual = rede;
-  const corBioma = getBioma(bioma).cor;
   const eventoAtual = redeAtual.eventos[Math.min(eventoAtualIndex, redeAtual.eventos.length - 1)];
 
   function handleVerCascata() {
@@ -139,15 +138,10 @@ export function RedeDaVidaPage() {
         <div className={styles.body}>
           <div className={styles.main}>
             <p className={styles.instrucao}>Ligue as espécies como você acha que elas se relacionam — confira no final.</p>
-            <p className={styles.legenda}>
-              <span className={styles.legendaChip} data-tipo="especie" aria-hidden="true" /> espécie
-              <span className={styles.legendaChip} data-tipo="recurso" aria-hidden="true" /> elemento do ambiente
-            </p>
             <RedeGraph
               nos={nos}
               resolveNo={resolveNoRede}
               arestas={arestasParaFase()}
-              corBioma={corBioma}
               noSelecionado={noSelecionado}
               onSelecionarNo={selecionarNo}
               interativo
@@ -193,7 +187,6 @@ export function RedeDaVidaPage() {
               nos={nos}
               resolveNo={resolveNoRede}
               arestas={arestasParaFase()}
-              corBioma={corBioma}
               interativo={false}
               ariaLabel={`Resultado da rede — ${getBioma(bioma).nome}`}
             />
@@ -257,7 +250,6 @@ export function RedeDaVidaPage() {
               nos={nos}
               resolveNo={resolveNoRede}
               arestas={arestasParaFase()}
-              corBioma={corBioma}
               interativo={false}
               nosDestacados={nosDestacados}
               ariaLabel={`Cascata do evento — ${eventoAtual.titulo}`}

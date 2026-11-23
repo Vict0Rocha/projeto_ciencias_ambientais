@@ -16,7 +16,6 @@ export interface RedeGraphProps {
   nos: NoPosicionado[];
   resolveNo: (id: string) => NoRede | undefined;
   arestas: Aresta[];
-  corBioma: string;
   noSelecionado?: string | null;
   onSelecionarNo?: (id: string) => void;
   interativo: boolean;
@@ -42,7 +41,6 @@ export function RedeGraph({
   nos,
   resolveNo,
   arestas,
-  corBioma,
   noSelecionado,
   onSelecionarNo,
   interativo,
@@ -89,18 +87,18 @@ export function RedeGraph({
         {nos.map((no) => {
           const resolvido = resolveNo(no.id);
           if (!resolvido) return null;
-          const ehEspecie = resolvido.kind === 'especie';
           const nome = resolvido.data.nome;
           const selecionado = noSelecionado === no.id;
           const destaque = nosDestacados?.[no.id];
           const larguraToque = Math.max(no.largura, TOQUE_MINIMO);
           const alturaToque = Math.max(no.altura, TOQUE_MINIMO);
 
-          const estiloChip: CSSProperties | undefined = ehEspecie
-            ? { stroke: destaque ? COR_DESTAQUE[destaque] : corBioma, strokeWidth: destaque ? 4 : 2.5 }
-            : destaque
-              ? { stroke: COR_DESTAQUE[destaque], strokeWidth: 4 }
-              : undefined;
+          // Todo nó usa a mesma aparência (nada de cor por bioma) — só os marcadores
+          // de impacto/declínio/aumento do evento mudam a cor da borda, por serem
+          // parte do que a mecânica está explicando, não uma decoração.
+          const estiloChip: CSSProperties | undefined = destaque
+            ? { stroke: COR_DESTAQUE[destaque], strokeWidth: 4 }
+            : undefined;
 
           return (
             <g
@@ -141,7 +139,7 @@ export function RedeGraph({
               {/* área de toque mínima, mesmo quando o chip visual é menor */}
               <rect x={-larguraToque / 2} y={-alturaToque / 2} width={larguraToque} height={alturaToque} fill="transparent" />
               <rect
-                className={ehEspecie ? styles.chipEspecie : styles.chipRecurso}
+                className={styles.chip}
                 x={-no.largura / 2}
                 y={-no.altura / 2}
                 width={no.largura}

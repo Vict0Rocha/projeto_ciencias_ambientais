@@ -31,21 +31,26 @@
   opacity: 1;
 }
 
-.chipEspecie {
-  fill: var(--color-surface);
-}
-
-.chipRecurso {
+/* Visual único pra todo nó — sem cor de bioma, sem diferenciar espécie/recurso:
+   menos informação pra decifrar antes de jogar. Um leve "respiro" no hover/toque
+   dá feedback de que é clicável sem precisar de mais nenhuma cor. */
+.chip {
   fill: var(--color-surface-sunken);
   stroke: var(--color-border-strong);
-  stroke-width: 2px;
-  stroke-dasharray: 5 4;
+  stroke-width: 1.5px;
+  transition: transform 150ms ease, fill 150ms ease;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.no[aria-disabled='false']:hover .chip {
+  fill: rgba(116, 172, 28, 0.18);
+  transform: scale(1.06);
 }
 
 .label {
   font-family: var(--font-heading);
   font-weight: 700;
-  font-size: 11.5px;
+  font-size: 14px;
   fill: var(--color-ink);
   text-anchor: middle;
   dominant-baseline: central;

@@ -20,17 +20,27 @@ export interface NoPosicionado extends SimulationNodeDatum {
 }
 
 /** Espaço lógico do grafo — o SVG escala isso via viewBox, então funciona em qualquer largura de tela. */
-export const LARGURA_LOGICA = 700;
-export const ALTURA_LOGICA = 440;
-const MARGEM = 36;
+export const LARGURA_LOGICA = 760;
+export const ALTURA_LOGICA = 460;
+const MARGEM = 40;
 
-const ALTURA_CHIP_1_LINHA = 32;
-const ALTURA_CHIP_2_LINHAS = 46;
-const PADDING_HORIZONTAL_CHIP = 14;
-const LARGURA_MIN_CHIP = 58;
+const ALTURA_CHIP_1_LINHA = 38;
+const ALTURA_CHIP_2_LINHAS = 56;
+const PADDING_HORIZONTAL_CHIP = 22;
+const LARGURA_MIN_CHIP = 70;
 /** Acima disso, o nome quebra em 2 linhas em vez de alargar o chip indefinidamente. */
-const LARGURA_MAX_UMA_LINHA = 118;
-const FONTE_MEDICAO = "700 11.5px 'Outfit', system-ui, sans-serif";
+const LARGURA_MAX_UMA_LINHA = 146;
+// Precisa bater com o font-size real do rótulo (RedeGraph.module.css `.label`) — é essa
+// medição que decide o tamanho do chip e o raio de colisão, então um font-size maior
+// aqui sem mudar lá (ou vice-versa) volta a deixar nomes se sobrepondo ou chips com
+// texto sobrando.
+const FONTE_MEDICAO = "700 14px 'Outfit', system-ui, sans-serif";
+
+// Se a partida começar antes da webfont 'Outfit' carregar, o canvas mede com uma
+// fonte fallback (mais estreita) — o texto real, já com Outfit, ficaria maior que
+// o chip calculado. Essa margem absorve essa diferença sem precisar esperar a
+// fonte carregar (o que atrasaria o início do jogo).
+const MARGEM_SEGURANCA_FONTE = 1.25;
 
 let ctxMedicao: CanvasRenderingContext2D | null | undefined;
 
@@ -38,9 +48,9 @@ function medirLarguraTexto(texto: string): number {
   if (ctxMedicao === undefined) {
     ctxMedicao = typeof document === 'undefined' ? null : document.createElement('canvas').getContext('2d');
   }
-  if (!ctxMedicao) return texto.length * 6.5; // fallback sem canvas (ex.: testes)
+  if (!ctxMedicao) return texto.length * 7.5; // fallback sem canvas (ex.: testes)
   ctxMedicao.font = FONTE_MEDICAO;
-  return ctxMedicao.measureText(texto).width;
+  return ctxMedicao.measureText(texto).width * MARGEM_SEGURANCA_FONTE;
 }
 
 /** Quebra o nome em 2 linhas no espaço entre palavras que deixa as duas mais parecidas em largura. */
@@ -103,35 +113,79 @@ export function calcularLayoutRede(
       y: ALTURA_LOGICA / 2 + Math.sin(angulo) * raio,
     };
   });
-  const links = pares.map((par) => ({ source: par.de, target: par.para }));
+  const porId = new Map(nodes.map((n) => [n.id, n]));
+  // Distância do link calculada por par, não um valor fixo: dois chips grandes
+  // ligados direto precisam de mais espaço entre si do que dois pequenos, senão
+  // essa "mola" entra em conflito com o collide e os dois forças empatam bem
+  // perto um do outro (foi o que causou sobreposição entre nós ligados).
+  const links = pares.map((par) => {
+    const de = porId.get(par.de);
+    const paraNo = porId.get(par.para);
+    const folga =
+      de && paraNo ? Math.hypot(de.largura, de.altura) / 2 + Math.hypot(paraNo.largura, paraNo.altura) / 2 + 36 : 130;
+    return { source: par.de, target: par.para, folga };
+  });
 
   const simulation = forceSimulation(nodes)
     .force(
       'link',
       forceLink(links)
         .id((d) => (d as NoPosicionado).id)
-        .distance(110)
+        .distance((l) => (l as unknown as { folga: number }).folga)
         .strength(0.3),
     )
-    .force('charge', forceManyBody().strength(-260))
+    .force('charge', forceManyBody().strength(-340))
     .force('center', forceCenter(LARGURA_LOGICA / 2, ALTURA_LOGICA / 2))
     // Puxa cada nó (fracamente) de volta pro centro do canvas — sem isso, a repulsão
     // de muitos nós espalha o layout bem além da área útil, e o reenquadramento
     // final precisa encolher tanto que os chips ficam pequenos demais pra ler.
     .force('x', forceX(LARGURA_LOGICA / 2).strength(0.025))
     .force('y', forceY(ALTURA_LOGICA / 2).strength(0.025))
-    .force(
-      'collide',
-      forceCollide((d) => {
-        const no = d as NoPosicionado;
-        return Math.hypot(no.largura, no.altura) / 2 + 12;
-      }).iterations(3),
-    )
+    .force('collide', forceCollide((d) => raioColisao(d as NoPosicionado)).iterations(5))
     .stop();
 
-  for (let i = 0; i < 400; i++) simulation.tick();
+  for (let i = 0; i < 500; i++) simulation.tick();
+
+  // O force-layout dá um bom ponto de partida (agrupa quem está ligado, espalha o
+  // resto), mas pra grafos mais cheios ele às vezes "empata" sem resolver 100% das
+  // colisões dentro das iterações — foi o que causava nomes ainda encostando um no
+  // outro depois do force-layout. Essa etapa resolve isso de forma determinística:
+  // empurra qualquer par que ainda esteja mais perto do que o raio de colisão
+  // permite, até não sobrar nenhum (ou esgotar as tentativas).
+  resolverColisoesRestantes(nodes);
 
   return reencaixarNoContainer(nodes);
+}
+
+/** Raio (do chip + folga) usado tanto no collide do d3-force quanto no resolvedor final. */
+function raioColisao(no: NoPosicionado): number {
+  return Math.hypot(no.largura, no.altura) / 2 + 22;
+}
+
+function resolverColisoesRestantes(nodes: NoPosicionado[], tentativas = 80): void {
+  for (let tentativa = 0; tentativa < tentativas; tentativa++) {
+    let houveAjuste = false;
+    for (let i = 0; i < nodes.length; i++) {
+      for (let j = i + 1; j < nodes.length; j++) {
+        const a = nodes[i];
+        const b = nodes[j];
+        const dx = b.x - a.x;
+        const dy = b.y - a.y;
+        const distancia = Math.hypot(dx, dy) || 0.01;
+        const minimo = raioColisao(a) + raioColisao(b);
+        if (distancia >= minimo) continue;
+        const sobra = (minimo - distancia) / 2;
+        const ux = dx / distancia;
+        const uy = dy / distancia;
+        a.x -= ux * sobra;
+        a.y -= uy * sobra;
+        b.x += ux * sobra;
+        b.y += uy * sobra;
+        houveAjuste = true;
+      }
+    }
+    if (!houveAjuste) break;
+  }
 }
 
 /**
